@@ -1,56 +1,85 @@
-
-# ✈️ Prediksi Harga Tiket Pesawat (Flight Price Prediction)
+# 🌲 Prediksi Harga Tiket Pesawat dengan Random Forest Regressor
 
 ## 📝 Deskripsi Proyek
-Proyek ini bertujuan untuk membangun model *Machine Learning* yang kuat dan akurat untuk memprediksi harga tiket pesawat berdasarkan berbagai fitur penerbangan.  
+Proyek ini membangun model **Machine Learning** untuk memprediksi harga tiket pesawat berdasarkan berbagai fitur penerbangan.  
+Model dikembangkan menggunakan **Scikit-learn Pipeline** dengan **Random Forest Regressor** sebagai model utama.  
 
-Model dikembangkan menggunakan arsitektur **Scikit-learn Pipeline** untuk memastikan konsistensi *preprocessing* dan mencegah *data leakage*.  
-Model utama yang digunakan adalah **Random Forest Regressor** yang dibungkus dengan **TransformedTargetRegressor** (TTR) agar target harga dapat ditransformasi secara logaritmik sehingga prediksi lebih stabil.
+Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*skewed*), target variabel (`price`) ditransformasi secara logaritmik menggunakan **TransformedTargetRegressor (TTR)**.
 
 ---
 
-## 🚀 Fitur Utama & Metodologi
+## 🚀 Fitur Utama
 
 ### 1. Arsitektur Pipeline
-- Semua tahap preprocessing data dan modeling dikapsulasi ke dalam `Pipeline`.
-- Menjamin data latih dan data baru diproses **identik**.
+- Seluruh preprocessing (encoding, scaling) dan model dibungkus dalam `Pipeline`.
+- Menjamin data latih dan data baru diproses identik → mencegah *data leakage*.
 
-### 2. Transformasi Target Otomatis
-- Target variabel (`price`) ditransformasi dengan fungsi logaritmik `np.log1p` sebelum pelatihan.
+### 2. Transformasi Target
+- Target `price` ditransformasi dengan `np.log1p` saat training.
 - Hasil prediksi dikembalikan ke skala asli dengan `np.expm1`.
-- Membantu mengurangi efek distribusi harga yang *skewed* (tidak normal).
+- Membantu model menghadapi distribusi harga yang sangat bervariasi.
 
-### 3. Pemrosesan Fitur (Preprocessing)
+### 3. Preprocessing Fitur
 
-| Tipe Fitur              | Contoh Fitur        | Teknik Transformasi    |
-|--------------------------|---------------------|-------------------------|
-| **Kategorikal Ordinal** | `class` (Economy, Business) | `OrdinalEncoder` |
-| **Kategorikal Nominal** | `source_city`, `departure_time`, `destination_city` | `OneHotEncoder` |
-| **Numerik**             | `days_left`, `duration` | `StandardScaler` |
+| Jenis Fitur              | Contoh               | Teknik Transformasi  |
+|---------------------------|----------------------|----------------------|
+| **Kategorikal Ordinal**  | `class` (Economy/Business) | `OrdinalEncoder` |
+| **Kategorikal Nominal**  | `source_city`, `departure_time`, `destination_city` | `OneHotEncoder` |
+| **Numerik**              | `days_left`, `duration` | `StandardScaler` |
 
-### 4. Model & Optimasi
-- **Model**: Random Forest Regressor
-- **Optimasi**: `GridSearchCV` dengan parameter:
-  - `n_estimators` (jumlah pohon)
-  - `max_depth` (kedalaman pohon)
-  - `min_samples_split` (jumlah minimum sampel untuk split)
+### 4. Optimasi Hyperparameter
+Dilakukan dengan **GridSearchCV** pada parameter utama Random Forest:
+- `n_estimators` → jumlah pohon
+- `max_depth` → kedalaman maksimum pohon
+- `min_samples_split` → jumlah minimum sampel untuk split node
 
 ---
 
-## 📈 Hasil Kinerja (Pada Data Uji)
+## 📈 Hasil Kinerja (Data Uji)
 
 | Metrik | Nilai | Interpretasi |
 |--------|-------|--------------|
-| **R-squared (R²)** | 0.9422 | Model menjelaskan lebih dari 94% variasi harga |
-| **MAE (Mean Absolute Error)** | 3043.62 | Rata-rata prediksi meleset sekitar Rp 3.043 |
-| **RMSE (Root Mean Squared Error)** | 5452.52 | Kesalahan rata-rata, sensitif terhadap outlier |
+| **R-squared (R²)** | 0.9422 | Model menjelaskan >94% variasi harga tiket |
+| **MAE** | 3043.62 | Rata-rata prediksi meleset ≈ Rp 3.043 |
+| **RMSE** | 5452.52 | Kesalahan rata-rata, sensitif terhadap outlier |
 
 ---
 
-## 🛠️ Panduan Penggunaan
+## 🛠️ Cara Menggunakan
 
 ### 1. Prasyarat
-Pastikan pustaka berikut sudah terpasang:
-
+Install pustaka berikut:
 ```bash
 pip install pandas numpy scikit-learn joblib
+```
+
+### 2. Muat & Gunakan Model
+```bash
+import pandas as pd
+import joblib
+
+# Muat model
+best_model = joblib.load("best_flight_predictor.pkl")
+
+# Data baru
+data_baru = pd.DataFrame({
+    "source_city": ["Jakarta"],
+    "departure_time": ["Malam"],
+    "stops": [0],
+    "arrival_time": ["Pagi"],
+    "destination_city": ["Bali"],
+    "class": ["Business"],
+    "days_left": [7],
+    "duration": [2.5]
+})
+
+# Prediksi harga
+prediksi = best_model.predict(data_baru)[0]
+print(f"Prediksi Harga Tiket: Rp {prediksi:,.2f}")
+```
+
+## 🔮 Potensi Pengembangan
+- Tambah fitur turunan: is_last_minute, price_per_hour, dsb.
+- Validasi dengan K-Fold CV untuk hasil yang lebih stabil.
+- Analisis error per segmen (mis. kelas Business vs Economy).
+- Visualisasi: residual plot, feature importance bar chart.

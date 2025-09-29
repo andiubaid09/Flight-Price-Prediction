@@ -46,7 +46,7 @@ Dilakukan dengan **GridSearchCV** pada parameter utama Random Forest:
 
 ## 📊 Visualisasi Data
 ### 1. Outlier Datasheet
-![Outlier Data](Assets/Outlier.png)
+![Outlier Data](Assets/Outlier.png)<br>
 Ditemukan adanya **outlier** yaitu nilai yang jauh berbeda dari mayoritas data. Outlier ini dapat menyebabkan:
 - 📉 **Model bias** → prediksi rata-rata jadi terlalu tinggi/rendah
 - 📊 **Distribusi miring (skewed)** → membuat error lebih besar pada harga normal

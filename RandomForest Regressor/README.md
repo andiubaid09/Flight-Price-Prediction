@@ -1,8 +1,7 @@
 # 🌲 Prediksi Harga Tiket Pesawat dengan Random Forest Regressor
 
 ## 📝 Deskripsi Proyek
-Proyek ini membangun model **Machine Learning** untuk memprediksi harga tiket pesawat berdasarkan berbagai fitur penerbangan.  
-Model dikembangkan menggunakan **Scikit-learn Pipeline** dengan **Random Forest Regressor** sebagai model utama.  
+Proyek ini membangun model **Machine Learning** untuk memprediksi harga tiket pesawat berdasarkan berbagai fitur penerbangan. Model dikembangkan menggunakan **Scikit-learn Pipeline** dengan **Random Forest Regressor** sebagai model utama.  
 
 Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*skewed*), target variabel (`price`) ditransformasi secara logaritmik menggunakan **TransformedTargetRegressor (TTR)**.
 
@@ -11,7 +10,7 @@ Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*ske
 ## 🚀 Fitur Utama
 
 ### 1. Arsitektur Pipeline
-- Seluruh preprocessing (encoding, scaling) dan model dibungkus dalam `Pipeline`.
+- Seluruh preprocessing (encoding, scaling, ordinal) dan model dibungkus dalam `Pipeline`.
 - Menjamin data latih dan data baru diproses identik → mencegah *data leakage*.
 
 ### 2. Transformasi Target
@@ -24,8 +23,8 @@ Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*ske
 | Jenis Fitur              | Contoh               | Teknik Transformasi  |
 |---------------------------|----------------------|----------------------|
 | **Kategorikal Ordinal**  | `class` (Economy/Business) | `OrdinalEncoder` |
-| **Kategorikal Nominal**  | `source_city`, `departure_time`, `destination_city` | `OneHotEncoder` |
-| **Numerik**              | `days_left`, `duration` | `StandardScaler` |
+| **Kategorikal Nominal**  | `source_city`, `departure_time`, `destination_city`,`stops`, `arrival_time` | `OneHotEncoder` |
+| **Numerik**              | `days_left` | `StandardScaler` |
 
 ### 4. Optimasi Hyperparameter
 Dilakukan dengan **GridSearchCV** pada parameter utama Random Forest:

@@ -64,8 +64,22 @@ Interpretasi hasil:
 
 ### 3. Distribusi Residual Error
 ![Distribusi Residual Error](Assets/Distribusi%20Residual%20Error.png)<br>
-Residual adalah selisih antara nilai aktual dan nilai prediksi. Artinya, seberapa jauh prediksi model dari nilai sebenarnya. Tujuannya adalah mengecek apakah error model terdistribusi secara normal (simetris, tanpa bias besar). 
-Model yang baik biasanya menghasilkan residual:
+Residual adalah selisih antara nilai aktual dan nilai prediksi. Artinya, seberapa jauh prediksi model dari nilai sebenarnya. Tujuannya adalah mengecek apakah error model terdistribusi secara normal (simetris, tanpa bias besar).
+Elemen visualisasi:
+1. Histogram (batang warna coral/oranye)
+ - Menunjukkan sebaran nilai residual.
+ - Semakin tinggi batang -> semakin banyak residual yang nilainya berada pada rentang tersebut.
+ - Kalau batang lebih banyak di sekitar 0 -> berarti error kecil dan model cukup baik.
+2. Kurva KDE (garis halus melengkung)
+ - Fungsinya membantu melihat bentuk distribusi residual. Mirip dari histogram
+ - Kalau kurvanya simetris di sekitar 0 -> model tidak bias
+ - Kalau melenceng ke kiri/kanan -> model bias (overestimate atau underestimate)
+3. Garis Tegak Lurus Merah Putus-Putus(axvline)
+ - Titik acuan di 0 (residual = 0)
+ - Kalau semua residual jatuh tepat di garis ini, model prediksi = nilai aktual(perfect).
+ - Tapi realitannya residual pasti menyebar di sekitar garis ini
+ - Garis merah ini dipakai untuk menilai: apakah distribusi residual condong ke kiri/kanan dan seberapa jauh penyebarannya dari nol.
+ Model yang baik biasanya menghasilkan residual:
 - Tersebar di sekitar nol,
 - Tidak membentuk pola tertentu,
 - Tidak terlalu menyebar jauh

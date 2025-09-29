@@ -69,5 +69,3 @@ print(f"Prediksi Harga Tiket : {prediksi:,.2f}")
 
 ## 🧑‍💻 Kontributor
 - Muhammad Andi Ubaidillah
-- Atikaa Nisa Pratiwi
-- Bambang Ramadhan

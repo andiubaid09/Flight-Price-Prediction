@@ -44,6 +44,19 @@ Dilakukan dengan **GridSearchCV** pada parameter utama Random Forest:
 
 ---
 
+## 📊 Visualisasi Data
+### 1. Outlier Datasheet
+![Outlier Data](Assets/Outlier.png)
+Ditemukan adanya **outlier** yaitu nilai yang jauh berbeda dari mayoritas data. Outlier ini dapat menyebabkan:
+- 📉 **Model bias** → prediksi rata-rata jadi terlalu tinggi/rendah
+- 📊 **Distribusi miring (skewed)** → membuat error lebih besar pada harga normal
+- ⚡ **Training tidak stabil** → terutama untuk algoritma sensitif terhadap distribusi target
+Oleh karena itu, dilakukan **Transformasi logaritmik pada target (price)** menggunakan `TranformedTargetRegressor`. Hal ini membuat distribusi lebih normal dan model lebih mudah belajar.
+
+### 2. Prediksi vs Nilai Aktual
+### 3. Distribusi Residual Error
+### 4. Residual vs Nilai Prediksi
+### 5. Fitur Penting (Gini Importance)
 ## 🛠️ Cara Menggunakan
 
 ### 1. Prasyarat

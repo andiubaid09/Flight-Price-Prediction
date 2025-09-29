@@ -54,7 +54,28 @@ Ditemukan adanya **outlier** yaitu nilai yang jauh berbeda dari mayoritas data. 
 Oleh karena itu, dilakukan **Transformasi logaritmik pada target (price)** menggunakan `TranformedTargetRegressor`. Hal ini membuat distribusi lebih normal dan model lebih mudah belajar.
 
 ### 2. Prediksi vs Nilai Aktual
+![Prediksi vs Harga Nilai Aktual](Assets/Prediksi%20vs%20Harga%20Aktual.png)<br>
+Visualisasi di atas merupakan Scatter Plot Prediksi vs Nilai Aktual, visualisasi membantu untuk mengerti perilaku model secara intuitif hal yang sering tidak terlihat hanya dari angka metrik. Plot ini menunjukkan seberapa dekat hasil prediksi dengan kenyataan. Semacam uji keakuratan visual, melengkapi metrik Numerik(MAE, RMSE, R2). Jika R2 mendekati 1 dan titik berjejer di sekitar garis merah -> Model bagus.
+Interpretasi hasil:
+- Kalau titik-titik biru banyak yang menempel di garis merah, berarti model prediksi sangat akurat.
+- Titik yang jauh dari garis merah = error prediksi yang lebih besar
+- Semakin rapat titik ke garis merah -> semakin tinggi nilai R2 (koefisien determinasi)
+- Menambahkan nilai R2 di plot, jadi pembaca bisa langsung lihat seberapa baik model menjelaskan variasi data.
+
 ### 3. Distribusi Residual Error
+![Distribusi Residual Error](Assets/Distribusi%20Residual%20Error.png)<br>
+Residual adalah selisih antara nilai aktual dan nilai prediksi. Artinya, seberapa jauh prediksi model dari nilai sebenarnya. Tujuannya adalah mengecek apakah error model terdistribusi secara normal (simetris, tanpa bias besar). 
+Model yang baik biasanya menghasilkan residual:
+- Tersebar di sekitar nol,
+- Tidak membentuk pola tertentu,
+- Tidak terlalu menyebar jauh
+Jadi, dengan grafik ini, kita bisa menilai model sudah cukup baik atau masih perlu perbaikan (dengan feature engineering atau tuning parameter)
+Interpretasi hasil:
+- Distribusi simetris & berpusat di 0 -> model cenderung tidak bias, prediksi mendekati nilai aktual.
+- Distribusi condong ke kiri atau kanan -> ada bias, misalnya model sering overestimate (Residual Negatif atau prediksi terlalu tinggi) atau underestimate (Residual Positif atau prediksi terlalu rendah).
+- Distribusi menyebar lebar -> Error prediksi besar, model kurang akurat.
+- Distribusi sempit di sekitar 0 -> Prediksi model sangat dekat dengan nilai aktual, model bagus
+
 ### 4. Residual vs Nilai Prediksi
 ### 5. Fitur Penting (Gini Importance)
 ## 🛠️ Cara Menggunakan

@@ -79,11 +79,13 @@ Elemen visualisasi:
  - Kalau semua residual jatuh tepat di garis ini, model prediksi = nilai aktual(perfect).
  - Tapi realitannya residual pasti menyebar di sekitar garis ini
  - Garis merah ini dipakai untuk menilai: apakah distribusi residual condong ke kiri/kanan dan seberapa jauh penyebarannya dari nol.
- Model yang baik biasanya menghasilkan residual:
+
+Model yang baik biasanya menghasilkan residual:
 - Tersebar di sekitar nol,
 - Tidak membentuk pola tertentu,
 - Tidak terlalu menyebar jauh
 Jadi, dengan grafik ini, kita bisa menilai model sudah cukup baik atau masih perlu perbaikan (dengan feature engineering atau tuning parameter)
+
 Interpretasi hasil:
 - Distribusi simetris & berpusat di 0 -> model cenderung tidak bias, prediksi mendekati nilai aktual.
 - Distribusi condong ke kiri atau kanan -> ada bias, misalnya model sering overestimate (Residual Negatif atau prediksi terlalu tinggi) atau underestimate (Residual Positif atau prediksi terlalu rendah).
@@ -91,7 +93,34 @@ Interpretasi hasil:
 - Distribusi sempit di sekitar 0 -> Prediksi model sangat dekat dengan nilai aktual, model bagus
 
 ### 4. Residual vs Nilai Prediksi
+![Residual vs Nilai Prediksi](Assets/Residual%20vs%20Nilai%20Prediksi.png)<br>
+Visualisasi ini menampilkan Residual Plot (Residual vs Predicted Values). Tujuannya untuk mengecek apakah error model terdistribusi secara acak atau ada pola tertentu. Membantu mendeteksi, bias sistematis (model selalu meleset ke satu arah), Heteroskedatisitas (variasi error meningkat pada nilai prediksi besar) dan Nonlinearitas (model tidak cukup fleksibel untuk pola data). Ini adalah visualisasi evaluasi model regresi yang digunakan untuk menilai kualitas prediksi dengan melihat pola error(residual) terhadap nilai prediksi.
+
+Elemen visualisasi:
+1. Scatterplot titik hijau (prediksi vs residual)
+ - Sumbu X = harga prediksi (y_pred) -> Nilai yang diperkirakan model.
+ - Sumbu Y = residual (y_test - y_pred) -> selisih antara nilai aktual dan prediksi
+ - Setiap titik = satu data.
+2. Garis horizontal merah putus-putus (residual = 0)
+ - Menjadi titik acuan:
+  - Kalau residual = 0 -> prediksi tepat sama dengan aktual
+  - Kalau titik di atas garis -> model underestimate (prediksi terlalu rendah).
+  - Kalau titik di bawah garis -> model overestimate (prediksi terlalu tinggi).
+
+Penyebaran acak di sekitar garis 0 -> artinya error tidak bergantung pada nilai prediksi berarti model cukup baik. Pola tertentu (misalnya residual makin besar saat harga makin tinggi)-> ada masalah:
+ - Heteroskedastisitas : error semakin besar saat nilai meningkat -> model tidak stabil di data besar
+ - Nonlinearitas: Model tidak cukup fleksibel menangkap pola -> hubungan non linear.
+ - Bias Sistematis: Model cenderung selalu overestimate atau underestimate.
+
+Interpretasi hasil:
+ - Kalau titik-titik terlihat acak, menyebar merata di sekitar 0 -> model sudah oke
+ - Kalau titik cenderung membentuk pola busur/ kurva -> mungkin model perlu metode lain (misalnya boosting atau menambah fitur)
+ - Kalau sebaran makin melebar di kanan (harga tinggi) -> model kesulitan memprediksi harga 
+ 
 ### 5. Fitur Penting (Gini Importance)
+![Gini Importance](Assets/Fitur%20Penting.png)<br>
+Visualisasi ini adalah Feature Importance Plot dari Random Forest, menunjukkan fitur yang paling berpengaruh terhadap prediksi harga tiket dan membantu memahami faktor utama yang mempengaruhi model, misalnya rute, maskapai, durasi, atau waktu keberangkatan
+
 ## 🛠️ Cara Menggunakan
 
 ### 1. Prasyarat

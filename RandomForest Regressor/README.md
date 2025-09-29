@@ -78,7 +78,6 @@ print(f"Prediksi Harga Tiket: Rp {prediksi:,.2f}")
 ```
 
 ## 🔮 Potensi Pengembangan
-- Tambah fitur turunan: is_last_minute, price_per_hour, dsb.
+- Tambah fitur Airlines karena setiap maskapai memiliki harga berbeda.
 - Validasi dengan K-Fold CV untuk hasil yang lebih stabil.
 - Analisis error per segmen (mis. kelas Business vs Economy).
-- Visualisasi: residual plot, feature importance bar chart.

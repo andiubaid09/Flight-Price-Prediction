@@ -31,4 +31,43 @@ Pastikan Anda sudah menginstal dependensi berikut:
 pip install pandas numpy scikit-learn joblib
 ```
 
-## 
+## 📊 Model yang Tersedia
+1. 🌲 Random Forest Regressor
+  - Pipeline dengan TransformedTargetRegressor (log-transform target).
+  - Hyperparameter tuning via GridSearchCV.
+  - Kinerja:
+    - R²: 0.9537
+    - MAE: 2808.1478
+    - RMSE: 4882.4682
+
+2. 📈 Linear Regression (coming soon)
+
+## 🛠️ Cara Menggunakan Model
+Contoh untuk Random Forest:
+```bash
+import pandas as pd
+import joblib
+
+# Load Model 
+model = joblib.load("RandomForest Regressor/Model/rfr-flight_price_prediction.pkl")
+
+# Data Baru
+new_data = pd.DataFrame({
+    'source_city' : ['Delhi'],
+    'departure_time' : ['Evening'],
+    'stops' : ['zero'],
+    'arrival_time' : ['Night'],
+    'destination_city' : ['Mumbai'],
+    'class' : ['Economoy'],
+    'days_left' : 1 
+})
+
+# Prediksi
+prediksi = model.predict(new_data)[0]
+print(f"Prediksi Harga Tiket : {prediksi:,.2f}")
+```
+
+## 🧑‍💻 Kontributor
+- Muhammad Andi Ubaidillah
+- Atikaa Nisa Pratiwi
+- Bambang Ramadhan

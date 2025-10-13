@@ -126,9 +126,9 @@ Interpretasi hasil:
  - Kalau titik cenderung membentuk pola busur/ kurva -> mungkin model perlu metode lain (misalnya boosting atau menambah fitur)
  - Kalau sebaran makin melebar di kanan (harga tinggi) -> model kesulitan memprediksi harga 
  
-### 5. Fitur Penting (Gini Importance)
-![Gini Importance](Assets/Fitur%20Penting.png)<br>
-Visualisasi ini adalah Feature Importance Plot dari Random Forest, menunjukkan fitur yang paling berpengaruh terhadap prediksi harga tiket dan membantu memahami faktor utama yang mempengaruhi model, misalnya rute, maskapai, durasi, atau waktu keberangkatan
+### 5. Fitur Penting
+![Feature Importance](Assets/Feature%20Importances.png)<br>
+Visualisasi ini adalah Feature Importance Plot dari Linear Regression, menunjukkan fitur yang paling berpengaruh terhadap prediksi harga tiket dan membantu memahami faktor utama yang mempengaruhi model, misalnya rute, maskapai, durasi, atau waktu keberangkatan
 
 ## 🛠️ Cara Menggunakan
 
@@ -144,7 +144,7 @@ import pandas as pd
 import joblib
 
 # Muat model
-best_model = joblib.load("best_flight_predictor.pkl")
+model_linear = joblib.load("linear_regression_pipeline.pkl")
 
 # Data baru
 data_baru = pd.DataFrame({
@@ -159,11 +159,13 @@ data_baru = pd.DataFrame({
 })
 
 # Prediksi harga
-prediksi = best_model.predict(data_baru)[0]
+prediksi = model_linear.predict(data_baru)[0]
 print(f"Prediksi Harga Tiket: Rp {prediksi:,.2f}")
 ```
 
 ## 🔮 Potensi Pengembangan
 - Tambah fitur Airlines karena setiap maskapai memiliki harga berbeda.
 - Validasi dengan K-Fold CV untuk hasil yang lebih stabil.
-- Analisis error per segmen (mis. kelas Business vs Economy).
+
+## 📘 Catatan
+Model ini difokuskan pada interpretabilitas dan kemudahan deployment. Jika membutuhkan performa lebih tinggi dapat dibandingkan dengan model lain seperti **RandomForestRegressor** atau **XGBoos**

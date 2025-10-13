@@ -25,7 +25,15 @@ pip install pandas numpy scikit-learn joblib
     - MAE: 2808.1478
     - RMSE: 4882.4682
 
-2. 📈 Linear Regression (coming soon)
+2. 📈 Linear Regression 
+  - Pipeline dengan TransformedTargetRegressor (log-transform target).
+  - Menerapkan logaritma pada inputan fitur numerik (X) sebelum distandarisasi.
+  - Kinerja:
+    - R²: 0.8489
+    - MAE: 4912.04
+    - RMSE: 8826.69
+
+3. 🧱⚖️ Ridge & Lasso Regression (coming soon)
 
 ## 🛠️ Cara Menggunakan Model
 Contoh untuk Random Forest:

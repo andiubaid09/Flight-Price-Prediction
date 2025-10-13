@@ -39,8 +39,8 @@ Dilakukan dengan **GridSearchCV** pada parameter utama Random Forest:
 | Metrik | Nilai | Interpretasi |
 |--------|-------|--------------|
 | **R-squared (R²)** | 0.9422 | Model menjelaskan >94% variasi harga tiket |
-| **MAE** | 3043.62 | Rata-rata prediksi meleset ≈ Rp 3.043 |
-| **RMSE** | 5452.52 | Kesalahan rata-rata, sensitif terhadap outlier |
+| **MAE** | 3043.62 | Rata-rata prediksi meleset tanpa dikuadratkan ≈  3.043 |
+| **RMSE** | 5452.52 | Kesalahan rata-rata setelah dikuadratkan, sensitif terhadap outlier |
 
 ---
 
@@ -135,7 +135,7 @@ import pandas as pd
 import joblib
 
 # Muat model
-best_model = joblib.load("best_flight_predictor.pkl")
+best_model = joblib.load("rfr-flight_price_prediction.pkl")
 
 # Data baru
 data_baru = pd.DataFrame({
@@ -151,7 +151,7 @@ data_baru = pd.DataFrame({
 
 # Prediksi harga
 prediksi = best_model.predict(data_baru)[0]
-print(f"Prediksi Harga Tiket: Rp {prediksi:,.2f}")
+print(f"Prediksi Harga Tiket:  {prediksi:,.2f}")
 ```
 
 ## 🔮 Potensi Pengembangan

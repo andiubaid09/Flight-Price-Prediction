@@ -128,7 +128,19 @@ Interpretasi hasil:
  
 ### 5. Fitur Penting
 ![Feature Importance](Assets/Feature%20Importances.png)<br>
-Visualisasi ini adalah Feature Importance Plot dari Linear Regression, menunjukkan fitur yang paling berpengaruh terhadap prediksi harga tiket dan membantu memahami faktor utama yang mempengaruhi model, misalnya rute, maskapai, durasi, atau waktu keberangkatan
+Visualisasi ini adalah Feature Importance dari Linear Regression, menunjukkan fitur yang paling berpengaruh terhadap prediksi harga tiket dan membantu memahami faktor utama yang mempengaruhi model, misalnya rute, maskapai, durasi, atau waktu keberangkatan. Setiap angka di kolom *Coefficient* menunjukkan arah dan besar pengaruh fitur terhadap harga tiket (price). Berikut cara membaca koefisien:
+- Koefisien positif berarti fitur tersebut menaikkan harga tiket.
+- Koefisien negatif berarti fitur tersebut menurunkan harga tiket.
+- Semakin besar nilai absolutnya semakin kuat pengaruhnya terhadap prediksi
+
+Sebelum pelatihan, dilakukan transformasi logaritmik pada target *price* agar distribusi data lebih normal dan hubungan antar variabel menjadi linear. Hal ini membantu model Linear Regression bekerja lebih optimal. Hasil pelatihan tersebut menunjukkan bahwa fitur - fitur berikut memiliki pengaruh paling signifikan terhadap harga tiket:
+- *class* memiliki koefisien positif terbesar (+2,15), menunjukkan bahwa kelas penerbangan merupakan faktor utama penentuan harga. Peningkatan kelas (misalnya dari Economy ke Business) menyebabkan lonjakan harga yang sangat signifikan.
+- *Stops_two_or_more* (+0.33) dan *stops_one* (+0.10) juga berpengaruh positif, menandakan penerbangan dengan transit cenderung lebih mahal dibanding penerbangan langsung.
+- *Kota asal dan tujuan* seperti *source_city_kolkata* dan *destination_city_kolkata* memiliki koefisien positif (+0.10 - 0.14), menunjukkan harga tiket dari/ke kota tersebut relatif lebih tinggi.
+- *Waktu kedatangan dan keberangkatan*, khususnya pada malam hari dan sore hari, memiliki koefisien positif kecil (sekitar +0.03 hingga +0.08), menunjukkan kecenderungan harga lebih tinggi pada jam sibuk.
+- Sebaliknya fitur seperti *destination_city_Delhi*, *destination_city_Chennai*, dan *departure_time_Afternoon* memiliki koefisien negatif kecil, yang berarti penerbangan dengan karakteristik tersebut cenderung sedikiti lebih murah.
+
+Secara umum, model Linear Regression memberikan hasil yang mudah diinterpretasikan dan menunjukkan hubungan linear antar fitur terhadap harga tiket. Transformasi logaritmik pada target terbukti membantu mengurangi efek outlier dan membuat hubungan antar variabel lebih stabil.
 
 ## 🛠️ Cara Menggunakan
 
@@ -150,7 +162,7 @@ model_linear = joblib.load("linear_regression_pipeline.pkl")
 data_baru = pd.DataFrame({
     "source_city": ["Jakarta"],
     "departure_time": ["Malam"],
-    "stops": [0],
+    "stops": zero,
     "arrival_time": ["Pagi"],
     "destination_city": ["Bali"],
     "class": ["Business"],
@@ -168,4 +180,4 @@ print(f"Prediksi Harga Tiket: Rp {prediksi:,.2f}")
 - Validasi dengan K-Fold CV untuk hasil yang lebih stabil.
 
 ## 📘 Catatan
-Model ini difokuskan pada interpretabilitas dan kemudahan deployment. Jika membutuhkan performa lebih tinggi dapat dibandingkan dengan model lain seperti **RandomForestRegressor** atau **XGBoos**
+Model ini difokuskan pada interpretabilitas dan kemudahan deployment. Jika membutuhkan performa lebih tinggi dapat dibandingkan dengan model lain seperti **RandomForestRegressor** atau **XGBoost**

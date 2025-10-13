@@ -14,8 +14,12 @@ Model Linear Regression ini dibangun dengan pipeline yang mencakup:
 - **Ordinal** → Encoding menggunakan `OrdinalEncoder`
 - **Kategorikal** → Encoding menggunakan `OneHotEncoder `
 - **Target** → Transformasi log menggunakan `FunctionTransformer` dan `TransformedTargetRegressor`
+- Pada fitur numerik (X), log transform dilakukan agar distribusi data lebih normal dan mengurangi skewness.
+- Pada target (y), log transform dilakukan melakukan menggunakan `TransformedTargetRegressor` untuk menormalkan harga tiket (price) dan memperkuat hubungan linear antara fitur dan target.
 
 Pipeline ini memastikan proses transformasi dan prediksi dapat berjalan secara *end-to-end*
+
+---
 
 ## 🚀 Fitur Utama
 
@@ -36,21 +40,15 @@ Pipeline ini memastikan proses transformasi dan prediksi dapat berjalan secara *
 | **Kategorikal Nominal**  | `source_city`, `departure_time`, `destination_city`,`stops`, `arrival_time` | `OneHotEncoder` |
 | **Numerik**              | `days_left` | `StandardScaler` |
 
-### 4. Optimasi Hyperparameter
-Dilakukan dengan **GridSearchCV** pada parameter utama Random Forest:
-- `n_estimators` → jumlah pohon
-- `max_depth` → kedalaman maksimum pohon
-- `min_samples_split` → jumlah minimum sampel untuk split node
-
 ---
 
 ## 📈 Hasil Kinerja (Data Uji)
 
 | Metrik | Nilai | Interpretasi |
 |--------|-------|--------------|
-| **R-squared (R²)** | 0.9422 | Model menjelaskan >94% variasi harga tiket |
-| **MAE** | 3043.62 | Rata-rata prediksi meleset ≈ Rp 3.043 |
-| **RMSE** | 5452.52 | Kesalahan rata-rata, sensitif terhadap outlier |
+| **R-squared (R²)** | 0.8489 | Model menjelaskan >84% variasi harga tiket |
+| **MAE** | 4912.04 | Rata-rata prediksi meleset tanpa kuadrat ≈ 4.912 |
+| **RMSE** | 8826.69 | Kesalahan rata-rata prediksi meleset yang sudah dikuadratkan sekitar 8.826 |
 
 ---
 
@@ -61,7 +59,7 @@ Ditemukan adanya **outlier** yaitu nilai yang jauh berbeda dari mayoritas data. 
 - 📉 **Model bias** → prediksi rata-rata jadi terlalu tinggi/rendah
 - 📊 **Distribusi miring (skewed)** → membuat error lebih besar pada harga normal
 - ⚡ **Training tidak stabil** → terutama untuk algoritma sensitif terhadap distribusi target
-Oleh karena itu, dilakukan **Transformasi logaritmik pada target (price)** menggunakan `TranformedTargetRegressor`. Hal ini membuat distribusi lebih normal dan model lebih mudah belajar.
+Oleh karena itu, setelah prediksi nilai dikembalikan ke skala aslinya menggunakan fungsi expm1. Menerapkan logaritma pada fitur numerik sebelum diskalakan membantu Linear Regression yang sensitif terhadap skala dan distribusi agar lebih stabil.
 
 ### 2. Prediksi vs Nilai Aktual
 ![Prediksi vs Harga Nilai Aktual](Assets/Prediksi%20vs%20Harga%20Aktual.png)<br>

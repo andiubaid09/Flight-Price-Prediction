@@ -59,6 +59,7 @@ Ditemukan adanya **outlier** yaitu nilai yang jauh berbeda dari mayoritas data. 
 - 📉 **Model bias** → prediksi rata-rata jadi terlalu tinggi/rendah
 - 📊 **Distribusi miring (skewed)** → membuat error lebih besar pada harga normal
 - ⚡ **Training tidak stabil** → terutama untuk algoritma sensitif terhadap distribusi target
+
 Oleh karena itu, setelah prediksi nilai dikembalikan ke skala aslinya menggunakan fungsi expm1. Menerapkan logaritma pada fitur numerik sebelum diskalakan membantu Linear Regression yang sensitif terhadap skala dan distribusi agar lebih stabil.
 
 ### 2. Prediksi vs Nilai Aktual

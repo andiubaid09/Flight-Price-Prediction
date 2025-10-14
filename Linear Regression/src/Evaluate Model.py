@@ -1,3 +1,5 @@
+import matplotlib as plt
+import seaborn as sns
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 y_pred = model_linear.predict(X_test)
@@ -95,7 +97,6 @@ df_importance = pd.DataFrame({
 print(df_importance.head(20))
 
 # Visualisasi Feature Importances
-import matplotlib.pyplot as plt
 
 plt.figure(figsize=(10,6))
 plt.barh(df_importance['Feature'], df_importance['Coefficient'])

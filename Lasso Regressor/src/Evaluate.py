@@ -50,3 +50,44 @@ plt.legend()
 plt.show()
 
 # Visualisasi Residual vs Nilai Prediksi
+plt.figure(figsize=(8,6))
+plt.style.use(seaborn_version)
+
+sns.scatterplot(x=y_pred, y=residual, color='forestgreen', alpha=0.6)
+plt.axhline(0, color='r', linestyle='--', lw=2)
+plt.title('Residual vs Nilai Prediksi', fontsize=16, fontweight='bold')
+plt.xlabel('Harga Prediksi', fontsize=12)
+plt.ylabel('Residual', fontsize=12)
+plt.show()
+
+# Mengambil langkah preprocessor dan regressornya
+
+preprocessor = best_model.named_steps['preprocessor']
+regressor = best_model.named_steps['regressor'].regressor_ # Ditambahkan karena regressor di dalam TransformedTargetResessor
+features_name =[]
+
+# Numeric
+num_features = preprocessor.transformers_[0][2]
+features_name.extend(num_features)
+
+# Ordinal
+ord_features = preprocessor.transformers_[1][2]
+features_name.extend(ord_features)
+
+# OneHotEncoder
+cat_encoder = preprocessor.transformers_[2][1]
+cat_features = cat_encoder.get_feature_names_out(preprocessor.transformers_[2][2])
+features_name.extend(cat_features)
+
+# Buat DataFrame Feature Importancesnya
+
+coef = regressor.coef_
+feature_importance = pd.DataFrame({
+    'Feature': features_name,
+    'Coefficient': coef
+})
+feature_importance['Abs_Coefficient'] = feature_importance['Coefficient'].abs()
+feature_importance = feature_importance.sort_values('Abs_Coefficient', ascending=False)
+feature_importance.head(10)
+
+#

@@ -35,3 +35,18 @@ plt.legend()
 plt.text(0.05, 0.9, f'R2{r2:.4f}', transform=plt.gca(). transAxes, fontsize=12, verticalalignment='top')
 plt.show()
 
+# Visualisasi Distribusi Residual Error
+
+residual = y_test - y_pred
+
+plt.figure(figsize=(8,6))
+plt.style.use(seaborn_version)
+
+sns.histplot(residual, kde=True, color='coral', bins=30)
+plt.title('Distribusi Residual Error', fontsize=16, fontweight='bold')
+plt.xlabel('Residual (Harga Aktual - Harga Prediksi)', fontsize=12)
+plt.axvline(0, color='r', linestyle='--', label='Pusat di Nole')
+plt.legend()
+plt.show()
+
+# Visualisasi Residual vs Nilai Prediksi

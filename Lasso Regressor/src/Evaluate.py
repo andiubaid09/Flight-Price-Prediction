@@ -90,4 +90,11 @@ feature_importance['Abs_Coefficient'] = feature_importance['Coefficient'].abs()
 feature_importance = feature_importance.sort_values('Abs_Coefficient', ascending=False)
 feature_importance.head(10)
 
-#
+# Visualisasi Feature Importances
+plt.figure(figsize=(10,6))
+plt.barh(feature_importance['Feature'], feature_importance['Coefficient'])
+plt.xlabel('Coefficient Value')
+plt.ylabel('Feature')
+plt.title('Feature Importance (Lasso Regression Coefficient)')
+plt.gca().invert_yaxis()
+plt.show()

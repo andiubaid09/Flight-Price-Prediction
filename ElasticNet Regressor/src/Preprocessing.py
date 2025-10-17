@@ -29,4 +29,31 @@ scaler = StandardScaler()
 num_features = ['days_left']
 num_transform = scaler
 
+encoder = OneHotEncoder(handle_unknown='ignore', sparse_output=False)
+cat_features = ['source_city','departure_time','stops','arrival_time','destination_city']
+cat_transform = encoder
 
+ordinal_features = ['class']
+class_categories = ['Economy','Business']
+ordinal_transofrm = OrdinalEncoder(categories=[class_categories])
+
+log_transform = FunctionTransformer(np.log1p, inverse_func=np.expm1)
+
+preprocessor = ColumnTransformer([
+    ('num', Pipeline([
+        ('log', log_transform),
+        ('scaler', num_transform)]),num_features),
+    ('ord', ordinal_transofrm, ordinal_features),
+    ('cat', cat_transform, cat_features)
+], remainder ='drop')
+
+elastic = ElasticNet(max_iter=10000)
+model_elastic = TransformedTargetRegressor(
+    regressor = elastic,
+    func = np.log1p,             # Transformasi target agar lebih stabil
+    inverse_func= np.expm1
+)
+pipeline_elastic = Pipeline(steps=[
+    ('preprocessor', preprocessor),
+    ('regressor', model_elastic)
+])

@@ -21,6 +21,10 @@ pip install pandas numpy scikit-learn joblib
   - Terdiri dari banyak pohon keputusan *(Decision Tree)* yang dibangun secara acak dari dataset. Setiap pohon akan membuat prediksi sendiri, lalu hasil akhirnya diambil sebagai rata-rata dari semua pohon untuk regresi.
   - Pipeline dengan TransformedTargetRegressor (log-transform target).
   - Hyperparameter tuning via GridSearchCV.
+  - Best Params ditemukan : 
+    1. max_depth : 15
+    2. min_samples_split : 5,
+    3. n_estimators : 200 
   - Kinerja:
     - R²: 0.9537
     - MAE: 2808.1478
@@ -41,13 +45,37 @@ pip install pandas numpy scikit-learn joblib
   - Menerapkan logaritma pada inputan fitur numerik (X) sebelum distandarisasi. Artinya fitur numerik mengambil logaritma natural dari nilai +1 lalu distandarisasi oleh StandardScaler().
   - Tujuan dari menerapkan logaritma pada inputan fitur numerik (X) adalah mengurangi efek *skewness* (kemencengan) data. Membuat outlier tidak terlalu berpengaruh besar dan membantu model linear belajar hubungan yang lebih proporsional.
   - Misal data days_left : [1, 2, 3, 5, 10, 20, 50, 100, 200]. Grafiknya miring ke kanan (kebanyakan kecil, sedikit besar). Kalau diambil lognya maka : [0.69, 1.10, 1.39, 1.79, 2.39, 3.04, 3.93, 4.61, 5.30]. Sekarang datanya lebih seimbang dan halus. Nilai besar diperkecil, tapi urutan tetap sama. Model jadi tidak "tertipu" oleh data ekstrem seperti 200 hari.
+  - Best Regressor Alpha yang ditemukan adalah 100
   - Kinerja :
-    - R² :
-    - MAE :
-    - RMSE :
+    - R² : 0.8496
+    - MAE : 4908.6411
+    - RMSE : 8806.0955
+
 4. 🪢 Lasso Regression
+  - Lasso adalah variasi dari Linear Regression yang menambahkan regularisasi L1 untuk mengontrol kompleksitas model dan memilih fitur penting secara otomatis.
+  - Lasso menghukum koefisien besar. Jika suatu fitur tidak terlalu penting, maka Lasso akan menekan koefisiennya menjadi 0. Hasilnya hanya fitur yang paling berpengaruh yang bertahan (otomatis melakukan feature selection)
+  - Pipeline dengan TransformedTargetRegressor (log_transform target)
+  - Menerapkan logaritma natural dari nilai +1 lalu distandarisasi oleh StandardScaler().
+  - Best Lasso Params Aplha yang ditemukan adalah 0.01
+  - Kinerja :
+    - R² : 0.8569
+    - MAE : 4947.2333
+    - RMSE : 8587.3957
+
 5. ⚖️ ElasticNet 
-6. Decision Tree Regressor
+  - Kalau Ridge itu mengecilkan semua koefisien dan Lasso itu mematikan sebagian fitur, maka ElasticNet adalah gabungan cerdas dari keduanya. Sebuah model regresi linear yang menggabungkan penalti Ridge (L2) dan penalti Lasso (L1). Jadi dia mewarisi kestabilan dan kemampuan seleksi fitur dari Lasso.
+  - Model ini mencoba menyeimbangkan Ridge = stabil kalau fitur saling berkolerasi tinggi dan Lasso = efektif untuk menyusutkan fitur tak penting ke 0. ElasticNet mengambil keuntungan dari keduanya "Stabil seperti Ridge, selektif seperti Lasso"
+  - Pipeline dengan TransformedTargetRegressor (log_transform target)
+  - Menerapkan logaritma natural dari nilai +1 lalu distandarisasi oleh StandardScaler()
+  - Best ElasticNet params yang ditemukan adalah :
+    1. Alpha : 0.01
+    2. l1_ratio : 0.5
+  - Kinerja :
+    - R² : 0.8569
+    - MAE : 4932.4175
+    - RMSE : 8587.9832
+
+6. 🌳 Decision Tree Regressor (Coming Soon)
 
 ## 🛠️ Cara Menggunakan Model
 Contoh untuk Random Forest:

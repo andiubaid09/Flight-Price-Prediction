@@ -59,3 +59,44 @@ plt.title('Residual vs Nilai Prediksi', fontsize=16, fontweight='bold')
 plt.xlabel('Harga Prediksi', fontsize=12)
 plt.ylabel('Residual', fontsize=12)
 plt.show()
+
+# Mengambil langkah preprocessornya dan regressornya
+
+preprocessor = best_elastic.named_steps['preprocessor']
+model = best_elastic.named_steps['regressor'].regressor_
+
+feature_name = []
+
+# Numeric StandardScaler preprocessor
+num_fitur = preprocessor.transformers_[0][2]
+feature_name.extend(num_fitur)
+
+# Ordinal preprocessor
+ordinal_fitur = preprocessor.transformers_[1][2]
+feature_name.extend(ordinal_fitur)
+
+# OneHotEncoder preprocessor
+cat_fitur = preprocessor.transformers_[2][1]
+cat_feat = cat_fitur.get_feature_names_out(preprocessor.transformers_[2][2])
+feature_name.extend(cat_feat)
+
+# Buat DataFrame
+
+koefisien = model.coef_
+feature_importances = pd.DataFrame({
+    'Feature': feature_name,
+    'Coeficient': koefisien
+})
+
+feature_importances['Abs_Coefficient'] = feature_importances['Coeficient'].abs()
+feature_importances = feature_importances.sort_values('Abs_Coefficient', ascending=False)
+feature_importances.head(10)
+
+# Visualisasi Feature Importances
+plt.figure(figsize=(10,6))
+plt.barh(feature_importances['Feature'], feature_importances['Coeficient'])
+plt.xlabel('Coefficient Value')
+plt.ylabel('Feature')
+plt.title('Feature Importance (ElasticNet Regression Coefficient)')
+plt.gca().invert_yaxis()
+plt.show()

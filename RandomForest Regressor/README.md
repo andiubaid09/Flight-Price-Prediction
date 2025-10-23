@@ -11,6 +11,15 @@ Random Forest adalah algoritma *machine learning* berbasis *ensemble learning* y
 2. Setiap pohon dilatih menggunakan data yang berbeda (dengan teknik *boostrap sampling*, yaitu pengambilan sample secara acak dengan pengembalian).
 3. Pada setiap node dalam pohon, hanya sebagian fitur yang dipilih secara acak untuk dipertimbangkan dalam pemisahan (split terbaik).
 4. Ketika prediksi, regresi (nilai kontinu): rata-rata dari semua prediksi pohon. Klasifikasi *(classifier)* suara terbanyak *(majority voting)* dari semua pohon.
+
+**Keunggulan Random Forest**
+|Keunggulan                | Penjelasan                      |
+|--------------------------|---------------------------------|
+|Mengurangi *overfitting*  | Karena rata-rata dari banyak pohon lebih stabil daripada 1 *decision tree*|
+|Tahan terhadap noise      | Kesalahan di beberapa pohon bisa "dikoreksi" oleh pohon lainnya.          |
+|Menangani data besar dan kompleks| Dapat bekerja pada dataset dengan banyak fitur dan hubungan non-linear|
+|Memberi fitur penting *(feature importance)*| Bisa menunjukkan fitur mana yang paling berpengaruh pada prediksi
+
 ---
 
 ## 🚀 Fitur Utama

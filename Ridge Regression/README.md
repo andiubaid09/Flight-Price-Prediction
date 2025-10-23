@@ -14,6 +14,13 @@ Tujuan dan Kelebihan:
 3. Meningkatkan generalisasi membuat model bekerja lebih baik pada data baru.
 
 Bagaimana cara Ridge mengatasi Multikolinearitas? Jika dua fitur sangat mirip (misalnya tinggi & berat), OLS *(Ordinarny Least Squares)* akan menghasilkan koefisien besar dengan tanda berbeda (karena saling "mengoreksi"). Prediksi tetap bagus di data training, tapi jelek di data baru. Ridge akan menekan koefisien model jadi lebih sederhana dan lebih general.
+
+Bagaimana contoh kasus di dunia nyata?
+| Bidang              | Contoh Masalah               | Kenapa Ridge Cocok?  |
+|---------------------------|----------------------|----------------------|
+| **Medis**  | Prediksi tekanan dara dari berbagai parameter (umur,berat,dsb) | Fitur banyak dan berkorelasi |
+| **Ekonomi**  | Prediksi harga saham berdasarkan indikator makroekonomi | Hindari overfitting karena data noise |
+
 ---
 
 ## 🚀 Fitur Utama

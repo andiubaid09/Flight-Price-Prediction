@@ -77,9 +77,9 @@ Walaupun alpha (λ) adalah paling penting, *Scikit-learn** untuk Ridge() masih p
 
 | Metrik | Nilai | Interpretasi |
 |--------|-------|--------------|
-| **R-squared (R²)** | 0.9422 | Model menjelaskan >94% variasi harga tiket |
-| **MAE** | 3043.62 | Rata-rata prediksi meleset tanpa dikuadratkan ≈  3.043 |
-| **RMSE** | 5452.52 | Kesalahan rata-rata setelah dikuadratkan, sensitif terhadap outlier |
+| **R-squared (R²)** | 0.8496 | Model menjelaskan >84% variasi harga tiket |
+| **MAE** | 4908.64 | Rata-rata prediksi meleset tanpa dikuadratkan ≈  4.908 |
+| **RMSE** | 8806.09 | Kesalahan rata-rata setelah dikuadratkan, sensitif terhadap outlier |
 
 ---
 

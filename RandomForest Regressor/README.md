@@ -5,6 +5,12 @@ Proyek ini membangun model **Machine Learning** untuk memprediksi harga tiket pe
 
 Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*skewed*), target variabel (`price`) ditransformasi secara logaritmik menggunakan **TransformedTargetRegressor (TTR)**.
 
+## 📖 Penjelasan Tentang RandomForest Regressor
+Random Forest adalah algoritma *machine learning* berbasis *ensemble learning* yang menggunakan banyak *Decision Tree* (pohon keputusan) untuk membuat prediksi yang lebih akurat, stabil dan tidak mudah overfitting. Random Forest bekerja dengan cara:
+1. Membuat banyak *decision tree* (puluhan, ratusan, bahkan ribuan pohon).
+2. Setiap pohon dilatih menggunakan data yang berbeda (dengan teknik *boostrap sampling*, yaitu pengambilan sample secara acak dengan pengembalian).
+3. Pada setiap node dalam pohon, hanya sebagian fitur yang dipilih secara acak untuk dipertimbangkan dalam pemisahan (split terbaik).
+4. Ketika prediksi, regresi (nilai kontinu): rata-rata dari semua prediksi pohon. Klasifikasi *(classifier)* suara terbanyak *(majority voting)* dari semua pohon.
 ---
 
 ## 🚀 Fitur Utama

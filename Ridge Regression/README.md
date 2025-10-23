@@ -9,10 +9,11 @@ Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*ske
 
 Ridge Regression adalah salah satu teknik regresi linear yang ditambahkan regularisasi (penalti) untuk mengatasi masalah multikolinearitas atau overfitting dalam model. Dalam regresi linear biasa (base model), disana kita mencari garis terbaik yang memprediksi nilai y *(target)* berdasarkan fitur x *(feature)* dengan meminimalkan *sum of squared errors*. Tapi jika fitur saling berkorelasi tinggi (multikolinearitas) atau terlalu banyak fitur, maka hasil model bisa tidak stabil. Ridge Regression menyelesaikan ini dengan menambahkan penalti terhadap besar koefisien. Ridge Regression tidak menghapus fitur, tetapi mengecilkan pengaruhnya *(shrinkage)*.
 Tujuan dan Kelebihan:
-1. Mengurangi overfitting dengan mengecilkan koefisien yang terlalu besar.
+1. Mengurangi overfitting dengan mengecilkan koefisien yang terlalu besar. Model overfitting karena terlalu banyak fitur membuat koefisien menjadi besar sehingga sangat sensitif terhadap noise atau data baru.
 2. Menangani multikolinearitas dengan cara koefisien enjadi lebih stabil walaupun fitur saling berhubungan
 3. Meningkatkan generalisasi membuat model bekerja lebih baik pada data baru.
 
+Bagaimana cara Ridge mengatasi Multikolinearitas? Jika dua fitur sangat mirip (misalnya tinggi & berat), OLS *(Ordinarny Least Squares)* akan menghasilkan koefisien besar dengan tanda berbeda (karena saling "mengoreksi"). Prediksi tetap bagus di data training, tapi jelek di data baru. Ridge akan menekan koefisien model jadi lebih sederhana dan lebih general.
 ---
 
 ## 🚀 Fitur Utama

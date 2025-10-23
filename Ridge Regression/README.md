@@ -160,7 +160,7 @@ Interpretasi hasil:
  - Kalau sebaran makin melebar di kanan (harga tinggi) -> model kesulitan memprediksi harga 
  
 ### 4. Fitur Penting (Gini Importance)
-![Gini Importance](Assets/Fitur%20Penting.png)<br>
+![Gini Importance](Assets/Feature%20Importances.png)<br>
 Visualisasi ini adalah Feature Importance Plot dari Random Forest, menunjukkan fitur yang paling berpengaruh terhadap prediksi harga tiket dan membantu memahami faktor utama yang mempengaruhi model, misalnya rute, maskapai, durasi, atau waktu keberangkatan
 
 ## 🛠️ Cara Menggunakan
@@ -177,15 +177,15 @@ import pandas as pd
 import joblib
 
 # Muat model
-best_model = joblib.load("rfr-flight_price_prediction.pkl")
+best_model = joblib.load("Ridge_regressor_prediction_flight_price.pkl")
 
 # Data baru
 data_baru = pd.DataFrame({
-    "source_city": ["Jakarta"],
-    "departure_time": ["Malam"],
-    "stops": [0],
-    "arrival_time": ["Pagi"],
-    "destination_city": ["Bali"],
+    "source_city": ["Mumbai"],
+    "departure_time": ["Night"],
+    "stops": ["zero"],
+    "arrival_time": ["Morning"],
+    "destination_city": ["Mumbai"],
     "class": ["Business"],
     "days_left": [7],
     "duration": [2.5]
@@ -197,6 +197,6 @@ print(f"Prediksi Harga Tiket:  {prediksi:,.2f}")
 ```
 
 ## 🔮 Potensi Pengembangan
-- Tambah fitur Airlines karena setiap maskapai memiliki harga berbeda.
-- Validasi dengan K-Fold CV untuk hasil yang lebih stabil.
-- Analisis error per segmen (mis. kelas Business vs Economy).
+- Perbaikan data -> eksplorasi data uji, cari outlier.
+- Perbaikan evaluasi
+- Perbaikan aplikatif

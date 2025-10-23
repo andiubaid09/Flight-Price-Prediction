@@ -5,7 +5,7 @@ Proyek ini membangun model **Machine Learning** untuk memprediksi harga tiket pe
 
 Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*skewed*), target variabel (`price`) ditransformasi secara logaritmik menggunakan **TransformedTargetRegressor (TTR)**.
 
-Ridge Regression adalah salah satu teknik regresi linear yang ditambahkan regularisasi (penalti) untuk mengatasi masalah multikolinearitas atau overfitting dalam model. Dalam regresi linear biasa (base model), disana kita mencari garis terbaik yang memprediksi nilai y *(target)* berdasarkan fitur x *(feature)* dengan meminimalkan *sum of squared errors*. Tapi jika fitur saling berkorelasi tinggi (multikolinearitas) atau terlalu banyak fitur, maka hasil model bisa tidak stabil. Ridge Regression menyelesaikan ini dengan menambahkan penalti terhadap besar koefisien.
+Ridge Regression adalah salah satu teknik regresi linear yang ditambahkan regularisasi (penalti) untuk mengatasi masalah multikolinearitas atau overfitting dalam model. Dalam regresi linear biasa (base model), disana kita mencari garis terbaik yang memprediksi nilai y *(target)* berdasarkan fitur x *(feature)* dengan meminimalkan *sum of squared errors*. Tapi jika fitur saling berkorelasi tinggi (multikolinearitas) atau terlalu banyak fitur, maka hasil model bisa tidak stabil. Ridge Regression menyelesaikan ini dengan menambahkan penalti terhadap besar koefisien. Ridge Regression tidak menghapus fitur, tetapi mengecilkan pengaruhnya *(shrinkage)*
 
 ---
 

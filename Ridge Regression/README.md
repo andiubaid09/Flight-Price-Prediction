@@ -51,7 +51,7 @@ Dilakukan dengan **GridSearchCV** pada parameter utama Ridge Regressor:
 
 Jika alpha = 0. model = regresi linear biasa (OLS). Jika alpha besar, koefisien akan diperkecil -> menghindari overfitting. Alpha (λ) adalah parameter yang mengontrol kekuatan regularisasi. Ketika alpha = 100, ini berarti model memberikan penalti yang cukup besar terhadap koefisien regresi. Koefisien akan menjadi lebih kecil, lebih stabil dan tidak berlebihan Model lebih fokus untuk menghindari overfitting dibandingkan memaksimalkan akurasi di data training. Artinya data yang saya miliki mungkin memiliki multikonearitas atau cenderung overfitting pada alpha kecil dan performa terbaik didapat saat reguralisasi cukup kuat.
 
-#### Interpretasi dalam Bias-Variance Trade-off
+**Interpretasi dalam Bias-Variance Trade-off**
 | Alpha           | Bias          | Variance          | Model                 |
 |-----------------|---------------|-------------------|-----------------------|
 | 0               | Rendah        | Tinggi            | Cenderung overfit (seperti OLS)|
@@ -60,6 +60,16 @@ Jika alpha = 0. model = regresi linear biasa (OLS). Jika alpha besar, koefisien 
 | > 1000          | Sangat Tinggi | Sangat rendah     | Underfitting          |
 
 Alpha = 100 berarti model masih generalisasi dengan baik, tapi juga jangan terlalu besar sampai kehilangan pola (underfit)
+
+Walaupun alpha (λ) adalah paling penting, *Scikit-learn** untuk Ridge() masih punya beberapa parameter lain yang opsional untuk di-tuning. Contohnya:
+|Parameter                |  Fungsi                                            |
+|-------------------------|----------------------------------------------------|
+|alpha                    | Kekuatan regularisasi                              |
+|fit_intercept            | Apakah menghitung intercept                        |
+|solver                   | Algoritma optimasi (auto, svd, cholesky, lsqr, dll)|
+|max_iter                 | Iterasi maksimum (jika solver iteratif)            |
+|tol                      | Toleransi konvergensi                              |                       
+|normalize (deprecated)   | Normalisasi fitur                                  |
 
 ---
 

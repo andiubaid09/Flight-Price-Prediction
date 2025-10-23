@@ -45,7 +45,7 @@ Apa yang menjadi kelemahan dari Ridge Regression ini? Pertama Ridge ini tidak bi
 | **Numerik**              | `days_left` | `StandardScaler` |
 
 ### 4. Optimasi Hyperparameter
-Dilakukan dengan **GridSearchCV** pada parameter utama Random Forest:
+Dilakukan dengan **GridSearchCV** pada parameter utama Ridge Regressor:
 - `n_estimators` → jumlah pohon
 - `max_depth` → kedalaman maksimum pohon
 - `min_samples_split` → jumlah minimum sampel untuk split node

@@ -1,9 +1,12 @@
 # 🧱 Prediksi Harga Tiket Pesawat dengan Ridge Regression
 
 ## 📝 Deskripsi Proyek
-Proyek ini membangun model **Machine Learning** untuk memprediksi harga tiket pesawat berdasarkan berbagai fitur penerbangan pada datasheet. Model dikembangkan menggunakan **Scikit-learn Pipeline** dengan **Random Forest Regressor** sebagai model utama.  
+Proyek ini membangun model **Machine Learning** untuk memprediksi harga tiket pesawat berdasarkan berbagai fitur penerbangan pada datasheet. Model dikembangkan menggunakan **Scikit-learn Pipeline** dengan **Ridge Regressor** sebagai model utama.  
 
 Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*skewed*), target variabel (`price`) ditransformasi secara logaritmik menggunakan **TransformedTargetRegressor (TTR)**.
+
+Ridge Regression adalah salah satu teknik regresi linear yang ditambahkan regularisasi (penalti) untuk mengatasi masalah multikolinearitas atau overfitting dalam model. Dalam regresi linear biasa (base model), disana kita mencari garis terbaik yang memprediksi nilai y *(target)* berdasarkan fitur x *(feature)* dengan meminimalkan *sum of squared errors*. Tapi jika :
+  1. Fitur saling berkorelasi tinggi (multikolinearitas)
 
 ---
 

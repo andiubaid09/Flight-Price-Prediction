@@ -85,7 +85,12 @@ Walaupun alpha (λ) adalah paling penting, *Scikit-learn** untuk Ridge() masih p
 **MAE *(Mean Absolute Error)*** rata-rata nilai absolut selisih prediksi dan aktual.
 **RMSE *(Root Mean Squared Error)*** Akar dari rata-rata kuadrat error. Lebih sensitif terhadap kesalahan besar (outlier).
 
-R2 = 0.8496, model menjelaskan 84.96%
+**Interpretasi Angka**
+- R2 = 0.8496, model menjelaskan 84.96% varians target. Artinya model linear ter-regularisasi (Ridge dengan a=100) cukup baik menjelaskan variasi target.
+- MAE = 4908.64, rata-rata selisih absolut prediksi 4.9K (unit target). Artinya rata-rata prediksi meleset sekitar 4.9k per kasus.
+- RMSE = 8806.09, kesalahan RMS lebih besar (8.8k). Karena RMSE menghukum error besar lebih kuat (kuadrat), nilai RMSE yang jauh lebih besar dari MAE menandakan adanya beberapa kesalahan besar / outlier yang menaikkan RMSE.
+Kesimpulannya adalah model menjelaskan sebagian besar variasi (R2 tinggi), tetapi ada beberapa prediksi yang sangat meleset sehingga RMSE >> MAE. Jadi, performa rata-rata bagus, namum ada kasus buruk yang perlu ditangani.
+Mengapa RMSE jauh lebih besar dari MAE? RMSE <≈> MAE biasanya: RMSE ≥ MAE, dengan perbedaan besar menandakan outlier atau beberapa error sangat besar. Interpretasi praktis, kebanyakan prediksi cukup akurat (MAE ~4.9K), tetapi beberapa prediksi meleset ratusan ribu (atau sangat besar) sehingga menaikkan RMSE.
 
 ---
 

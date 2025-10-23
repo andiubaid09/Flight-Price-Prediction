@@ -18,10 +18,11 @@ Bagaimana cara Ridge mengatasi Multikolinearitas? Jika dua fitur sangat mirip (m
 Bagaimana contoh kasus di dunia nyata?
 | Bidang              | Contoh Masalah               | Kenapa Ridge Cocok?  |
 |---------------------------|----------------------|----------------------|
-| **Medis**  | Prediksi tekanan dara dari berbagai parameter (umur,berat,dsb) | Fitur banyak dan berkorelasi |
+| **Medis**  | Prediksi tekanan darah dari berbagai parameter (umur,berat,dsb) | Fitur banyak dan berkorelasi |
 | **Ekonomi**  | Prediksi harga saham berdasarkan indikator makroekonomi | Hindari overfitting karena data noise |
 
 Apa yang menjadi kelemahan dari Ridge Regression ini? Pertama Ridge ini tidak bisa melakukan seleksi fitur *(feature selection)* hanya mengecilkan koefisien dan kedua adalah jika banyak fitur tidak berguna, Lasso lebih cocok.
+
 ---
 
 ## 🚀 Fitur Utama

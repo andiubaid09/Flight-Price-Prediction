@@ -81,6 +81,12 @@ Walaupun alpha (λ) adalah paling penting, *Scikit-learn** untuk Ridge() masih p
 | **MAE** | 4908.64 | Rata-rata prediksi meleset tanpa dikuadratkan ≈  4.908 |
 | **RMSE** | 8806.09 | Kesalahan rata-rata setelah dikuadratkan, sensitif terhadap outlier |
 
+**R2 *(coefficient of determination)*** mengukur proporsi varians target yang dapat dijelaskan oleh model.
+**MAE *(Mean Absolute Error)*** rata-rata nilai absolut selisih prediksi dan aktual.
+**RMSE *(Root Mean Squared Error)*** Akar dari rata-rata kuadrat error. Lebih sensitif terhadap kesalahan besar (outlier).
+
+R2 = 0.8496, model menjelaskan 84.96%
+
 ---
 
 ## 📊 Visualisasi Data

@@ -46,9 +46,20 @@ Apa yang menjadi kelemahan dari Ridge Regression ini? Pertama Ridge ini tidak bi
 
 ### 4. Optimasi Hyperparameter
 Dilakukan dengan **GridSearchCV** pada parameter utama Ridge Regressor:
-- `n_estimators` → jumlah pohon
-- `max_depth` → kedalaman maksimum pohon
-- `min_samples_split` → jumlah minimum sampel untuk split node
+- `λ (lambda) atau alpha` → Parameter λ atau alpha ini adalah satu-satunya faktor yang menentukan seberapa besar penalti diberikan terhadap koefisien (β).
+- Hyperparameter yang didapatkan dengan **GridSearchCV** adalah 100
+
+Jika alpha = 0. model = regresi linear biasa (OLS). Jika alpha besar, koefisien akan diperkecil -> menghindari overfitting. Alpha (λ) adalah parameter yang mengontrol kekuatan regularisasi. Ketika alpha = 100, ini berarti model memberikan penalti yang cukup besar terhadap koefisien regresi. Koefisien akan menjadi lebih kecil, lebih stabil dan tidak berlebihan Model lebih fokus untuk menghindari overfitting dibandingkan memaksimalkan akurasi di data training. Artinya data yang saya miliki mungkin memiliki multikonearitas atau cenderung overfitting pada alpha kecil dan performa terbaik didapat saat reguralisasi cukup kuat.
+
+#### Interpretasi dalam Bias-Variance Trade-off
+| Alpha           | Bias          | Variance          | Model                 |
+|-----------------|---------------|-------------------|-----------------------|
+| 0               | Rendah        | Tinggi            | Cenderung overfit (seperti OLS)|
+|1-10             | Seimbang      |                   | Stabil                |
+|100              | Lebih Tinggi  | Lebih Rendah      | Model simple & generalisasi bagus|
+| > 1000          | Sangat Tinggi | Sangat rendah     | Underfitting          |
+
+Alpha = 100 berarti model masih generalisasi dengan baik, tapi juga jangan terlalu besar sampai kehilangan pola (underfit)
 
 ---
 

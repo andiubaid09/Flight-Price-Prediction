@@ -46,6 +46,19 @@ Dilakukan dengan **GridSearchCV** pada parameter utama Random Forest:
 - `n_estimators` → jumlah pohon
 - `max_depth` → kedalaman maksimum pohon
 - `min_samples_split` → jumlah minimum sampel untuk split node
+- `Best Params` yang ditemukan adalah:
+  1. n_estimators : 200,
+  2. max_depth : 15,
+  3. min_samples_split : 5,
+
+Berikut parameter penting dalam Random Forest:
+| Parameter                     | Fungsi                            |
+|-------------------------------|-----------------------------------|
+|n_estimators                   | Jumlah pohon yang digunakan di dalam forest|
+|max_depth                      | Kedalaman maksimal dari pohon (untuk mencegah overfitting)|
+|min_samples_split              | Jumlah minimal data untuk membagi node                    |
+|min_samples_leaf               | Minimal jumlah data pada daun (leaf)                      |
+|max_features                   | Jumlah fitur yang dipilih secara acak di setiap split     |
 
 ---
 
@@ -56,6 +69,16 @@ Dilakukan dengan **GridSearchCV** pada parameter utama Random Forest:
 | **R-squared (R²)** | 0.9422 | Model menjelaskan >94% variasi harga tiket |
 | **MAE** | 3043.62 | Rata-rata prediksi meleset tanpa dikuadratkan ≈  3.043 |
 | **RMSE** | 5452.52 | Kesalahan rata-rata setelah dikuadratkan, sensitif terhadap outlier |
+
+**R2 *(coefficient of determination)*** mengukur proporsi varians target yang dapat dijelaskan oleh model.
+**MAE *(Mean Absolute Error)*** rata-rata nilai absolut selisih prediksi dan aktual.
+**RMSE *(Root Mean Squared Error)*** Akar dari rata-rata kuadrat error. Lebih sensitif terhadap kesalahan besar (outlier).
+
+**Interpretasi Angka**
+- R2 = 0.9422, model menjelaskan 94.22% varians target. Artinya model Random Forest berhasil menjelasan variasi data target. Ini adalah angka yang sangat tinggi, artinya model kamu sangat bagus dalam meprediksi data. Semakin mendekati 1, semakin baik performannya.
+- MAE = 3043.62, Artinya setiap prediksi model rata-rata meleset sekitar 3043 dari nilai sebenarnya. Nilai MAE ini cukup kecil (bagus).
+- RMSE = 5452.52, rata-rata kesalahan model adalah sekitar 5452.52. RMSE lebih besar dari MAE karena RMSE memberi penalti lebih besar pada error yang besar (outlier)
+Mengapa RMSE jauh lebih besar dari MAE? RMSE <≈> MAE biasanya: RMSE ≥ MAE, dengan perbedaan besar menandakan outlier atau beberapa error sangat besar. Interpretasi praktis, kebanyakan prediksi cukup akurat (MAE ~4.9K), tetapi beberapa prediksi meleset ratusan ribu (atau sangat besar) sehingga menaikkan RMSE.
 
 ---
 
@@ -154,11 +177,11 @@ best_model = joblib.load("rfr-flight_price_prediction.pkl")
 
 # Data baru
 data_baru = pd.DataFrame({
-    "source_city": ["Jakarta"],
-    "departure_time": ["Malam"],
-    "stops": [0],
-    "arrival_time": ["Pagi"],
-    "destination_city": ["Bali"],
+    "source_city": ["Mumbai"],
+    "departure_time": ["late_night"],
+    "stops": ["zero"],
+    "arrival_time": ["Morning"],
+    "destination_city": ["Mumbai"],
     "class": ["Business"],
     "days_left": [7],
     "duration": [2.5]

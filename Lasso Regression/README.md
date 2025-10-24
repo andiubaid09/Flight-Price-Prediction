@@ -78,6 +78,17 @@ Lasso() masih punya beberapa parameter lain yang opsional untuk di tuning:
 | **MAE** | 4947.23 | Rata-rata selisih absolut antara nilai prediksi dan nilai aktual = 4947.23 |
 | **RMSE** | 8587.39 | Beberapa titik data jauh dari prediksi model yaitu 8587.39 |
 
+**R2 *(coefficient of determination)*** mengukur proporsi varians target yang dapat dijelaskan oleh model.
+**MAE *(Mean Absolute Error)*** rata-rata nilai absolut selisih prediksi dan aktual.
+**RMSE *(Root Mean Squared Error)*** Akar dari rata-rata kuadrat error. Lebih sensitif terhadap kesalahan besar (outlier).
+
+**Interpretasi Angka**
+- R2 = 0.8569 menunjukkan seberapa bear variasi data aktual yang bisa dijelaskan oleh model. Artinya model mampu menjelaskan sekitar 85.69% pola hubungan antara fitur (X) dan target (y). Sisanya 14.31% variasi tidak berhasil dijelaskan oleh model (mungkin disebabkan oleh noise, variabel yang belum digunakan, atau ketidaktepatan model). Model cukup kuat karena >80% pola data dapat diprediksi.
+- MAE = 4947.23 menunjukkan rata-rata selisih absolut antara nilai prediksi dan nilai sebenarnya. Berarti rata-rata model melakukan kesalahan prediksi sebesar + 4.947 satuan. Kesalahan rata-rata masih cukup moderat, tapi belum sangat kecil.
+- RMSE = 8587.39 menunjukkan akar dari rata-rata selisih kuadrat, karena dikuadratkan kesalahan besar (outlier) lebih besar diperhatikan/dihukum lebih keras. Nilai RMSE menunjukkan ada beberapa data yang kesalahannya sangat besar. Saat model salah, terkadang salahnya bisa sampai +8.587 atau lebih ini menandakan adanya outlier/error tinggi di sebagian point.
+
+Interpretasi angka ini sedikit lebih baik dari Ridge, namun perbandingan dengan RandomForest masih kalah jauh, terutama di error dan R2.
+
 ---
 
 ## 📊 Visualisasi Data

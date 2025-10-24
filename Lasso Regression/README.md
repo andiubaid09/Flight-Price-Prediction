@@ -74,9 +74,9 @@ Lasso() masih punya beberapa parameter lain yang opsional untuk di tuning:
 
 | Metrik | Nilai | Interpretasi |
 |--------|-------|--------------|
-| **R-squared (R²)** | 0.9422 | Model menjelaskan >94% variasi harga tiket |
-| **MAE** | 3043.62 | Rata-rata prediksi meleset tanpa dikuadratkan ≈  3.043 |
-| **RMSE** | 5452.52 | Kesalahan rata-rata setelah dikuadratkan, sensitif terhadap outlier |
+| **R-squared (R²)** | 0.8569 | Model menjelaskan 85,69% variabilitas dari data target |
+| **MAE** | 4947.23 | Rata-rata selisih absolut antara nilai prediksi dan nilai aktual = 4947.23 |
+| **RMSE** | 8587.39 | Beberapa titik data jauh dari prediksi model yaitu 8587.39 |
 
 ---
 

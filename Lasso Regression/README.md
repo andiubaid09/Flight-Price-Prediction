@@ -48,7 +48,13 @@ Dilakukan dengan **GridSearchCV** pada parameter utama Random Forest:
 - `Alpha (λ)` → Sebuah kekuatan reguralisasi pada Lasso. Berapa kuat Lasso mendorong koefisien ke nol.
 - Hyperparameter menggunakan **GridSearchCV** ditemukan nilai Lasso adalah 0.01.
 
-Alpha mengatur 
+Alpha mengatur kekuatan regularisasi (hukuman terhadap besar kecilnya koefisien model). Nilai alpha jika 0 itu artinya sangat kecil atau sama saja dengan linear regression (base model). Berikut efek nilai aplha saat melakukan hyperparameter tuning pada model.
+|Nilai alpha        | Efek pada model                                 |
+|-------------------|-------------------------------------------------|
+|Sangat kecil (0)   |Mirip Linear Regression (tanpa reguralisasi), resiko overfitting|
+|Sedang (0.001, 0.1)|Reguralisasi cukup, model seimbang (bias vs variance optimal)|
+|Besar (10,100)     |Koefisien ditekan mendekati 0, banyak fitur dihapus, resiko underfitting|
+Ketika **GridSearchCV** menemukan alpha = 0.01 sebagai yang terbaik, artinya reguralisasi ringan cukup untuk mengurangi overfitting, tidak terlalu besar sehingga model masih bisa belajar dengan baik. Model ini tidak butuh regularisasi yang terlalu kuat. Fitur-fitur yang digunakan cukup relevan karena penalti ringan (0.01) sudah mampu menurunkan error tanpa membuang banyak fitur. Berarti model ini tidak terlalu kompleks, tidak overfitting, dan tidak butuh penyederhanaan ekstrem.
 
 ---
 

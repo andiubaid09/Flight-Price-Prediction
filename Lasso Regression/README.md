@@ -92,16 +92,8 @@ Interpretasi angka ini sedikit lebih baik dari Ridge, namun perbandingan dengan 
 ---
 
 ## 📊 Visualisasi Data
-### 1. Outlier Datasheet
-![Outlier Data](Assets/Outlier.png)<br>
-Ditemukan adanya **outlier** yaitu nilai yang jauh berbeda dari mayoritas data. Outlier ini dapat menyebabkan:
-- 📉 **Model bias** → prediksi rata-rata jadi terlalu tinggi/rendah
-- 📊 **Distribusi miring (skewed)** → membuat error lebih besar pada harga normal
-- ⚡ **Training tidak stabil** → terutama untuk algoritma sensitif terhadap distribusi target
-Oleh karena itu, dilakukan **Transformasi logaritmik pada target (price)** menggunakan `TranformedTargetRegressor`. Hal ini membuat distribusi lebih normal dan model lebih mudah belajar.
-
-### 2. Prediksi vs Nilai Aktual
-![Prediksi vs Harga Nilai Aktual](Assets/Prediksi%20vs%20Harga%20Aktual.png)<br>
+### 1. Prediksi vs Nilai Aktual
+![Prediksi vs Harga Nilai Aktual](Assets/Harga%20Aktual%20vs%20Harga%20Prediksi.png)<br>
 Visualisasi di atas merupakan Scatter Plot Prediksi vs Nilai Aktual, visualisasi membantu untuk mengerti perilaku model secara intuitif hal yang sering tidak terlihat hanya dari angka metrik. Plot ini menunjukkan seberapa dekat hasil prediksi dengan kenyataan. Semacam uji keakuratan visual, melengkapi metrik Numerik(MAE, RMSE, R2). Jika R2 mendekati 1 dan titik berjejer di sekitar garis merah -> Model bagus.
 Interpretasi hasil:
 - Kalau titik-titik biru banyak yang menempel di garis merah, berarti model prediksi sangat akurat.
@@ -109,7 +101,7 @@ Interpretasi hasil:
 - Semakin rapat titik ke garis merah -> semakin tinggi nilai R2 (koefisien determinasi)
 - Menambahkan nilai R2 di plot, jadi pembaca bisa langsung lihat seberapa baik model menjelaskan variasi data.
 
-### 3. Distribusi Residual Error
+### 2. Distribusi Residual Error
 ![Distribusi Residual Error](Assets/Distribusi%20Residual%20Error.png)<br>
 Residual adalah selisih antara nilai aktual dan nilai prediksi. Artinya, seberapa jauh prediksi model dari nilai sebenarnya. Tujuannya adalah mengecek apakah error model terdistribusi secara normal (simetris, tanpa bias besar).
 Elemen visualisasi:
@@ -139,7 +131,7 @@ Interpretasi hasil:
 - Distribusi menyebar lebar -> Error prediksi besar, model kurang akurat.
 - Distribusi sempit di sekitar 0 -> Prediksi model sangat dekat dengan nilai aktual, model bagus
 
-### 4. Residual vs Nilai Prediksi
+### 3. Residual vs Nilai Prediksi
 ![Residual vs Nilai Prediksi](Assets/Residual%20vs%20Nilai%20Prediksi.png)<br>
 Visualisasi ini menampilkan Residual Plot (Residual vs Predicted Values). Tujuannya untuk mengecek apakah error model terdistribusi secara acak atau ada pola tertentu. Membantu mendeteksi, bias sistematis (model selalu meleset ke satu arah), Heteroskedatisitas (variasi error meningkat pada nilai prediksi besar) dan Nonlinearitas (model tidak cukup fleksibel untuk pola data). Ini adalah visualisasi evaluasi model regresi yang digunakan untuk menilai kualitas prediksi dengan melihat pola error(residual) terhadap nilai prediksi.
 
@@ -164,9 +156,9 @@ Interpretasi hasil:
  - Kalau titik cenderung membentuk pola busur/ kurva -> mungkin model perlu metode lain (misalnya boosting atau menambah fitur)
  - Kalau sebaran makin melebar di kanan (harga tinggi) -> model kesulitan memprediksi harga 
  
-### 5. Fitur Penting (Gini Importance)
-![Gini Importance](Assets/Fitur%20Penting.png)<br>
-Visualisasi ini adalah Feature Importance Plot dari Random Forest, menunjukkan fitur yang paling berpengaruh terhadap prediksi harga tiket dan membantu memahami faktor utama yang mempengaruhi model, misalnya rute, maskapai, durasi, atau waktu keberangkatan
+### 4. Fitur Penting (Gini Importance)
+![Gini Importance](Assets/Feature%20Importances.png)<br>
+Visualisasi ini adalah Feature Importance Plot dari Lasso Regressor, menunjukkan fitur yang paling berpengaruh terhadap prediksi harga tiket dan membantu memahami faktor utama yang mempengaruhi model, misalnya rute, maskapai, durasi, atau waktu keberangkatan
 
 ## 🛠️ Cara Menggunakan
 
@@ -182,15 +174,15 @@ import pandas as pd
 import joblib
 
 # Muat model
-best_model = joblib.load("rfr-flight_price_prediction.pkl")
+best_model = joblib.load("Lasso_regressor_predictions_flights_price.pkl")
 
 # Data baru
 data_baru = pd.DataFrame({
-    "source_city": ["Jakarta"],
-    "departure_time": ["Malam"],
-    "stops": [0],
-    "arrival_time": ["Pagi"],
-    "destination_city": ["Bali"],
+    "source_city": ["Mumbai"],
+    "departure_time": ["Aftenoon"],
+    "stops": [zero],
+    "arrival_time": ["late_night"],
+    "destination_city": ["Delhi"],
     "class": ["Business"],
     "days_left": [7],
     "duration": [2.5]
@@ -202,6 +194,6 @@ print(f"Prediksi Harga Tiket:  {prediksi:,.2f}")
 ```
 
 ## 🔮 Potensi Pengembangan
-- Tambah fitur Airlines karena setiap maskapai memiliki harga berbeda.
-- Validasi dengan K-Fold CV untuk hasil yang lebih stabil.
-- Analisis error per segmen (mis. kelas Business vs Economy).
+- Coba alpha lebih kecil lagi (0.005, 0.001) untuk melihat apakah bisa lebih baik dari 0.01
+- Gunakan LassoCV() otomatis untuk mencari alpha dari banyak nilai tanpa manual grid
+- Bandingkan *coefficients* untuk lihat fitur mana yang jadi 0 (tidak dipakai)

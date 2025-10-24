@@ -161,7 +161,7 @@ Interpretasi hasil:
  
 ### 4. Fitur Penting (Gini Importance)
 ![Gini Importance](Assets/Feature%20Importances.png)<br>
-Visualisasi ini adalah Feature Importance Plot dari Random Forest, menunjukkan fitur yang paling berpengaruh terhadap prediksi harga tiket dan membantu memahami faktor utama yang mempengaruhi model, misalnya rute, maskapai, durasi, atau waktu keberangkatan
+Visualisasi ini adalah Feature Importance Plot dari Ridge Regressor, menunjukkan fitur yang paling berpengaruh terhadap prediksi harga tiket dan membantu memahami faktor utama yang mempengaruhi model, misalnya rute, maskapai, durasi, atau waktu keberangkatan
 
 ## 🛠️ Cara Menggunakan
 

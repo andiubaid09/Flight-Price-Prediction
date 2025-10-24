@@ -45,9 +45,10 @@ Kapan Lasso digunakan? Saat jumlah fitux (x) banyak, saat ingin tahu fitur mana 
 
 ### 4. Optimasi Hyperparameter
 Dilakukan dengan **GridSearchCV** pada parameter utama Random Forest:
-- `n_estimators` → jumlah pohon
-- `max_depth` → kedalaman maksimum pohon
-- `min_samples_split` → jumlah minimum sampel untuk split node
+- `Alpha (λ)` → Sebuah kekuatan reguralisasi pada Lasso. Berapa kuat Lasso mendorong koefisien ke nol.
+- Hyperparameter menggunakan **GridSearchCV** ditemukan nilai Lasso adalah 0.01.
+
+Alpha mengatur 
 
 ---
 

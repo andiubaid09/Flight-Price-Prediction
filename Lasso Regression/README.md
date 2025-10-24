@@ -20,6 +20,8 @@ Serta berikut adalah kekurangan dari Lasso Regression:
 
 Kapan Lasso digunakan? Saat jumlah fitux (x) banyak, saat ingin tahu fitur mana yang paling penting, saat ada hubungan multikolinear (fitur saling berkorelasi) dan saat ingin mencegah overfitting, tapi tetap sederhana.
 
+**Contoh kasus Sederhana Menggunakan Lasso**, misal kita ingin memprediksi harga rumah berdasarkan fitur (x) seperti luas tanah, jumlah kamar, tahun bangun, warna cat rumah (tidak relevan). Jika menggunakan Lasso Regression fitur tidak penting seperti cat akan menjadikan koefisien =0, dihilangkan dari model. Hasilnya, model lebih sederhana dan lebih fokus pada fitur relevan. Singkatnya Lasso = Linear Regression (base model) + Regularisasi L1 dan mampu membuat beberapa koefisien = 0 serta berguna untuk *feature selection*.
+
 ---
 
 ## 🚀 Fitur Utama

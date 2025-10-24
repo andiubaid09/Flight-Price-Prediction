@@ -54,6 +54,7 @@ Alpha mengatur kekuatan regularisasi (hukuman terhadap besar kecilnya koefisien 
 |Sangat kecil (0)   |Mirip Linear Regression (tanpa reguralisasi), resiko overfitting|
 |Sedang (0.001, 0.1)|Reguralisasi cukup, model seimbang (bias vs variance optimal)|
 |Besar (10,100)     |Koefisien ditekan mendekati 0, banyak fitur dihapus, resiko underfitting|
+
 Ketika **GridSearchCV** menemukan alpha = 0.01 sebagai yang terbaik, artinya reguralisasi ringan cukup untuk mengurangi overfitting, tidak terlalu besar sehingga model masih bisa belajar dengan baik. Model ini tidak butuh regularisasi yang terlalu kuat. Fitur-fitur yang digunakan cukup relevan karena penalti ringan (0.01) sudah mampu menurunkan error tanpa membuang banyak fitur. Berarti model ini tidak terlalu kompleks, tidak overfitting, dan tidak butuh penyederhanaan ekstrem.
 
 ---

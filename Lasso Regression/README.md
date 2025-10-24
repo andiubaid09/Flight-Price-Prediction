@@ -1,4 +1,4 @@
-# 🌲 Prediksi Harga Tiket Pesawat dengan Random Forest Regressor
+# 🪢 Prediksi Harga Tiket Pesawat dengan Random Forest Regression
 
 ## 📝 Deskripsi Proyek
 Proyek ini membangun model **Machine Learning** untuk memprediksi harga tiket pesawat berdasarkan berbagai fitur penerbangan. Model dikembangkan menggunakan **Scikit-learn Pipeline** dengan **Random Forest Regressor** sebagai model utama.  

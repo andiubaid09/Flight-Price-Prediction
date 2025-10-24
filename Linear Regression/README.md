@@ -160,12 +160,12 @@ model_linear = joblib.load("linear_regression_pipeline.pkl")
 
 # Data baru
 data_baru = pd.DataFrame({
-    "source_city": ["Jakarta"],
-    "departure_time": ["Malam"],
-    "stops": zero,
-    "arrival_time": ["Pagi"],
-    "destination_city": ["Bali"],
-    "class": ["Business"],
+    "source_city": ["Mumbai"],
+    "departure_time": ["Evening"],
+    "stops": ["zero"],
+    "arrival_time": ["Night"],
+    "destination_city": ["Kathmandu"],
+    "class": ["Economy"],
     "days_left": [7],
     "duration": [2.5]
 })

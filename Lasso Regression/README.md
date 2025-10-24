@@ -45,7 +45,7 @@ Kapan Lasso digunakan? Saat jumlah fitux (x) banyak, saat ingin tahu fitur mana 
 
 ### 4. Optimasi Hyperparameter
 Dilakukan dengan **GridSearchCV** pada parameter utama Random Forest:
-- `Alpha (λ)` → Sebuah kekuatan reguralisasi pada Lasso. Berapa kuat Lasso mendorong koefisien ke nol.
+- `Alpha (λ) ` → Sebuah kekuatan reguralisasi pada Lasso. Berapa kuat Lasso mendorong koefisien ke nol.
 - Hyperparameter menggunakan **GridSearchCV** ditemukan nilai Lasso adalah 0.01.
 
 Alpha mengatur kekuatan regularisasi (hukuman terhadap besar kecilnya koefisien model). Nilai alpha jika 0 itu artinya sangat kecil atau sama saja dengan linear regression (base model). Berikut efek nilai aplha saat melakukan hyperparameter tuning pada model.
@@ -56,6 +56,17 @@ Alpha mengatur kekuatan regularisasi (hukuman terhadap besar kecilnya koefisien 
 |Besar (10,100)     |Koefisien ditekan mendekati 0, banyak fitur dihapus, resiko underfitting|
 
 Ketika **GridSearchCV** menemukan alpha = 0.01 sebagai yang terbaik, artinya reguralisasi ringan cukup untuk mengurangi overfitting, tidak terlalu besar sehingga model masih bisa belajar dengan baik. Model ini tidak butuh regularisasi yang terlalu kuat. Fitur-fitur yang digunakan cukup relevan karena penalti ringan (0.01) sudah mampu menurunkan error tanpa membuang banyak fitur. Berarti model ini tidak terlalu kompleks, tidak overfitting, dan tidak butuh penyederhanaan ekstrem.
+
+Lasso() masih punya beberapa parameter lain yang opsional untuk di tuning:
+|Parameter          | Fungsi                  | Umumnya di tuning         |
+|-------------------|-------------------------|---------------------------|
+|alpha              | Kekuatan reguralisasi L1, semakin tinggi akan semakin banyak koefisien yang ditekan ke nol| Sangat penting untuk di tuning|
+|fit_intercept      | Apakah model menghitung intercept(bias)|Opsional|
+|max_iter           |Jumlah maksimal iterasi untuk optimasi|Penting jika model tidak konvergen|
+|tol                |Toleransi untuk berhenti iterasi(semakin kecil akan lebih akurat tapi lebih lama)|Kadang diperlukan|
+|selection          |Cara update koefisien:`cyclic` atau `random`|Biasanya tidak diubah|
+|warm_start         | Gunakan hasil sebelumnya sebagai starting point|Jarang dituning|
+|positive           | Jika True, semua koefisien harus positif| Hanya jika data memang mengharuskan|
 
 ---
 

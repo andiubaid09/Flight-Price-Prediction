@@ -170,16 +170,16 @@ import pandas as pd
 import joblib
 
 # Muat model
-best_model = joblib.load("rfr-flight_price_prediction.pkl")
+best_model = joblib.load("ElasticNet_pipeline_predictions_price.pkl")
 
 # Data baru
 data_baru = pd.DataFrame({
-    "source_city": ["Jakarta"],
-    "departure_time": ["Malam"],
-    "stops": [0],
-    "arrival_time": ["Pagi"],
-    "destination_city": ["Bali"],
-    "class": ["Business"],
+    "source_city": ["Delhi"],
+    "departure_time": ["Morning"],
+    "stops": ["zero"],
+    "arrival_time": ["Aftenoon"],
+    "destination_city": ["Mumbai"],
+    "class": ["Economy"],
     "days_left": [7],
     "duration": [2.5]
 })
@@ -190,6 +190,6 @@ print(f"Prediksi Harga Tiket:  {prediksi:,.2f}")
 ```
 
 ## 🔮 Potensi Pengembangan
-- Tambah fitur Airlines karena setiap maskapai memiliki harga berbeda.
-- Validasi dengan K-Fold CV untuk hasil yang lebih stabil.
-- Analisis error per segmen (mis. kelas Business vs Economy).
+- Menambahkan fitur lebih relevan (feature engineering) 
+- Scaling ulang data (standardization).
+- COba tuning l1_ratio lebih halus (0.1, 0.3, 0.7, 0.9)

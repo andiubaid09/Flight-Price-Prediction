@@ -8,7 +8,7 @@ Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*ske
 ---
 
 ## 📖 Penjelasan Tentang Lasso Regression
-ElasticNet adalah model regresi yang menggabungkan kelebihan dari Ridge Regression (L2 Regularization) dimana mengecilkan koefisien untuk menghindari overfitting dan Lasso Regression (L1 Regularization) yang bisa menghapus (memaksa 0) koefisien fitur yang tidak penting. Jadi ElasticNet = Lasso + Ridge dalam satu model.
+ElasticNet adalah model regresi yang menggabungkan kelebihan dari Ridge Regression (L2 Regularization) dimana mengecilkan koefisien untuk menghindari overfitting dan Lasso Regression (L1 Regularization) yang bisa menghapus (memaksa 0) koefisien fitur yang tidak penting. Jadi ElasticNet = Lasso + Ridge dalam satu model dengan tujuan dari ElasticNet adalah meminimalkan.
 
 ---
 

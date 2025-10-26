@@ -6,7 +6,7 @@ Proyek ini membangun model **Machine Learning** untuk memprediksi harga tiket pe
 Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*skewed*), target variabel (`price`) ditransformasi secara logaritmik menggunakan **TransformedTargetRegressor (TTR)**.
 
 
-### 📖 Penjelasan Tentang Ridge Regression
+### 📖 Penjelasan Tentang Lasso Regression
 Lasso Regression *(Least Absolute Shrinkage and Selection Operator)* adalah jenis regresi linear yang menggunakan reguralisasi L1, dengan tujuan utamannya adalah mencegah overfitting dan memilih fitur *(feature selection)* dengan menghilangkan variabel yang tidak penting (koefisien jadi nol). Karakteristik dari Lasso ini adalah L1 Regularization yang menggunakan penalti absolute coef yaitu menekankan koefisien mendekati 0. Kemudian, Automatic feature selection yang bisa membuat beberapa koefisien = 0 dimana fitur tidak dianggap oleh Lasso. Mencegah overfitting karena model menjadi sederhana. Lasso ini bisa menjadi keras. jika alpha terlalu besar sehingga semua koefisien bisa jadi nol *(underfitting)*.
 Lasso akan cocok jika banyak fitur, sehingga membuat cari fitur penting saja, berbeda dengan Ridge dimana fitur multikolinear dan semua fitur harus relevan. Berikut adalah kelebihan dari Lasso Regression:
 1. Bisa pilih fitur penting otomatis

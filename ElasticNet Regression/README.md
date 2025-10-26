@@ -76,9 +76,9 @@ Artinya, model tidak membutuhkan penalti besar karena datanya cukup bersih/stabi
 
 | Metrik | Nilai | Interpretasi |
 |--------|-------|--------------|
-| **R-squared (R²)** | 0.9422 | Model menjelaskan >94% variasi harga tiket |
-| **MAE** | 3043.62 | Rata-rata prediksi meleset tanpa dikuadratkan ≈  3.043 |
-| **RMSE** | 5452.52 | Kesalahan rata-rata setelah dikuadratkan, sensitif terhadap outlier |
+| **R-squared (R²)** | 0.8569 | Model menjelaskan >94% variasi harga tiket |
+| **MAE** | 4932.41| Rata-rata prediksi meleset tanpa dikuadratkan ≈  3.043 |
+| **RMSE** | 8587.98 | Kesalahan rata-rata setelah dikuadratkan, sensitif terhadap outlier |
 
 ---
 

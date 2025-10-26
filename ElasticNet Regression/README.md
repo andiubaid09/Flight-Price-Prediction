@@ -76,9 +76,14 @@ Artinya, model tidak membutuhkan penalti besar karena datanya cukup bersih/stabi
 
 | Metrik | Nilai | Interpretasi |
 |--------|-------|--------------|
-| **R-squared (R²)** | 0.8569 | Model menjelaskan >94% variasi harga tiket |
-| **MAE** | 4932.41| Rata-rata prediksi meleset tanpa dikuadratkan ≈  3.043 |
-| **RMSE** | 8587.98 | Kesalahan rata-rata setelah dikuadratkan, sensitif terhadap outlier |
+| **R-squared (R²)** | 0.8569 | Model menjelaskan >85% variasi harga tiket |
+| **MAE** | 4932.41| Rata-rata selisih absolut antara prediksi dan nilai sebenarnnya|
+| **RMSE** | 8587.98 | Akar dari rata-rata kuadrat error, berapa kesalahan prediksi model |
+
+**Interpretasi Angka**
+- RMSE = 8587.98 merupakan nilai rata-rata kesalahan prediksi sekitar +8.587 satuan. Ini lebih sensitif terhadap kesalahan besar. Saat model salah, terkadang salahnya bisa sampai +8.587 atau lebih ini menandakan adanya outlier/error tinggi di sebagian point.
+- MAE = 4932.42 menunjukkan rata-rata selisih absolut antara prediksi dan nilai sebenarnya adalah +4.932 satuan target. Ini menggambarkan kesalahan tipikal yang lebih stabil karena tidak dipengaruhi outlier.
+- R2 = 0.8569, artinya 85.69% variasi data target dapat dijelaskan oleh model ElasticNet. Sisanya 14.31% tidak dapat dijelaskan(mungkin karena faktor luar, noise, atau fitur yang belum digunakan).
 
 ---
 

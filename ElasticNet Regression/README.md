@@ -127,7 +127,7 @@ Interpretasi hasil:
 - Distribusi menyebar lebar -> Error prediksi besar, model kurang akurat.
 - Distribusi sempit di sekitar 0 -> Prediksi model sangat dekat dengan nilai aktual, model bagus
 
-### 4. Residual vs Nilai Prediksi
+### 3. Residual vs Nilai Prediksi
 ![Residual vs Nilai Prediksi](Assets/Residual%20vs%20Harga%20Prediksi.png)<br>
 Visualisasi ini menampilkan Residual Plot (Residual vs Predicted Values). Tujuannya untuk mengecek apakah error model terdistribusi secara acak atau ada pola tertentu. Membantu mendeteksi, bias sistematis (model selalu meleset ke satu arah), Heteroskedatisitas (variasi error meningkat pada nilai prediksi besar) dan Nonlinearitas (model tidak cukup fleksibel untuk pola data). Ini adalah visualisasi evaluasi model regresi yang digunakan untuk menilai kualitas prediksi dengan melihat pola error(residual) terhadap nilai prediksi.
 
@@ -153,8 +153,8 @@ Interpretasi hasil:
  - Kalau sebaran makin melebar di kanan (harga tinggi) -> model kesulitan memprediksi harga 
  
 ### 5. Fitur Penting (Gini Importance)
-![Gini Importance](Assets/Fitur%20Penting.png)<br>
-Visualisasi ini adalah Feature Importance Plot dari Random Forest, menunjukkan fitur yang paling berpengaruh terhadap prediksi harga tiket dan membantu memahami faktor utama yang mempengaruhi model, misalnya rute, maskapai, durasi, atau waktu keberangkatan
+![Gini Importance](Assets/Feature%20Importances.png)<br>
+Visualisasi ini adalah Feature Importance Plot dari ElasticNet, menunjukkan fitur yang paling berpengaruh terhadap prediksi harga tiket dan membantu memahami faktor utama yang mempengaruhi model, misalnya rute, maskapai, durasi, atau waktu keberangkatan
 
 ## 🛠️ Cara Menggunakan
 

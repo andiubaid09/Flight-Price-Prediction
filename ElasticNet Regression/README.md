@@ -16,6 +16,12 @@ ElasticNet adalah model regresi yang menggabungkan kelebihan dari Ridge Regressi
 |Lebih stabil dibanding Lasso saat fitur berkorelasi| Interpretasi lebih sulit jika fitur sangat banyak|
 |Cegah overfitting seperti Ridge           |Perlu scaling fitur agar hasil optimal        |
 
+Kapan ElasticNet digunakan? GUnakan ElastiNet jika:
+1. Banyak fitur yang berkorelasi satu sama lain
+2. Jika ingin kombinasi kelebihan Ridge & Lasso
+3. Jika ingin mencegah overfitting namun tetap bisa seleksi fitur
+
+Kesimpulannya adalah ElasticNet Regression adalah model linear yang menggunakan reguralisasi kombinasi L1 (Lasso) dan L2 (Ridge). Model ini efektif digunakan ketika dataset memiliki banyak fitur, terdapat multicollinearity dan tujuan model bukan hanya prediksi tetapi juga seleksi fitur yang penting.
 ---
 
 ## 🚀 Fitur Utama

@@ -1,4 +1,4 @@
-# 🪢 Prediksi Harga Tiket Pesawat dengan Random Forest Regression
+# 🪢 Prediksi Harga Tiket Pesawat dengan Lasso Regression
 
 ## 📝 Deskripsi Proyek
 Proyek ini membangun model **Machine Learning** untuk memprediksi harga tiket pesawat berdasarkan berbagai fitur penerbangan pada datasheet. Model dikembangkan menggunakan **Scikit-learn Pipeline** dengan **Lasso Regressor** sebagai model utama.  

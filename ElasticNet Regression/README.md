@@ -22,6 +22,7 @@ Kapan ElasticNet digunakan? GUnakan ElastiNet jika:
 3. Jika ingin mencegah overfitting namun tetap bisa seleksi fitur
 
 Kesimpulannya adalah ElasticNet Regression adalah model linear yang menggunakan reguralisasi kombinasi L1 (Lasso) dan L2 (Ridge). Model ini efektif digunakan ketika dataset memiliki banyak fitur, terdapat multicollinearity dan tujuan model bukan hanya prediksi tetapi juga seleksi fitur yang penting.
+
 ---
 
 ## 🚀 Fitur Utama

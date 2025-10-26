@@ -6,7 +6,16 @@ Proyek ini membangun model **Machine Learning** untuk memprediksi harga tiket pe
 Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*skewed*), target variabel (`price`) ditransformasi secara logaritmik menggunakan **TransformedTargetRegressor (TTR)**.
 
 ---
+## 📖 Penjelasan Tentang Linear Regression
+Linear Regression adalah model statistik paling sederhana yang digunakan untuk memprediksi suatu nilai berdasarkan hubungan linear antara variabel input (X) dan output (y). Inilah yang sering dijadikan model dasar *(baseline model)* dalam machine learning untuk membandingkan performa dengan model lain yang lebih kompleks seperti Ridge, Lasso, RandomForest, dsb. Linear Regression mencoba mencari persamaan garis atau bidang. Linear Regression adalah baseline karena paling sederhana & cepat dihitung, memebrikan gambaran awal tentang apakah data bisa dijelaskan secara linear? atau seberapa besar error dasarnya?. Hasil model lain akan dibandingkan dengan regresi linear, jika model kompleks tidak jauh lebih baik maka model linear sudah cukup dan jika jauh lebih buruk maka data tidak cocok untuk linear model.
 
+Linear Regresion menggunakan metode bernama *Ordinary Least Squares (OLS), dimana ini mencari garis atau bidang terbaik yang meminimalkan jumlah kuadrat error (residual). Garis terbaik adalah yang menghasilkan error paling kecil secara keseluruhan. Berikut adalah kelebihan dari Linear Regression:
+|Kelebihan                          | Penjelasan                                   |
+|-----------------------------------|----------------------------------------------|
+|Sederhana & Cepat                  |Komputasi ringan, cocok untuk baseline        |
+|Mudah diinterpretasi               |Koerfisien menunjukkan pengaruh setiap fitur  |
+|Tidak overfitting jika data sedikit|Tidak sekompleks model ensemble/neural network|
+|Berguna untuk pemahaman awal data  |Menunjukkan hubungan linear antar variabel    |
 ## 🧠 Model dan Pendekatan
 
 Model Linear Regression ini dibangun dengan pipeline yang mencakup:

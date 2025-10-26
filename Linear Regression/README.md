@@ -32,6 +32,9 @@ Kapan Linear Regression cocok digunakan?
 3. Jika ingin model yang mudah dijelaskan/diinterpretasi
 4. Sebagai langkah pertama sebelum mencoba model lain
 
+Kesimpulannya adalah Linear Regression adalah model paling dasar yang digunakan untuk prediksi. Dia bekerja dengan mencari garis lurus terbaik untuk memetakan hubungan antara input dan output. Meski sederhana, model ini sangat penting karena menjadi acuan pembanding (base model) untuk model lain.
+**Ridge, Lasso, ElasticNet** adalah versi "upgrade" dari Linear Regression klasik.
+
 ---
 ## 🧠 Model dan Pendekatan
 

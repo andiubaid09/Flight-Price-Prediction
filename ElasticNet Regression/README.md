@@ -45,10 +45,21 @@ Kesimpulannya adalah ElasticNet Regression adalah model linear yang menggunakan 
 | **Numerik**              | `days_left` | `StandardScaler` |
 
 ### 4. Optimasi Hyperparameter
-Dilakukan dengan **GridSearchCV** pada parameter utama Random Forest:
-- `n_estimators` → jumlah pohon
-- `max_depth` → kedalaman maksimum pohon
-- `min_samples_split` → jumlah minimum sampel untuk split node
+Dilakukan dengan **GridSearchCV** pada parameter utama ElasticNet:
+- `alpha` → kontrol kekuatan penalti
+- `l1_ratio` → mengatur kombinasi antara Lasso dan Ridge
+- Hyperparameter menggunakan **GridSearchCV** ditemukan nilai alpha= 0.01 dan serta l1_ratio= 0.5
+
+**Interpretasi Angka dari Hyperparameter**
+Alpha adalah parameter yang menentukan seberapa kuat regularisasi diterapkan dalam model, nilai 0.01 termasuk sangat kecil, berarti regularisasi yang diterapkan ringan. Model tetap mempertahankan fleksibilitas dan tidak terlalu "tekan". Artinya, fitur-fitur yang ada masih dianggap penting oleh model dan tidak terlalu banyak dikecilkan atau dihapus. Kalau nilai alpha besar (misalnya 1 atau 10), model akan lebih memaksa koefisien mendekati nol dan bisa mengapus fitur-tapi tidak disini tidak. Model ini dengan nilai alpha 0.01 artinya tidak memerlukan penalti yang besar, artinya data cukup stabil dan tidak terlalu overfitting saat tanpa regularisasi berat.
+
+l1_ratio mengontrol kombinasi antara L1 (Lasso) dan L2 (Ridge). l1_ratio = 0 -> murni Ridge (L2). Berarti nilai 0.5 adalah kombinasi L1 & L2 seimbang. Ada upaya mengurangi nilai koefisien (Ridge) agar model lebih stabil. Ada juga upaya menghapus fitur yang tidak penting (Lasso), tapi tidak terlalu agresif. Jadi model ini tidak terlalu keras seperti Lasso murni, tapi juga tidak hanya mengecilkan koefisien seperti Ridge murni. Model ini memilih jalan tengah, sebagian fitur mungkin dikecilkan , sebagian bisa jadi dihapus jika tidak penting, tapi tetap menjaga stabilitas seperti Ridge. Berikut tabel interpretasi kombinasi Alpha & l1_ratio untuk dataset ini.
+|Parameter          | Makna                     | Implikasi                       |
+|-------------------|---------------------------|---------------------------------|
+|alpha = 0.01       | Regularisasi ringan       | Fitur tetap penting, tidak banyak yang dihapus|
+|l1_ratio = 0.5     | Kombinasi Lasso + Ridge seimbang| Model menyeimbangkan seleksi fitur & stabilitas|
+
+Artinya, model tidak membutuhkan penalti besar karena datanya cukup bersih/stabil, tidak menghapus banyak fitur (tidak agresif seperti Lasso tinggi), tetap menjaga stabilitas saat fitur saling berkorelasi, memberikan performa yang lebih baik dari linear murni tapi lebih sederhana dibanding model kompleks seperti Random Forest.
 
 ---
 

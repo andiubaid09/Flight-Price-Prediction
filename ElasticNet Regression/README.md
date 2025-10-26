@@ -61,6 +61,15 @@ l1_ratio mengontrol kombinasi antara L1 (Lasso) dan L2 (Ridge). l1_ratio = 0 -> 
 
 Artinya, model tidak membutuhkan penalti besar karena datanya cukup bersih/stabil, tidak menghapus banyak fitur (tidak agresif seperti Lasso tinggi), tetap menjaga stabilitas saat fitur saling berkorelasi, memberikan performa yang lebih baik dari linear murni tapi lebih sederhana dibanding model kompleks seperti Random Forest.
 
+**Parameter Penting pada ElasticNet()**
+|Parameter                |  Fungsi                                            |
+|-------------------------|----------------------------------------------------|
+|alpha                    | Kontrol kekuatan penalti. Semakin besar -> semakin banyak koefisien ditekan|
+|l1_ratio                 | Mengatur kombinasi antara Lasso dan Ridge. 0= Ridge murni dan 1= Lasso murni. 0.5 = kombinasi seimbang|
+|max_iter                 | Jumlah iterasi maksimum untuk mencapai konvergensi |
+|tol                      | Toleransi error, menentukan kapan algoritma berhenti|                       
+|selection                | cara update koefisien: `cyclic` (urutan) atau `random`|
+
 ---
 
 ## 📈 Hasil Kinerja (Data Uji)

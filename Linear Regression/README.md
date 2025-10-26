@@ -9,7 +9,7 @@ Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*ske
 ## 📖 Penjelasan Tentang Linear Regression
 Linear Regression adalah model statistik paling sederhana yang digunakan untuk memprediksi suatu nilai berdasarkan hubungan linear antara variabel input (X) dan output (y). Inilah yang sering dijadikan model dasar *(baseline model)* dalam machine learning untuk membandingkan performa dengan model lain yang lebih kompleks seperti Ridge, Lasso, RandomForest, dsb. Linear Regression mencoba mencari persamaan garis atau bidang. Linear Regression adalah baseline karena paling sederhana & cepat dihitung, memebrikan gambaran awal tentang apakah data bisa dijelaskan secara linear? atau seberapa besar error dasarnya?. Hasil model lain akan dibandingkan dengan regresi linear, jika model kompleks tidak jauh lebih baik maka model linear sudah cukup dan jika jauh lebih buruk maka data tidak cocok untuk linear model.
 
-Linear Regresion menggunakan metode bernama *Ordinary Least Squares (OLS), dimana ini mencari garis atau bidang terbaik yang meminimalkan jumlah kuadrat error (residual). Garis terbaik adalah yang menghasilkan error paling kecil secara keseluruhan. Berikut adalah kelebihan dari Linear Regression:
+Linear Regresion menggunakan metode bernama *Ordinary Least Squares (OLS)*, dimana ini mencari garis atau bidang terbaik yang meminimalkan jumlah kuadrat error (residual). Garis terbaik adalah yang menghasilkan error paling kecil secara keseluruhan. Berikut adalah kelebihan dari Linear Regression:
 
 |Kelebihan                          | Penjelasan                                   |
 |-----------------------------------|----------------------------------------------|
@@ -20,7 +20,7 @@ Linear Regresion menggunakan metode bernama *Ordinary Least Squares (OLS), diman
 
 Serta kekurangan dari Linear Regression sebagai berikut:
 |Kekurangan                          | Penjelasan                                   |
-|----------=-------------------------|----------------------------------------------|
+|------------------------------------|----------------------------------------------|
 |Hanya menangkap hubungan linear     |Tidak cocok untuk pola non-linear             |
 |Sensitif terhadap outliers          |Nilai ekstrem dapat menganggu model           |
 |Multicollinearity                   |Nilai ekstrem dapat menganggu model           |

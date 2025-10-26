@@ -44,7 +44,7 @@ Kapan Lasso digunakan? Saat jumlah fitux (x) banyak, saat ingin tahu fitur mana 
 | **Numerik**              | `days_left` | `StandardScaler` |
 
 ### 4. Optimasi Hyperparameter
-Dilakukan dengan **GridSearchCV** pada parameter utama Random Forest:
+Dilakukan dengan **GridSearchCV** pada parameter utama Lasso:
 - `Alpha (λ) ` → Sebuah kekuatan reguralisasi pada Lasso. Berapa kuat Lasso mendorong koefisien ke nol.
 - Hyperparameter menggunakan **GridSearchCV** ditemukan nilai Lasso adalah 0.01.
 

@@ -30,14 +30,15 @@ else:
         Prediksi = 7000
 ```
 
+Kenapa disebut if-else? Karena setiap node menghasilkan pertanyaan logika sederhana dan model hanya membagi data berdasarkan batas nilai fitur serta sangat mudah dipahami dan interpretable model.
 
-Berikut adalah kelebihan dan kekurangan dari ElasticNet:
+Berikut adalah kelebihan dan kekurangan dari Decision Tree:
 |Kelebihan                                 |Kekurangan                                    |
 |------------------------------------------|----------------------------------------------|
-|Mengatasi multicollinearity               |Perlu tuning 2 parameter (alpha & l1_ratio)   |
-|Bisa melakukan seleksi fitur (koefisien 0)|Lebih kompleks dibandingkan Ridge/Lasso saja  |
-|Lebih stabil dibanding Lasso saat fitur berkorelasi| Interpretasi lebih sulit jika fitur sangat banyak|
-|Cegah overfitting seperti Ridge           |Perlu scaling fitur agar hasil optimal        |
+|Mudah dipahami (mirip alur logika manusia)|Mudah overfitting (kalau tanpa pengaturan parameter)|
+|Tidak perlu feature scaling (standarisasi/normalisasi)|Sensitif terhadap perubahan kecil pada data|
+|Bisa menangani data numerik & kategorikal| Tidak sebaik RandomForest                     |
+|Interpretasi mudah, bisa diambil feature importances|                                              |
 
 Kapan ElasticNet digunakan? GUnakan ElastiNet jika:
 1. Banyak fitur yang berkorelasi satu sama lain

@@ -40,12 +40,23 @@ Berikut adalah kelebihan dan kekurangan dari Decision Tree:
 |Bisa menangani data numerik & kategorikal| Tidak sebaik RandomForest                     |
 |Interpretasi mudah, bisa diambil feature importances|                                              |
 
-Kapan ElasticNet digunakan? GUnakan ElastiNet jika:
-1. Banyak fitur yang berkorelasi satu sama lain
-2. Jika ingin kombinasi kelebihan Ridge & Lasso
-3. Jika ingin mencegah overfitting namun tetap bisa seleksi fitur
+Kapan Decision Tree digunakan? Gunakan Decision Tree jika:
+1. Butuh model yang mudah dipahami (interpretable)
+2. Data memiliki hubungan non-linear
+3. Data gabungan: Numerik + Kategorikal
+4. Saat dataset tidak terlalu besar & ingin cepat
+5. Untuk mengetahui fitur mana yang paling penting
+6. Sebagai dasar model lebih kuat (RandomForest, XGBoost, Lightboost, dll)
 
-Kesimpulannya adalah ElasticNet Regression adalah model linear yang menggunakan reguralisasi kombinasi L1 (Lasso) dan L2 (Ridge). Model ini efektif digunakan ketika dataset memiliki banyak fitur, terdapat multicollinearity dan tujuan model bukan hanya prediksi tetapi juga seleksi fitur yang penting.
+Kapan Decision Tree tidak cocok untuk digunakan?
+1. Data sangat besar, gunakan yang lebih powerful seperti RandomForest atau XGBoost
+2. Butuh prediksi sangat akurat
+3. Data linear sederhana, gunakan Linear, Ridge, Lasso atau ElasticNet
+4. Ingin model stabil
+
+Jangan gunakan jika dataset besar atau butuh akurasi maksimal, lebih baik pake RandomForest/XGBoost.
+
+Kesimpulannya adalah Decision Tree adalah model berbasis logika if-else yang membagi data secara hierarkis sampai mencapai prediksi akhir. Model ini sangat intuitif dan fleksibel, tapi perlu pengaturan hyperparameter untuk menghindari overfitting.
 
 ---
 

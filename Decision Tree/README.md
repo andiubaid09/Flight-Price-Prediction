@@ -1,7 +1,7 @@
-# ⚖️ Prediksi Harga Tiket Pesawat dengan ElasticNet Regression
+# 🌳 Prediksi Harga Tiket Pesawat dengan Decision Tree Regressor
 
 ## 📝 Deskripsi Proyek
-Proyek ini membangun model **Machine Learning** untuk memprediksi harga tiket pesawat berdasarkan berbagai fitur penerbangan. Model dikembangkan menggunakan **Scikit-learn Pipeline** dengan **ElasticNet Regressor** sebagai model utama.  
+Proyek ini membangun model **Machine Learning** untuk memprediksi harga tiket pesawat berdasarkan berbagai fitur penerbangan. Model dikembangkan menggunakan **Scikit-learn Pipeline** dengan **Decision Tree Regressor** sebagai model utama.  
 
 Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*skewed*), target variabel (`price`) ditransformasi secara logaritmik menggunakan **TransformedTargetRegressor (TTR)**.
 

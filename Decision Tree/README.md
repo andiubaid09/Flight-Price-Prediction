@@ -12,6 +12,23 @@ Decision Tree adalah algoritma Machine Learning yang bekerja seperti struktur po
 
 Bagaimana cara kerja dari Decision Tree?
 1. Akar (root) -> Node pertama, memilih fitur terbaik untuk melakukan pemisahan
+2. Cabang (branch) -> Hasil dari jawaban "if/else (yes/no)" dari suatu fitur
+3. Daun (leaf) -> Tempat hasil prediksi akhir
+4. Proses pemecahan data ini disebut splitting yang disusun oleh aturan if-else.
+
+Contoh aturan if-else pada regresi harga tiket ini:
+```bash
+if (stops <= 1):
+    if (days_left > 30):
+        Prediksi harga = 3500
+    else:
+        Prediksi = 5000
+else:
+    if (class == "Business"):
+        Prediksi = 12000
+    else:
+        Prediksi = 7000
+```
 
 
 Berikut adalah kelebihan dan kekurangan dari ElasticNet:

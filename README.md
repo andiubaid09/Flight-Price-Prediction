@@ -76,8 +76,19 @@ pip install pandas numpy scikit-learn joblib
     - RMSE : 8587.9832
 
 6. 🌳 Decision Tree Regressor
-  - Decision Tree adalah algoritma Machine Learning berbentuk struktur pohon yang digunakan untuk memprediksi output berdasarkan serangkaian aturan keputusan (if-else)
-7. XGBoost Regressor
+  - Decision Tree adalah algoritma Machine Learning berbentuk struktur pohon yang digunakan untuk memprediksi output berdasarkan serangkaian aturan keputusan (if-else). Model ini bekerja dengan cara membagi data menjadi beberapa bagian berdasarkan fitur yang paling informatif, sehingga menghasilkan prediksi akhir di daun (leaf node).
+  - Pipeline disamakan dengan algoritma machine learning yang lain yaitu menggunakan TransformedTargetRegressor (log_transform target).
+  - Menerapkan logaritma natural dari nilai +1 lalu distandarisasi oleh StandardScaler()
+  - Best Params Decision Tree yang ditemukan adalah :
+    1. max_depth        : 20,
+    2. min_samples_leaf : 10,
+    3. min_samples_split: 2
+  - Kinerja :
+    - R²  : 0.9517
+    - MAE : 2822.91
+    - RMSE : 4991.25
+    
+7. XGBoost Regressor (coming soon)
 
 ## 🛠️ Cara Menggunakan Model
 Contoh untuk Random Forest:

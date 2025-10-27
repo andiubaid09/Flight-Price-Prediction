@@ -30,3 +30,30 @@ num_transform = scaler
 encoder = OneHotEncoder(handle_unknown='ignore', sparse_output=False)
 cat_features = ['source_city','departure_time','stops','arrival_time','destination_city']
 cat_transform = encoder
+
+Ordinal_features = ['class']
+class_categories = ['Economy','Business']
+ordinal_transform = OrdinalEncoder(categories=[class_categories])
+
+log_transform = FunctionTransformer(np.log1p, inverse_func=np.expm1)
+
+preprocessor = ColumnTransformer([
+    ('num', Pipeline([
+        ('log', log_transform),
+        ('scaler', num_transform)
+    ]), num_features),
+    ('ord',ordinal_transform,Ordinal_features),
+    ('cat',cat_transform,cat_features)
+], remainder='drop')
+dt = DecisionTreeRegressor(random_state=42)
+
+model_dt = TransformedTargetRegressor(
+    regressor=dt,
+    func= np.log1p,
+    inverse_func= np.expm1
+)
+dt_pipeline = Pipeline(steps=[
+    ('preprocessor', preprocessor),
+    ('regressor', model_dt)
+])
+

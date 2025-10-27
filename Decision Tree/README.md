@@ -80,10 +80,14 @@ Kesimpulannya adalah Decision Tree adalah model berbasis logika if-else yang mem
 | **Numerik**              | `days_left` | `StandardScaler` |
 
 ### 4. Optimasi Hyperparameter
-Dilakukan dengan **GridSearchCV** pada parameter utama ElasticNet:
-- `alpha` → kontrol kekuatan penalti
-- `l1_ratio` → mengatur kombinasi antara Lasso dan Ridge
-- Hyperparameter menggunakan **GridSearchCV** ditemukan nilai alpha= 0.01 dan serta l1_ratio= 0.5
+Dilakukan dengan **GridSearchCV** pada parameter utama Decision Tree:
+- `max_depth` → Kedalaman pohon
+- `min_samples_split` → Minimum data sebelum node boleh di split
+- `min_samples_leaf` → Minimum data dalam leaf node
+- Hyperparameter menggunakan **GridSearchCV** ditemukan:
+  1. max_depth = 20
+  2. min_samples_slit = 2
+  3. min_samples_leaf = 10
 
 **Interpretasi Angka dari Hyperparameter**
 Alpha adalah parameter yang menentukan seberapa kuat regularisasi diterapkan dalam model, nilai 0.01 termasuk sangat kecil, berarti regularisasi yang diterapkan ringan. Model tetap mempertahankan fleksibilitas dan tidak terlalu "tekan". Artinya, fitur-fitur yang ada masih dianggap penting oleh model dan tidak terlalu banyak dikecilkan atau dihapus. Kalau nilai alpha besar (misalnya 1 atau 10), model akan lebih memaksa koefisien mendekati nol dan bisa mengapus fitur-tapi tidak disini tidak. Model ini dengan nilai alpha 0.01 artinya tidak memerlukan penalti yang besar, artinya data cukup stabil dan tidak terlalu overfitting saat tanpa regularisasi berat.

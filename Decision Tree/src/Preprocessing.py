@@ -12,6 +12,8 @@ from sklearn.pipeline import Pipeline
 path = kagglehub.dataset_download('rohitgrewal/airlines-flights-data')
 print('Path Dataset berada di :', path)
 print('Isi folder :', os.listdir(path))
+df = pd.read_csv(path + "/airlines_flights_data.csv")
+df
 df.drop(columns='index', inplace=True)
 df.head(5)
 df.columns

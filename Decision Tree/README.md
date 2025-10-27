@@ -86,13 +86,16 @@ Dilakukan dengan **GridSearchCV** pada parameter utama Decision Tree:
 - `min_samples_leaf` → Minimum data dalam leaf node
 - Hyperparameter menggunakan **GridSearchCV** ditemukan:
   1. max_depth = 20
-  2. min_samples_slit = 2
+  2. min_samples_split = 2
   3. min_samples_leaf = 10
 
 **Interpretasi Angka dari Hyperparameter**
-Alpha adalah parameter yang menentukan seberapa kuat regularisasi diterapkan dalam model, nilai 0.01 termasuk sangat kecil, berarti regularisasi yang diterapkan ringan. Model tetap mempertahankan fleksibilitas dan tidak terlalu "tekan". Artinya, fitur-fitur yang ada masih dianggap penting oleh model dan tidak terlalu banyak dikecilkan atau dihapus. Kalau nilai alpha besar (misalnya 1 atau 10), model akan lebih memaksa koefisien mendekati nol dan bisa mengapus fitur-tapi tidak disini tidak. Model ini dengan nilai alpha 0.01 artinya tidak memerlukan penalti yang besar, artinya data cukup stabil dan tidak terlalu overfitting saat tanpa regularisasi berat.
+- max_depth = 20, Artinya pohon keputusan boleh tumbuh hingga 20 level kedalaman (20 aturan if-else bertingkat), semakin besar kedalaman, semakin detail model mempelajari data. Depth = 20 menunjukkan bahwa model cukup kompleks tetapi tidak dibiarkan bebas sampai overfitting parah (karena masih ada batasan leaf)
+- min_samples_split = 2, Ini adalah jumlah minimum sample yang diperlukan sebelum node boleh dibagi. Nilai 2 adalah nilai default (paling permisif) artinya selama ada 2 data dalam node, dia tetap boleh di split. Model berusaha mempelajari pola sekecil mungkin. Namun, resiko overfitting tetap diminimalkan karena ada batasan di min_samples_leaf.
+- min_samples_leaf = 10, Ini adalah jumlah minimum sample di setiap leaf (ujung pohon). Artinya: satu keputusan akhir harus berbasis setidaknya 10 data, tidak boleh hanya 1-2 data saja. Dampaknya dapat mengurangi overfitting, membuat keputusan lebih general, tidak terlalu mengikuti noise dan cocok untuk dataset real-world yang mengandung variasi dan outliers
 
-l1_ratio mengontrol kombinasi antara L1 (Lasso) dan L2 (Ridge). l1_ratio = 0 -> murni Ridge (L2). Berarti nilai 0.5 adalah kombinasi L1 & L2 seimbang. Ada upaya mengurangi nilai koefisien (Ridge) agar model lebih stabil. Ada juga upaya menghapus fitur yang tidak penting (Lasso), tapi tidak terlalu agresif. Jadi model ini tidak terlalu keras seperti Lasso murni, tapi juga tidak hanya mengecilkan koefisien seperti Ridge murni. Model ini memilih jalan tengah, sebagian fitur mungkin dikecilkan , sebagian bisa jadi dihapus jika tidak penting, tapi tetap menjaga stabilitas seperti Ridge. Berikut tabel interpretasi kombinasi Alpha & l1_ratio untuk dataset ini.
+
+kombinasi Alpha & l1_ratio untuk dataset ini.
 |Parameter          | Makna                     | Implikasi                       |
 |-------------------|---------------------------|---------------------------------|
 |alpha = 0.01       | Regularisasi ringan       | Fitur tetap penting, tidak banyak yang dihapus|

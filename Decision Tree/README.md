@@ -7,8 +7,14 @@ Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*ske
 
 ---
 
-## 📖 Penjelasan Tentang ElasticNet Regression
-ElasticNet adalah model regresi yang menggabungkan kelebihan dari Ridge Regression (L2 Regularization) dimana mengecilkan koefisien untuk menghindari overfitting dan Lasso Regression (L1 Regularization) yang bisa menghapus (memaksa 0) koefisien fitur yang tidak penting. Jadi ElasticNet = Lasso + Ridge dalam satu model dengan tujuan dari model ElasticNet adalah mencari koefisien terbaik dengan meminimalkan. ElasticNet adalah hybrid dari Ridge dan Lasso yang bisa mengurangi overfitting sekaligus melakukan seleksi fitur dengan lebih stabil. Berikut adalah kelebihan dan kekurangan dari ElasticNet:
+## 📖 Penjelasan Tentang Decision Tree Regressor
+Decision Tree adalah algoritma Machine Learning yang bekerja seperti struktur pohon keputusan berbasis aturan if-else. Analoginnya seperti data akan "ditanyakan" pertanyaan sederhana, misalnya: "Apakah harga < 5000?" -> Jika iya ke kiri, kalau tidak ke kanan. Pertanyaan seperti ini terus terjadi sampai model mencapai keputusan akhir (leaf node), jika digunakan untuk prediksi harga -> Gunakan *Decision Tree Regressor* dan jika digunakan untuk prediksi kategori -> Gunakan *Decision Tree Classifier*.
+
+Bagaimana cara kerja dari Decision Tree?
+1. Akar (root) -> Node pertama, memilih fitur terbaik untuk melakukan pemisahan
+
+
+Berikut adalah kelebihan dan kekurangan dari ElasticNet:
 |Kelebihan                                 |Kekurangan                                    |
 |------------------------------------------|----------------------------------------------|
 |Mengatasi multicollinearity               |Perlu tuning 2 parameter (alpha & l1_ratio)   |

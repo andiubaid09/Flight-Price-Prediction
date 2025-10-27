@@ -94,23 +94,18 @@ Dilakukan dengan **GridSearchCV** pada parameter utama Decision Tree:
 - min_samples_split = 2, Ini adalah jumlah minimum sample yang diperlukan sebelum node boleh dibagi. Nilai 2 adalah nilai default (paling permisif) artinya selama ada 2 data dalam node, dia tetap boleh di split. Model berusaha mempelajari pola sekecil mungkin. Namun, resiko overfitting tetap diminimalkan karena ada batasan di min_samples_leaf.
 - min_samples_leaf = 10, Ini adalah jumlah minimum sample di setiap leaf (ujung pohon). Artinya: satu keputusan akhir harus berbasis setidaknya 10 data, tidak boleh hanya 1-2 data saja. Dampaknya dapat mengurangi overfitting, membuat keputusan lebih general, tidak terlalu mengikuti noise dan cocok untuk dataset real-world yang mengandung variasi dan outliers
 
-
-kombinasi Alpha & l1_ratio untuk dataset ini.
-|Parameter          | Makna                     | Implikasi                       |
-|-------------------|---------------------------|---------------------------------|
-|alpha = 0.01       | Regularisasi ringan       | Fitur tetap penting, tidak banyak yang dihapus|
-|l1_ratio = 0.5     | Kombinasi Lasso + Ridge seimbang| Model menyeimbangkan seleksi fitur & stabilitas|
-
-Artinya, model tidak membutuhkan penalti besar karena datanya cukup bersih/stabil, tidak menghapus banyak fitur (tidak agresif seperti Lasso tinggi), tetap menjaga stabilitas saat fitur saling berkorelasi, memberikan performa yang lebih baik dari linear murni tapi lebih sederhana dibanding model kompleks seperti Random Forest.
-
-**Parameter Penting pada ElasticNet()**
-|Parameter                |  Fungsi                                            |
-|-------------------------|----------------------------------------------------|
-|alpha                    | Kontrol kekuatan penalti. Semakin besar -> semakin banyak koefisien ditekan|
-|l1_ratio                 | Mengatur kombinasi antara Lasso dan Ridge. 0= Ridge murni dan 1= Lasso murni. 0.5 = kombinasi seimbang|
-|max_iter                 | Jumlah iterasi maksimum untuk mencapai konvergensi |
-|tol                      | Toleransi error, menentukan kapan algoritma berhenti|                       
-|selection                | cara update koefisien: `cyclic` (urutan) atau `random`|
+**Parameter Penting pada DecisionTreeRegressor()**
+|Parameter                |  Fungsi                               | Dampak                              |
+|-------------------------|---------------------------------------|-------------------------------------|
+|max_depth|Batas maksimal kedalaman (tingat) pohon|Mencegah pohon terlalu dalam  dan overfitting|
+|min_samples_split|Minimum jumlah sampel di node sebelum dibagi|Mengontrol kapan node boleh displit|
+|min_samples_leaf|Minimum jumlah sampel di leaf/daun (akhir cabang)|Membuat model lebih general dan hindari leaf dengan data sedikit|
+|max_features|Jumlah fitur yang boleh dipakai untuk split di setiap node|Mengontrol kompleksitas dan kecepatan training|                       
+|criterion|Fungsi untuk mengukur kualitas pemisahan node|Untuk regresi default adalah `squared_error` (MSE). Ada juga `friedman_mse`, `absolute_error`, `poisson`|
+|max_leaf_nodes|Jumlah maksimum daun(leaf) dalam pohon|Alternatif untuk mengontrol ukuran pohon|
+|random_state|Seed untuk membuat hasil split tetap konsisten|Penting agar hasil reproducible|
+|min_weight_fraction_leaf|Minimum presentase sampel untuk setiap leaf berdasarkan bobot|Dipakai kalau dataset punya weighting|
+|splitter|Starategi memilih split:`best` atau `random`|`best` cari split terbaik, `random` lebih cepat tapi kurang akurat|
 
 ---
 

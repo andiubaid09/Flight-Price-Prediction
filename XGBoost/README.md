@@ -84,18 +84,21 @@ Dilakukan dengan **GridSearchCV** pada parameter utama Decision Tree:
 
 Dengan kombinasi ini, model berada di titik keseimbangan bagus, belajar secara perlahan (learning_rate rendah), cukup banyak pohon untuk menangkap pola (n_estimators tinggi) dan pohon cukup dalam untuk mengenali hubungan kompleks antar fitur (max_depth). Ini tipikal konfigurasi yang kuat dan stabil untuk dataset tabular seperti prediksi harga, waktu, atau penjualan dan sangat mungkin menjelaskan mengapa performanya bisa sangat tinggi.
 
-**Parameter Penting pada DecisionTreeRegressor()**
+**Parameter Penting pada XGBoostRegressor()**
 |Parameter                |  Fungsi                               | Dampak                              |
 |-------------------------|---------------------------------------|-------------------------------------|
-|max_depth|Batas maksimal kedalaman (tingat) pohon|Mencegah pohon terlalu dalam  dan overfitting|
-|min_samples_split|Minimum jumlah sampel di node sebelum dibagi|Mengontrol kapan node boleh displit|
-|min_samples_leaf|Minimum jumlah sampel di leaf/daun (akhir cabang)|Membuat model lebih general dan hindari leaf dengan data sedikit|
-|max_features|Jumlah fitur yang boleh dipakai untuk split di setiap node|Mengontrol kompleksitas dan kecepatan training|                       
-|criterion|Fungsi untuk mengukur kualitas pemisahan node|Untuk regresi default adalah `squared_error` (MSE). Ada juga `friedman_mse`, `absolute_error`, `poisson`|
-|max_leaf_nodes|Jumlah maksimum daun(leaf) dalam pohon|Alternatif untuk mengontrol ukuran pohon|
+|n_estimators|Jumlah total pohon(boosting rounds)|Semakin banyak, model akan makin kompleks. Terlalu banyak bisa overfit jika *learning_rate* terlalu besar|
+|max_depth|Kedalaman maksimum setiap pohon|Nilai tinggi, membuat model bisa tangkap pola komples tapi resiko overfit|
+|learning_rate|Mengontrol seberapa besar pembaruan bobot tiap iterasi|Nilai kecil= belajar lambat tapi stabil; nilai besar= cepat tapi bisa overfit|
+|min_child_weight|Jumlah minimum "berat" (jumlah observasi) di satu leaf|Nilai besar, model lebih konservatif (mencegah overfit). Nilai kecil lebih sensitif terhadap noise|                       
+|min_split_loss|Minimum loss reduction untuk membuat split baru|Nilai tinggi hanya split kalau perbaikan signifikan untuk mencegah overfittin|
+|subsample|Proporsi sampel data yang digunakan tiap pohon|Meningkatkan generalisasi|
 |random_state|Seed untuk membuat hasil split tetap konsisten|Penting agar hasil reproducible|
-|min_weight_fraction_leaf|Minimum presentase sampel untuk setiap leaf berdasarkan bobot|Dipakai kalau dataset punya weighting|
-|splitter|Starategi memilih split:`best` atau `random`|`best` cari split terbaik, `random` lebih cepat tapi kurang akurat|
+|colsample_bytree|Proporsi fitur yang digunakan tiap pohon|Misal 0.8 tiap pohon hanya pakai 80% fitur. Mencegah overfit dan mempercepat training|
+|reg_alpha (L1 regularization)|Menambahkan penalti terhadap nilai absolut bobot|Membuat model lebih sparse (fitur yang tidak penting diabaikan)|
+|reg_lambda (L2 regularization)|Penalti terhadap kuadrat bobot|Membuat model lebih stabil dan mengurangi overfitting|
+|scale_pos_weight|Untuk menangani data tidak seimbang (biasanya untuk klasifikasi)|Tidak begitu digunakan di regresi, tapi penting untuk imbalance class|
+|early_stopping_rounds|Berhenti otomatis jika tidak ada peningkatan dalam beberapa iterasi|Berguna untuk menghindari overfitting dan menghemat waktu|
 
 ---
 

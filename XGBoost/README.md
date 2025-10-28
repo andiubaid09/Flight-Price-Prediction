@@ -8,9 +8,9 @@ Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*ske
 ---
 
 ## 📖 Penjelasan Tentang XGBoost
-XGBoost adalah algoritma ensemble boosting berbasis pohon keputusan (Decision Tree) yang sangat cepat, akurat, dan efisien. Dikembangkan untuk mengatasi kekurangan *Gradient Boosting Machine* (GBM) klasik dengan optimasi pararel, reguralisasi, dan kontrol model.
+XGBoost adalah algoritma ensemble boosting berbasis pohon keputusan (Decision Tree) yang sangat cepat, akurat, dan efisien. Dikembangkan untuk mengatasi kekurangan *Gradient Boosting Machine* (GBM) klasik dengan optimasi pararel, reguralisasi, dan kontrol model. Nama XGBoost berasal dari *Extreme Gradient Boosting* karena performanya super ekstrem. Hampir semua pemenang Kaggle Competition (2016-2020) pakai XGBoost. Jika dianalogikan, Decision Tree itu dasar, RandomForest itu rame-rame, tapi XGBoost itu cerdas dan disiplin.
 
-Bagaimana cara kerja dari Decision Tree?
+Bagaimana cara kerja dari XGBoost? Jika memiliki model sederhana (misalnya Decision Tree kecil). Model itu tidak sempurna, masih banyak error. XGBoost akan melakukan:
 1. Akar (root) -> Node pertama, memilih fitur terbaik untuk melakukan pemisahan
 2. Cabang (branch) -> Hasil dari jawaban "if/else (yes/no)" dari suatu fitur
 3. Daun (leaf) -> Tempat hasil prediksi akhir

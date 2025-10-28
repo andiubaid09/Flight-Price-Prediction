@@ -167,7 +167,7 @@ Interpretasi hasil:
 - Distribusi sempit di sekitar 0 -> Prediksi model sangat dekat dengan nilai aktual, model bagus
 
 ### 3. Residual vs Nilai Prediksi
-![Residual vs Nilai Prediksi](Assets/Residual%20vs%20Harga%20Prediksi.png)<br>
+![Residual vs Nilai Prediksi](Assets/Residual%20vs%20Nilai%20Prediksi.png)<br>
 Visualisasi ini menampilkan Residual Plot (Residual vs Predicted Values). Tujuannya untuk mengecek apakah error model terdistribusi secara acak atau ada pola tertentu. Membantu mendeteksi, bias sistematis (model selalu meleset ke satu arah), Heteroskedatisitas (variasi error meningkat pada nilai prediksi besar) dan Nonlinearitas (model tidak cukup fleksibel untuk pola data). Ini adalah visualisasi evaluasi model regresi yang digunakan untuk menilai kualitas prediksi dengan melihat pola error(residual) terhadap nilai prediksi.
 
 Elemen visualisasi:

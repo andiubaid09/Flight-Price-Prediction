@@ -25,7 +25,16 @@ Berikut adalah kelebihan XGBoost:
 |Regularisasi                               | Ada L1(Lasso) dan L2(Ridge) untuk mencegah overfitting|
 |Handle missing value                       |Secara otomatis, tanpa imputasi manual           |
 |Support banyak objective                   |Bisa regresi, klasifikasi, ranking, dsb          |
-|Feature Importances                        |Dapat menunjukkan fitur paling berpengaruh
+|Feature Importances                        |Dapat menunjukkan fitur paling berpengaruh       |
+
+Berikut adalah kelemahan XGBoost:
+|Kelemahan                                 |Keterangan                                    |
+|------------------------------------------|----------------------------------------------|
+|Membutuhkan memori besar (RAM tinggi)     |XGBoost banyak membangun pohon dan menyimpan statistik untuk setiap node saat training|
+|Waktu training lama                        |Banyak hyperparameter yang diuji dan setiap iterasi menghitung gradien & hessian|
+|Sulit diinterpretasi                       |XGBoost terdiri dari ratusan pohon kecil, interpretasi 'aturan' yang diambil jadi kompleks|
+|Banyak hyperparameter (kompleks tuning)    |Parameter banyak dan kompleks untuk di tuning     |
+|Tidak cocok untuk data tidak terstruktur   |Hanya cocok dengan data tabular, tidak untuk image, audio dst|
 
 Kapan Decision Tree digunakan? Gunakan Decision Tree jika:
 1. Butuh model yang mudah dipahami (interpretable)

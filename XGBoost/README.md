@@ -44,9 +44,7 @@ Kapan XGBoost digunakan? Gunakan XGBoost jika:
 Kapan Decision Tree tidak cocok untuk digunakan?
 1. Data image / teks mentah (mending menggunakan CNN)
 
-Jangan gunakan jika dataset besar atau butuh akurasi maksimal, lebih baik pake RandomForest/XGBoost.
-
-Kesimpulannya adalah Decision Tree adalah model berbasis logika if-else yang membagi data secara hierarkis sampai mencapai prediksi akhir. Model ini sangat intuitif dan fleksibel, tapi perlu pengaturan hyperparameter untuk menghindari overfitting.
+Kesimpulannya adalah XGBoost adalah algoritma machine learning berbasis ensemble yang sangat kuat, efisien, akurat dengan prinsip membangun banyak pohon keputusan secara bertahap untuk memperbaiki kesalahan dari model sebelumnya.
 
 ---
 

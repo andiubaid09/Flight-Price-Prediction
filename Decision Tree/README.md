@@ -209,7 +209,7 @@ import pandas as pd
 import joblib
 
 # Muat model
-best_model = joblib.load("ElasticNet_pipeline_predictions_price.pkl")
+best_model = joblib.load("Decision_Tree_Prediction_Price_Ticket.pkl")
 
 # Data baru
 data_baru = pd.DataFrame({
@@ -229,6 +229,6 @@ print(f"Prediksi Harga Tiket:  {prediksi:,.2f}")
 ```
 
 ## 🔮 Potensi Pengembangan
-- Menambahkan fitur lebih relevan (feature engineering) 
-- Scaling ulang data (standardization).
-- COba tuning l1_ratio lebih halus (0.1, 0.3, 0.7, 0.9)
+- Hyperparameter tuning lebih jauh, eksplor parameter lain dengan **GridSearchCV** yang lebih luas, temukan konfigurasi yang paling optimal
+- Buat fitur baru yang relevan (feature engineering)
+- Monitoring performa Decision Tree yang katanya mudah overfitting

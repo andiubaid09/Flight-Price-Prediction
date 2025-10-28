@@ -121,7 +121,7 @@ Berdasarkan hasil evaluasi, model XGBoost yang telah dioptimasi melalui hyperpar
 
 ## 📊 Visualisasi Data
 ### 1. Prediksi vs Nilai Aktual
-![Prediksi vs Harga Nilai Aktual](Assets/Harga%20Prediksi%20vs%20Nilai%20Aktual.png)<br>
+![Prediksi vs Harga Nilai Aktual](Assets/Prediksi%20vs%20Nilai%20Aktual.png)<br>
 Visualisasi di atas merupakan Scatter Plot Prediksi vs Nilai Aktual, visualisasi membantu untuk mengerti perilaku model secara intuitif hal yang sering tidak terlihat hanya dari angka metrik. Plot ini menunjukkan seberapa dekat hasil prediksi dengan kenyataan. Semacam uji keakuratan visual, melengkapi metrik Numerik(MAE, RMSE, R2). Jika R2 mendekati 1 dan titik berjejer di sekitar garis merah -> Model bagus.
 Interpretasi hasil:
 - Kalau titik-titik biru banyak yang menempel di garis merah, berarti model prediksi sangat akurat.
@@ -185,7 +185,7 @@ Interpretasi hasil:
  - Kalau sebaran makin melebar di kanan (harga tinggi) -> model kesulitan memprediksi harga 
  
 ### 5. Fitur Penting (Gini Importance)
-![Gini Importance](Assets/Top%2015%20Features%20Importances%20DT.png)<br>
+![Gini Importance](Assets/Top%2015%20Feature%20XGBoost.png)<br>
 Visualisasi ini adalah Feature Importance Plot dari Decision Tree, menunjukkan fitur yang paling berpengaruh terhadap prediksi harga tiket dan membantu memahami faktor utama yang mempengaruhi model, misalnya rute, maskapai, durasi, atau waktu keberangkatan
 
 ## 🛠️ Cara Menggunakan
@@ -202,7 +202,7 @@ import pandas as pd
 import joblib
 
 # Muat model
-best_model = joblib.load("Decision_Tree_Prediction_Price_Ticket.pkl")
+best_model = joblib.load("XGBoost_prediction_flight_ticket.pkl")
 
 # Data baru
 data_baru = pd.DataFrame({

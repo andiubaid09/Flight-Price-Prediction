@@ -192,8 +192,8 @@ Interpretasi hasil:
  - Kalau sebaran makin melebar di kanan (harga tinggi) -> model kesulitan memprediksi harga 
  
 ### 5. Fitur Penting (Gini Importance)
-![Gini Importance](Assets/Feature%20Importances.png)<br>
-Visualisasi ini adalah Feature Importance Plot dari ElasticNet, menunjukkan fitur yang paling berpengaruh terhadap prediksi harga tiket dan membantu memahami faktor utama yang mempengaruhi model, misalnya rute, maskapai, durasi, atau waktu keberangkatan
+![Gini Importance](Assets/Top%2015%20Features%20Importances%20DT.png)<br>
+Visualisasi ini adalah Feature Importance Plot dari Decision Tree, menunjukkan fitur yang paling berpengaruh terhadap prediksi harga tiket dan membantu memahami faktor utama yang mempengaruhi model, misalnya rute, maskapai, durasi, atau waktu keberangkatan
 
 ## 🛠️ Cara Menggunakan
 

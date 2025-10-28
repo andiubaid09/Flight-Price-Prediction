@@ -119,14 +119,16 @@ Dilakukan dengan **GridSearchCV** pada parameter utama Decision Tree:
 
 **Interpretasi Angka**
 - RMSE = 4991.25 merupakan nilai untuk mengukur besar kesalahan prediksi, tapi lebih menekankan pada error besar (karena dikuadratkan). Nilai 4991.25 menunjukkan rata-rata penyimpangan prediksi sekitar 4.9 ribu unit dari nilai sebenarnya. Karena RMSE > MAE, berarti ada beberapa error besar (outlier) yang masih memengaruhi model tapi secara umum masih sangat bagus. Model stabil, tapi sesekali ada prediksi yang meleset jauh
-- MAE = 4932.42 menunjukkan rata-rata selisih absolut antara prediksi dan nilai sebenarnya adalah +4.932 satuan target. Ini menggambarkan kesalahan tipikal yang lebih stabil karena tidak dipengaruhi outlier.
-- R2 = 0.8569, artinya 85.69% variasi data target dapat dijelaskan oleh model ElasticNet. Sisanya 14.31% tidak dapat dijelaskan(mungkin karena faktor luar, noise, atau fitur yang belum digunakan).
+- MAE = 2822.91 menunjukkan rata-rata kesalahan prediksi model sebesar +2822.91. Artinya, setiap prediksi meleset sekitar 2.8 ribuan dari nilai sebenarnya. Nilai ini relatif kecil dibanding skala target. Prediksi rata-rata model hanya salah sekitar +2822 dari nilai asli.
+- R2 = 0.9517, artinya 95.17% variasi data target dari data uji yang dapat dijelaskan oleh model Decision Tree. Nilai ini sangat tinggi, menandakan model sangat akurat dan mampu menangkap pola hubungan fitur dengan target dengan baik. Hanya sekitar 4.83% variasi data yang tidak bisa dijelaskan oleh model (noise/error). Model sangat kuat, prediksi harga/tiket mendekati nilai sebenarnya.
+
+Model Decision Tree secara keseluruhan berperforma sangat baik dan generalisasinya kuat.
 
 ---
 
 ## 📊 Visualisasi Data
 ### 1. Prediksi vs Nilai Aktual
-![Prediksi vs Harga Nilai Aktual](Assets/Harga%20Prediksi%20vs%20Harga%20Aktual.png)<br>
+![Prediksi vs Harga Nilai Aktual](Assets/Harga%20Prediksi%20vs%20Nilai%20Aktual.png)<br>
 Visualisasi di atas merupakan Scatter Plot Prediksi vs Nilai Aktual, visualisasi membantu untuk mengerti perilaku model secara intuitif hal yang sering tidak terlihat hanya dari angka metrik. Plot ini menunjukkan seberapa dekat hasil prediksi dengan kenyataan. Semacam uji keakuratan visual, melengkapi metrik Numerik(MAE, RMSE, R2). Jika R2 mendekati 1 dan titik berjejer di sekitar garis merah -> Model bagus.
 Interpretasi hasil:
 - Kalau titik-titik biru banyak yang menempel di garis merah, berarti model prediksi sangat akurat.

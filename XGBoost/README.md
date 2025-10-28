@@ -36,19 +36,13 @@ Berikut adalah kelemahan XGBoost:
 |Banyak hyperparameter (kompleks tuning)    |Parameter banyak dan kompleks untuk di tuning     |
 |Tidak cocok untuk data tidak terstruktur   |Hanya cocok dengan data tabular, tidak untuk image, audio dst|
 
-Kapan Decision Tree digunakan? Gunakan Decision Tree jika:
-1. Butuh model yang mudah dipahami (interpretable)
-2. Data memiliki hubungan non-linear
-3. Data gabungan: Numerik + Kategorikal
-4. Saat dataset tidak terlalu besar & ingin cepat
-5. Untuk mengetahui fitur mana yang paling penting
-6. Sebagai dasar model lebih kuat (RandomForest, XGBoost, Lightboost, dll)
+Kapan XGBoost digunakan? Gunakan XGBoost jika:
+1. Data tabular (CSV, excel, sensor, log, dsb)
+2. Data kecil-menengah (<1 juta baris), bisa juga menggunakan data besar namun akan berat di RAM
+3. Ingin prediksi cepat & akurat
 
 Kapan Decision Tree tidak cocok untuk digunakan?
-1. Data sangat besar, gunakan yang lebih powerful seperti RandomForest atau XGBoost
-2. Butuh prediksi sangat akurat
-3. Data linear sederhana, gunakan Linear, Ridge, Lasso atau ElasticNet
-4. Ingin model stabil
+1. Data image / teks mentah (mending menggunakan CNN)
 
 Jangan gunakan jika dataset besar atau butuh akurasi maksimal, lebih baik pake RandomForest/XGBoost.
 

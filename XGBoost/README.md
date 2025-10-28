@@ -11,34 +11,21 @@ Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*ske
 XGBoost adalah algoritma ensemble boosting berbasis pohon keputusan (Decision Tree) yang sangat cepat, akurat, dan efisien. Dikembangkan untuk mengatasi kekurangan *Gradient Boosting Machine* (GBM) klasik dengan optimasi pararel, reguralisasi, dan kontrol model. Nama XGBoost berasal dari *Extreme Gradient Boosting* karena performanya super ekstrem. Hampir semua pemenang Kaggle Competition (2016-2020) pakai XGBoost. Jika dianalogikan, Decision Tree itu dasar, RandomForest itu rame-rame, tapi XGBoost itu cerdas dan disiplin.
 
 Bagaimana cara kerja dari XGBoost? Jika memiliki model sederhana (misalnya Decision Tree kecil). Model itu tidak sempurna, masih banyak error. XGBoost akan melakukan:
-1. Akar (root) -> Node pertama, memilih fitur terbaik untuk melakukan pemisahan
-2. Cabang (branch) -> Hasil dari jawaban "if/else (yes/no)" dari suatu fitur
-3. Daun (leaf) -> Tempat hasil prediksi akhir
-4. Proses pemecahan data ini disebut splitting yang disusun oleh aturan if-else.
+1. Mulai prediksi awal, biasanya dari rata-rata nilai target(untuk regresi) atau probabilitas awal (untuk klasifikasi).
+2. Hitung error (Residual), Error = selisih antara prediksi dan nilai sebenarnya.
+3. Bangun pohon baru, pohon kecil (weak learner) dibuat untuk memperbaiki error dari model sebelumnya. Misal model sebelumnya kurang bagus di data tertentu, maka pohon baru fokus disana.
+4. Gabungkan semua pohon, dalam model akhir adalah penjumlahan dari banyak pohon kecil : F(x)=F0​(x)+η⋅f1​(x)+η⋅f2​(x)+…+η⋅fn​(x), dimana η adalah learning rate.
+5. Ulangi hingga error minimum, pohon akan terus ditambah sampai model cukup bagus atau tidak ada perbaikan berarti.
 
-Contoh aturan if-else pada regresi harga tiket ini:
-```bash
-if (stops <= 1):
-    if (days_left > 30):
-        Prediksi harga = 3500
-    else:
-        Prediksi = 5000
-else:
-    if (class == "Business"):
-        Prediksi = 12000
-    else:
-        Prediksi = 7000
-```
-
-Kenapa disebut if-else? Karena setiap node menghasilkan pertanyaan logika sederhana dan model hanya membagi data berdasarkan batas nilai fitur serta sangat mudah dipahami dan interpretable model.
-
-Berikut adalah kelebihan dan kekurangan dari Decision Tree:
-|Kelebihan                                 |Kekurangan                                    |
+Berikut adalah kelebihan XGBoost:
+|Kelebihan                                 |Keterangan                                    |
 |------------------------------------------|----------------------------------------------|
-|Mudah dipahami (mirip alur logika manusia)|Mudah overfitting (kalau tanpa pengaturan parameter)|
-|Tidak perlu feature scaling (standarisasi/normalisasi)|Sensitif terhadap perubahan kecil pada data|
-|Bisa menangani data numerik & kategorikal| Tidak sebaik RandomForest                     |
-|Interpretasi mudah, bisa diambil feature importances|                                              |
+|Cepat & Efisien                            |Bisa pararel, memanfaatkan CPU multi-core      |
+|Akurasi Tinggi                             |Salah satu model top di kompetisi Kaggle       |
+|Regularisasi                               | Ada L1(Lasso) dan L2(Ridge) untuk mencegah overfitting|
+|Handle missing value                       |Secara otomatis, tanpa imputasi manual           |
+|Support banyak objective                   |Bisa regresi, klasifikasi, ranking, dsb          |
+|Feature Importances                        |Dapat menunjukkan fitur paling berpengaruh
 
 Kapan Decision Tree digunakan? Gunakan Decision Tree jika:
 1. Butuh model yang mudah dipahami (interpretable)

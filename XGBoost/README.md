@@ -69,13 +69,13 @@ Kesimpulannya adalah XGBoost adalah algoritma machine learning berbasis ensemble
 
 ### 4. Optimasi Hyperparameter
 Dilakukan dengan **GridSearchCV** pada parameter utama Decision Tree:
+- `n_estimators` → Jumlah pohon
+- `learning_rate` → Kecepatan belajar
 - `max_depth` → Kedalaman pohon
-- `min_samples_split` → Minimum data sebelum node boleh di split
-- `min_samples_leaf` → Minimum data dalam leaf node
 - Hyperparameter menggunakan **GridSearchCV** ditemukan:
-  1. max_depth = 20
-  2. min_samples_split = 2
-  3. min_samples_leaf = 10
+  1. n_estimators = 200
+  2. learning_rate = 0.05
+  3. max_depth = 10
 
 **Interpretasi Angka dari Hyperparameter**
 - max_depth = 20, Artinya pohon keputusan boleh tumbuh hingga 20 level kedalaman (20 aturan if-else bertingkat), semakin besar kedalaman, semakin detail model mempelajari data. Depth = 20 menunjukkan bahwa model cukup kompleks tetapi tidak dibiarkan bebas sampai overfitting parah (karena masih ada batasan leaf)

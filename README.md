@@ -95,16 +95,16 @@ pip install pandas numpy scikit-learn joblib
     2. Regulasi (Regularization): XGBoost secara eksplisit menyertakan istilah regulasi (L1 dan L2) dalam fungsi objektifnya. Ini membantu mencegah overfitting dan membuat model lebih kuat (lebih umum).
     3. Penanganan Missing Values:XGBoost memiliki cara bawaan untuk menangani nilai yang hilang *(missing values)* secara otomatis.
     4. Pruning Pohon: XGBoost melakukan pemangkasan pohon setelah pohon dibangun kedalaman penuh berdasarkan skor gain dan regulasi yang seringkali lebih efektif.
-      - Pipeline disamakan dengan algoritma machine learning yang lain yaitu menggunakan TransformedTargetRegressor (log_transform target).
+  - Pipeline disamakan dengan algoritma machine learning yang lain yaitu menggunakan TransformedTargetRegressor (log_transform target).
   - Menerapkan logaritma natural dari nilai +1 lalu distandarisasi oleh StandardScaler()
-  - Best Params Decision Tree yang ditemukan adalah :
+  - Best Params XGBoost yang ditemukan adalah :
     1. n_estimators      : 200,
     2. max_depth         : 10,
     3. learning_rate     : 0.05
   - Kinerja :
     - R²  : 0.9552
     - MAE : 2761.84
-    - RMSE : 4803.6099
+    - RMSE : 4803.60
 
 8. LightBGM (coming soon)
 

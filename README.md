@@ -102,9 +102,10 @@ pip install pandas numpy scikit-learn joblib
     2. min_samples_leaf : 10,
     3. min_samples_split: 2
   - Kinerja :
-    - R²  : 0.9517
+    - R²  : 0.9552
     - MAE : 2822.91
     - RMSE : 4991.25
+
 8. LightBGM (coming soon)
 
 ## 🛠️ Cara Menggunakan Model

@@ -98,13 +98,13 @@ pip install pandas numpy scikit-learn joblib
       - Pipeline disamakan dengan algoritma machine learning yang lain yaitu menggunakan TransformedTargetRegressor (log_transform target).
   - Menerapkan logaritma natural dari nilai +1 lalu distandarisasi oleh StandardScaler()
   - Best Params Decision Tree yang ditemukan adalah :
-    1. max_depth        : 20,
-    2. min_samples_leaf : 10,
-    3. min_samples_split: 2
+    1. n_estimators      : 200,
+    2. max_depth         : 10,
+    3. learning_rate     : 0.05
   - Kinerja :
     - R²  : 0.9552
-    - MAE : 2822.91
-    - RMSE : 4991.25
+    - MAE : 2761.84
+    - RMSE : 4803.6099
 
 8. LightBGM (coming soon)
 
@@ -115,7 +115,7 @@ import pandas as pd
 import joblib
 
 # Load Model 
-model = joblib.load("RandomForest Regressor/Model/rfr-flight_price_prediction.pkl")
+model = joblib.load("rfr-flight_price_prediction.pkl")
 
 # Data Baru
 new_data = pd.DataFrame({

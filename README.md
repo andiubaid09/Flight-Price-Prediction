@@ -89,6 +89,22 @@ pip install pandas numpy scikit-learn joblib
     - RMSE : 4991.25
     
 7. 🌳✨ XGBoost Regressor 
+  - XGBoost (Extreme Gradient Boosting) adalah algoritma *machine learning* yang sangat kuat dan banyak digunakan dalam kompetisi karena kecepatan dan akurasinya yang tinggi. XGBoost termasuk dalam kategori ensemble learning (pembelajaran gabungan), yang berarti ia menggabungkan prediksi dari beberapa model "lemah" seperti *decision tree* untuk menghaslkan satu model "kuat" yang lebih akurat.
+  - Secara fundamental, XGBoost adalah implementasi yang dioptimalkan dari kerangka kerja Gradient Boosting yang menggunakan *decision tree* sebagai pembelajar dasarnya *(base learner)*. Pembelajaran berurutan (Sequential Learning) dimana model-model (pohon) dibangun secara berurutan. Setiap pohon baru mencoba memperbaiki kesalahan (residu) yang dibuat oleh semua pohon sebelumnya. Gradien merupakan teknik menggunakan konsep gradien (turunan) dari fungsi kerugian (loss function) untuk menentukan di mana arah perbaikan model harus dilakukan. *Extreme* mengacu pada pengoptimalan sistematis dan fitur-fitur canggih yang membuatnya jauh lebih cepat dan lebih efisien daripada implementasi *Gradient Boosting* tradisional. Beberapa optimasi utama meliputi:
+    1. Paralesisasi: Meskipun pohon dibangun secara berurutan, proses internal untuk menemukan split (pemisahan) terbaik dalam pohon dapat dihitung secara paralel.
+    2. Regulasi (Regularization): XGBoost secara eksplisit menyertakan istilah regulasi (L1 dan L2) dalam fungsi objektifnya. Ini membantu mencegah overfitting dan membuat model lebih kuat (lebih umum).
+    3. Penanganan Missing Values:XGBoost memiliki cara bawaan untuk menangani nilai yang hilang *(missing values)* secara otomatis.
+    4. Pruning Pohon: XGBoost melakukan pemangkasan pohon setelah pohon dibangun kedalaman penuh berdasarkan skor gain dan regulasi yang seringkali lebih efektif.
+      - Pipeline disamakan dengan algoritma machine learning yang lain yaitu menggunakan TransformedTargetRegressor (log_transform target).
+  - Menerapkan logaritma natural dari nilai +1 lalu distandarisasi oleh StandardScaler()
+  - Best Params Decision Tree yang ditemukan adalah :
+    1. max_depth        : 20,
+    2. min_samples_leaf : 10,
+    3. min_samples_split: 2
+  - Kinerja :
+    - R²  : 0.9517
+    - MAE : 2822.91
+    - RMSE : 4991.25
 8. LightBGM (coming soon)
 
 ## 🛠️ Cara Menggunakan Model

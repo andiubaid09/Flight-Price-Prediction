@@ -88,7 +88,8 @@ pip install pandas numpy scikit-learn joblib
     - MAE : 2822.91
     - RMSE : 4991.25
     
-7. XGBoost Regressor (coming soon)
+7. 🌳✨ XGBoost Regressor 
+8. LightBGM (coming soon)
 
 ## 🛠️ Cara Menggunakan Model
 Contoh untuk Random Forest:

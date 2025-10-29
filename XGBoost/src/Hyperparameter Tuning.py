@@ -14,3 +14,5 @@ gridsearch_XGB = GridSearchCV(
     n_jobs=-1,
     verbose=2
 )
+gridsearch_XGB.fit(X_train, y_train)
+best_XGB = gridsearch_XGB.best_estimator_

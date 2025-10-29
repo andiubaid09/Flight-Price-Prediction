@@ -55,3 +55,42 @@ plt.title('Residual vs Nilai Prediksi', fontsize=16, fontweight='bold')
 plt.xlabel('Harga Prediksi', fontsize=12)
 plt.ylabel('Residual', fontsize=12)
 plt.show()
+
+# Mengambil step preprocessor dan regressor (XGBoost)
+
+preprocessor = best_XGB.named_steps['preprocessor']
+model = best_XGB.named_steps['regressor'].regressor_
+
+# Ambil fitur numerik
+num_features = preprocessor.transformers_[0][2]
+
+# Ambil fitur ordinal
+ord_features = preprocessor.transformers_[1][2]
+
+# Ambil fitur kategori (one-hot)
+ohe = preprocessor.transformers_[2][1]
+cat_features = preprocessor.transformers_[2][2]
+ohe_features = list(ohe.get_feature_names_out(cat_features))
+
+
+# Gabungkan semuanya
+all_features = list(num_features) + list(ord_features) + ohe_features
+
+# Feature importance dari model XGBoost
+importances = model.feature_importances_
+
+# Buat dataframe
+feature_importance_df = pd.DataFrame({
+    'Feature': all_features,
+    'Importance': importances
+}).sort_values(by='Importance', ascending=False).reset_index(drop=True)
+feature_importance_df
+
+# Visualisasi Top Fitur XGBoost
+plt.figure(figsize=(10,6))
+sns.barplot(data=feature_importance_df.head(15), x='Importance', y='Feature')
+plt.title('Top 15 Feature Importances - Decision Tree')
+plt.xlabel('Importance Score')
+plt.ylabel('Features Name')
+plt.tight_layout()
+plt.show()

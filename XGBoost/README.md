@@ -41,7 +41,7 @@ Kapan XGBoost digunakan? Gunakan XGBoost jika:
 2. Data kecil-menengah (<1 juta baris), bisa juga menggunakan data besar namun akan berat di RAM
 3. Ingin prediksi cepat & akurat
 
-Kapan Decision Tree tidak cocok untuk digunakan?
+Kapan XGBoost tidak cocok untuk digunakan?
 1. Data image / teks mentah (mending menggunakan CNN)
 
 Kesimpulannya adalah XGBoost adalah algoritma machine learning berbasis ensemble yang sangat kuat, efisien, akurat dengan prinsip membangun banyak pohon keputusan secara bertahap untuk memperbaiki kesalahan dari model sebelumnya.
@@ -186,7 +186,7 @@ Interpretasi hasil:
  
 ### 5. Fitur Penting (Gini Importance)
 ![Gini Importance](Assets/Top%2015%20Feature%20XGBoost.png)<br>
-Visualisasi ini adalah Feature Importance Plot dari Decision Tree, menunjukkan fitur yang paling berpengaruh terhadap prediksi harga tiket dan membantu memahami faktor utama yang mempengaruhi model, misalnya rute, maskapai, durasi, atau waktu keberangkatan
+Visualisasi ini adalah Feature Importance Plot dari XGBoost, menunjukkan fitur yang paling berpengaruh terhadap prediksi harga tiket dan membantu memahami faktor utama yang mempengaruhi model, misalnya rute, maskapai, durasi, atau waktu keberangkatan
 
 ## 🛠️ Cara Menggunakan
 

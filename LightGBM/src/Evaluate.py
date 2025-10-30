@@ -58,3 +58,22 @@ plt.title('Residual vs Nilai Prediksi', fontsize=16, fontweight='bold')
 plt.xlabel('Harga Prediksi', fontsize=12)
 plt.ylabel('Residual', fontsize=12)
 plt.show()
+
+# Mengambil step preprocessor dan regressor (LightGBM)
+
+preprocessor = best_LGBM.named_steps['preprocessor']
+model = best_LGBM.named_steps['regressor'].regressor_
+
+# Ambil fitur numerik
+num_features = preprocessor.transformers_[0][2]
+
+# Ambil fitur ordinal
+ord_features = preprocessor.transformers_[1][2]
+
+# Ambil fitur kategori (one-hot)
+ohe = preprocessor.transformers_[2][1]
+cat_features = preprocessor.transformers_[2][2]
+ohe_features = list(ohe.get_feature_names_out(cat_features))
+
+# Gabungkan semuanya
+all_features = list(num_features) + list(ord_features) + ohe_features

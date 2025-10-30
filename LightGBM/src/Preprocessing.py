@@ -49,7 +49,6 @@ model_lbgm = TransformedTargetRegressor(
     func = np.log1p,
     inverse_func= np.expm1
 )
-
 lbgm_pipeline = Pipeline(steps=[
     ('preprocessor', preprocessor),
     ('regressor', model_lbgm)

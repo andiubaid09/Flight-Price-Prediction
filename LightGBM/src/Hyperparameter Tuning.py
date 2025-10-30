@@ -15,3 +15,6 @@ gridsearchLBGM = GridSearchCV(
     verbose =2
 )
 gridsearchLBGM.fit(X_train, y_train)
+best_LGBM = gridsearchLBGM.best_estimator_
+print(type(X_test))
+print(X_test.columns)

@@ -77,3 +77,23 @@ ohe_features = list(ohe.get_feature_names_out(cat_features))
 
 # Gabungkan semuanya
 all_features = list(num_features) + list(ord_features) + ohe_features
+
+# Feature importance dari model LightGBM
+importances = model.feature_importances_
+
+# Buat dataframe
+feature_importance_df = pd.DataFrame({
+    'Feature': all_features,
+    'Importance': importances
+}).sort_values(by='Importance', ascending=False).reset_index(drop=True)
+feature_importance_df
+
+# Visualisasi Top Fitur
+plt.figure(figsize=(10,6))
+sns.barplot(data=feature_importance_df.head(15), x='Importance', y='Feature')
+plt.title('Top 15 Feature Importances - LightGBM')
+plt.xlabel('Importance Score')
+plt.ylabel('Features Name')
+plt.tight_layout()
+plt.show()
+

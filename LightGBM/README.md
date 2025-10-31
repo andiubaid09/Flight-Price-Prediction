@@ -14,12 +14,9 @@ Perbedaan fundamental antara XGBoost dan LightGBM terletak pada startegi mereka 
 
 Selain itu, LightGBM memperkenalkan dua inovasi utama untuk meningkatkan kecepatan secara drastis pada dataset besar: **Gradien-based One-Side Sampling (GOSS)** dan **Exclusive Feature Bundling (EFB)**. GOSS secara cerdas mengurangi jumlah data pelatihan dengan hanya menggunakan semua sampel dengan gradien besar (kesalahan besar) dan mengambil sampel secara acak dari data dengan gradien kecil, sehingga menjaga akurasi sambil mengurangi waktu komputasi. Sementara itu, EFB mengelompokkan fitur-fitur yang saling eksklusif (jarang terjadi bersamaan) menjadi satu fitur gabungan yang secara efektif mengurangi dimensi fitur (jumlah kolom) dan mempercepat proses pencarian split. Meskipun XGBoost juga sangat teroptimasi dan mendukung paralelisasi, optimalnya berfokus pada proses split (pembelahan) pada setiap node untuk efisiensi, sedangkan LightBGM berfokus pada mengurangi data yang perlu diproses dan jumlah fitur, membuatnya secara umum lebih cepat dan menggunakan memori yang lebih sedikit ketika dihadapkan pada dataset yang berukuran sangat besar.
 
-Bagaimana cara kerja dari XGBoost? Jika memiliki model sederhana (misalnya Decision Tree kecil). Model itu tidak sempurna, masih banyak error. XGBoost akan melakukan:
-1. Mulai prediksi awal, biasanya dari rata-rata nilai target(untuk regresi) atau probabilitas awal (untuk klasifikasi).
-2. Hitung error (Residual), Error = selisih antara prediksi dan nilai sebenarnya.
-3. Bangun pohon baru, pohon kecil (weak learner) dibuat untuk memperbaiki error dari model sebelumnya. Misal model sebelumnya kurang bagus di data tertentu, maka pohon baru fokus disana.
-4. Gabungkan semua pohon, dalam model akhir adalah penjumlahan dari banyak pohon kecil : F(x)=F0​(x)+η⋅f1​(x)+η⋅f2​(x)+…+η⋅fn​(x), dimana η adalah learning rate.
-5. Ulangi hingga error minimum, pohon akan terus ditambah sampai model cukup bagus atau tidak ada perbaikan berarti.
+Bagaimana cara kerja dari LightGBM? sama seperti XGBoost, LightGBM membangun sekumpulan pohon keputusan (decision tree) secara bertahap (boosting). Namum perbedaan utamanya ada di bagaimana pohon dibangun:
+1. XGBoost -> Level-wise growth, pohon dibangun lebar dulu, tiap level dikembangkan serentak. Lebih stabil, tapi bisa lambat dan boros memori.
+2. LightGBM -> Leaf-wise growth (Best-first search), pohon tumbuh ke arah daun dengan penurunan error terbesar (loss reduction), lebih efisien dan akurat, tapi jika tidak dikontrol bisa overfitting.
 
 Berikut adalah kelebihan XGBoost:
 |Kelebihan                                 |Keterangan                                    |

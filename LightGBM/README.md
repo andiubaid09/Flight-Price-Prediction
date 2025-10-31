@@ -87,20 +87,20 @@ Dilakukan dengan **GridSearchCV** pada parameter utama LightGBM:
 
 Dengan kombinasi ini, model berkapasitas sangat besar dan belajar cepat. Jika tidak ada early stopping dan regularisasi, model kemungkinan besar overfit ke data training (meski di beberapa kasus- jika data sangat banyak & bersih kombinasi ini masih bisa baik). Dalam kasus saya ini, memiliki banyak data dan sangat bersih dengan melakukan banyak preprocessing yang walaupun semuanya sudah bisa ditangani oleh LightGBM secara native seperti fitur kategorikal (onehot encoding).
 
-**Parameter Penting pada XGBoostRegressor()**
+**Parameter Penting pada LightGBMRegressor()**
 |Parameter                |  Fungsi                               | Dampak                              |
 |-------------------------|---------------------------------------|-------------------------------------|
-|n_estimators|Jumlah total pohon(boosting rounds)|Semakin banyak, model akan makin kompleks. Terlalu banyak bisa overfit jika *learning_rate* terlalu besar|
-|max_depth|Kedalaman maksimum setiap pohon|Nilai tinggi, membuat model bisa tangkap pola komples tapi resiko overfit|
-|learning_rate|Mengontrol seberapa besar pembaruan bobot tiap iterasi|Nilai kecil= belajar lambat tapi stabil; nilai besar= cepat tapi bisa overfit|
-|min_child_weight|Jumlah minimum "berat" (jumlah observasi) di satu leaf|Nilai besar, model lebih konservatif (mencegah overfit). Nilai kecil lebih sensitif terhadap noise|                       
-|min_split_loss|Minimum loss reduction untuk membuat split baru|Nilai tinggi hanya split kalau perbaikan signifikan untuk mencegah overfittin|
-|subsample|Proporsi sampel data yang digunakan tiap pohon|Meningkatkan generalisasi|
+|n_estimators|Jumlah total pohon(round boosting)|Banyak pohon maka lebih akurat tapi lama; berpotensi overfit tanpa early stopping|
+|max_depth|Kedalaman maksimum setiap pohon|Nilai tinggi, membuat model bisa tangkap pola kompleks tapi resiko overfit, kecil bisa underfit|
+|learning_rate|Mengontrol seberapa besar pembaruan bobot tiap pohon berkontribusi ke model akhir|Kecil (0.01 - 0.1) -> stabil tapi lambat; besar (0.2-0.3) cepat tapi rentan overfit|
+|min_child_weight|Total bobot minimum untuk satu daun (alternatif kontrol overfit)|Mirip fungsinya dengan *min_child_samples*|                       
+|min_child_samples|Jumlah minimum data dalam satu daun|Besar: model lebih halus(mencegah overfit), <kecil:lebih detail tapi berisiko overfit|
+|num_leaves|Jumlah daun dalam pohon (kompleksitas cabang)|Disarankan lebih kecil untuk menghindari overfitting|
 |random_state|Seed untuk membuat hasil split tetap konsisten|Penting agar hasil reproducible|
-|colsample_bytree|Proporsi fitur yang digunakan tiap pohon|Misal 0.8 tiap pohon hanya pakai 80% fitur. Mencegah overfit dan mempercepat training|
+|colsample_bytree|Fraksi fitur yang digunakan tiap pohon|Biasanya 0.6 - 0.9|
 |reg_alpha (L1 regularization)|Menambahkan penalti terhadap nilai absolut bobot|Membuat model lebih sparse (fitur yang tidak penting diabaikan)|
 |reg_lambda (L2 regularization)|Penalti terhadap kuadrat bobot|Membuat model lebih stabil dan mengurangi overfitting|
-|scale_pos_weight|Untuk menangani data tidak seimbang (biasanya untuk klasifikasi)|Tidak begitu digunakan di regresi, tapi penting untuk imbalance class|
+|boosting_type|Jenis booting|Umum : `gbdt` (default), `dart` (dropout boosting -> mengurangi overfit), `gross` (faster for large data)|
 |early_stopping_rounds|Berhenti otomatis jika tidak ada peningkatan dalam beberapa iterasi|Berguna untuk menghindari overfitting dan menghemat waktu|
 
 ---

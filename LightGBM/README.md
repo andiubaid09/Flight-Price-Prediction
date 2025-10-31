@@ -71,19 +71,19 @@ Kesimpulannya adalah LightGBM algoritma yang dikembangkan microsoft research, di
 | **Numerik**              | `days_left` | `StandardScaler` |
 
 ### 4. Optimasi Hyperparameter
-Dilakukan dengan **GridSearchCV** pada parameter utama XGBoost:
+Dilakukan dengan **GridSearchCV** pada parameter utama LightGBM:
 - `n_estimators` → Jumlah pohon
 - `learning_rate` → Kecepatan belajar
 - `max_depth` → Kedalaman pohon
 - Hyperparameter menggunakan **GridSearchCV** ditemukan:
-  1. n_estimators = 200
-  2. learning_rate = 0.05
-  3. max_depth = 10
+  1. n_estimators = 500
+  2. learning_rate = 0.2
+  3. max_depth = 20
 
 **Interpretasi Angka dari Hyperparameter**
-- n_estimators = 200, ini berarti model membuat 200 pohon (trees) secara bertahap. XGBoost membangun model secara aditif, satu pohon demi satu untuk memperbaiki kesalahan dari sebelumnya. Semakin banyak jumlah pohon, model bisa belajar pola lebih kompleks. Tapi, terlalu banyak pohon bisa menyebabkan overfitting (model terlalu meniru daa latih). Nilai 200 ini menunjukkan model punya kapasitas belajar tinggi, tapi masih dikontrol oleh *learning_rate* (0.05) agar tidak agresif.
-- learning_rate = 0.05, parameter ini menentukan seberapa besar langkah pembelajaran yang diambil XGBoost setiap kali menambahkan pohon baru. Nilai 0.05 tergolong rendah dan hati-hati. Artinya setiap pohon hanya memperbaiki sedikit kesalahan dari sebelumnya. Kombinasi ini cocok jika punya n_estimators besar, karena setiap langkah kecil tapi jumlahnya banyak. Hasilnya menjadi stabil dan generalisasi lebih baik.
-- max_depth = 10, parameter ini mengontrol kedalaman maksimum tiap pohon. Dengan max_depth = 10, pohon bisa membagi data hingga 10 kali di setiap jalur keputusan. Artinya model kamu cukup kompleks, bisa menangkap interaksi antar fitur dengan baik. Tapi jika terlalu dalam, model bisa terlalu menyesuaikan diri dengan data latih dan terjadi overfitting. Sebaliknya, jika terlalu dangkal model terlalu sederhana yang bisa menyebabkan underfitting.
+- n_estimators = 500, ini berarti LightGBM akan mencoba membangun 500 pohon berturut-turut (500 boosting rounds). Memberi model kapasitas belajar yang besar dapat menangkap pola kompleks.
+- learning_rate = 0.2, kontribusi tiap pohon akan dikalikan 0.2 sebelum dijumlahkan ke model keseluruhan. Nilai 0.2 termasuk cukup agresif/relatif tinggi (umumnya 0.01-0.1 sering dipakai untuk model stabil). Model akan konvergen lebih cepat (mungkin cukup dengan <500 pohon), tetapi ada risiko overfitting dan generalisasi menurun jika tidak diimbangi regulasi/early stopping.
+- max_depth = 20, .
 
 Dengan kombinasi ini, model berada di titik keseimbangan bagus, belajar secara perlahan (learning_rate rendah), cukup banyak pohon untuk menangkap pola (n_estimators tinggi) dan pohon cukup dalam untuk mengenali hubungan kompleks antar fitur (max_depth). Ini tipikal konfigurasi yang kuat dan stabil untuk dataset tabular seperti prediksi harga, waktu, atau penjualan dan sangat mungkin menjelaskan mengapa performanya bisa sangat tinggi.
 

@@ -7,8 +7,8 @@ Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*ske
 
 ---
 
-## 📖 Penjelasan Tentang XGBoost
-XGBoost adalah algoritma ensemble boosting berbasis pohon keputusan (Decision Tree) yang sangat cepat, akurat, dan efisien. Dikembangkan untuk mengatasi kekurangan *Gradient Boosting Machine* (GBM) klasik dengan optimasi pararel, reguralisasi, dan kontrol model. Nama XGBoost berasal dari *Extreme Gradient Boosting* karena performanya super ekstrem. Hampir semua pemenang Kaggle Competition (2016-2020) pakai XGBoost. Jika dianalogikan, Decision Tree itu dasar, RandomForest itu rame-rame, tapi XGBoost itu cerdas dan disiplin.
+## 📖 Penjelasan Tentang LightGBM
+LightGBM adalah algoritma *gradient boosting* yang dikembangkan oleh Microsoft Research. Dirancang untuk lebih cepat daripada XGBoost, terutama untuk dataset besar, lebih efisien dalam penggunaan memori, mampu menagani fitur numerik dan kategorikal secara langsung tanpa perlu *one-hot encoding*. Tujuan utama LGBM adalah menyediakan algoritma boosting yang sangat efisien, cepat dan menggunakan memori lebih sedikit dibandingkan algoritma boosting tradisional (seperti XGBoost versi awal) terutama ketika berhadapan dengan dataset yang sangat besar.
 
 Bagaimana cara kerja dari XGBoost? Jika memiliki model sederhana (misalnya Decision Tree kecil). Model itu tidak sempurna, masih banyak error. XGBoost akan melakukan:
 1. Mulai prediksi awal, biasanya dari rata-rata nilai target(untuk regresi) atau probabilitas awal (untuk klasifikasi).

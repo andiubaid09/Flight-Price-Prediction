@@ -106,7 +106,7 @@ Dengan kombinasi ini, model berada di titik keseimbangan bagus, belajar secara p
 
 | Metrik | Nilai | Interpretasi |
 |--------|-------|--------------|
-| **R-squared (R²)** | 0.9552 | Model menjelaskan >85% variasi harga tiket |
+| **R-squared (R²)** | 0.9552 | Model menjelaskan >95% variasi harga tiket |
 | **MAE** | 2761.84| Rata-rata selisih absolut antara prediksi dan nilai sebenarnnya|
 | **RMSE** | 4803.60 | Akar dari rata-rata kuadrat error, berapa kesalahan prediksi model |
 

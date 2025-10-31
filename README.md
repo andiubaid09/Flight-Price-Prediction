@@ -119,6 +119,7 @@ pip install pandas numpy scikit-learn joblib
     - MAE : 2809.01
     - RMSE : 4861.22
 
+9. 🐱 CatBoost Regressor (coming soon)
 
 ## 🛠️ Cara Menggunakan Model
 Contoh untuk Random Forest:

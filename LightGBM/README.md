@@ -28,14 +28,12 @@ Berikut adalah kelebihan LightGBM:
 |Presisi tinggi                             |Leaf-wise membuat model fokus dibagian yang paling sulit diprediksi|
 |Mendukung paralelisme dan GPU              |Dapat mempercepat pelatihan secara signifikan |
 
-Berikut adalah kelemahan XGBoost:
+Berikut adalah kelemahan LightGBM:
 |Kelemahan                                 |Keterangan                                    |
 |------------------------------------------|----------------------------------------------|
-|Membutuhkan memori besar (RAM tinggi)     |XGBoost banyak membangun pohon dan menyimpan statistik untuk setiap node saat training|
-|Waktu training lama                        |Banyak hyperparameter yang diuji dan setiap iterasi menghitung gradien & hessian|
-|Sulit diinterpretasi                       |XGBoost terdiri dari ratusan pohon kecil, interpretasi 'aturan' yang diambil jadi kompleks|
-|Banyak hyperparameter (kompleks tuning)    |Parameter banyak dan kompleks untuk di tuning     |
-|Tidak cocok untuk data tidak terstruktur   |Hanya cocok dengan data tabular, tidak untuk image, audio dst|
+|Cenderung overfitting            |Karena pertumbuhan pohon bersifat leaf-wise, model bisa terlalu fokus pada noise|
+|Kurang stabil di dataset kecil   |Untuk data kecil atau tidak seimbang, hasilnya tidak konsisten|
+|Sulit diinterpretasi                       |Karena banyak pohon kompleks, interpretasi fitur tidak sederhana regresi linear|
 
 Kapan XGBoost digunakan? Gunakan XGBoost jika:
 1. Data tabular (CSV, excel, sensor, log, dsb)

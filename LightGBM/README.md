@@ -18,15 +18,15 @@ Bagaimana cara kerja dari LightGBM? sama seperti XGBoost, LightGBM membangun sek
 1. XGBoost -> Level-wise growth, pohon dibangun lebar dulu, tiap level dikembangkan serentak. Lebih stabil, tapi bisa lambat dan boros memori.
 2. LightGBM -> Leaf-wise growth (Best-first search), pohon tumbuh ke arah daun dengan penurunan error terbesar (loss reduction), lebih efisien dan akurat, tapi jika tidak dikontrol bisa overfitting.
 
-Berikut adalah kelebihan XGBoost:
+Berikut adalah kelebihan LightGBM:
 |Kelebihan                                 |Keterangan                                    |
 |------------------------------------------|----------------------------------------------|
-|Cepat & Efisien                            |Bisa pararel, memanfaatkan CPU multi-core      |
-|Akurasi Tinggi                             |Salah satu model top di kompetisi Kaggle       |
-|Regularisasi                               | Ada L1(Lasso) dan L2(Ridge) untuk mencegah overfitting|
+|Cepat & Efisien                            |Menggunakan histogram-based learning dan leaf-wise growth, training jauh lebih cepat daripada XGBoost|
+|Dapat menangani data besar                 |Bisa memproses jutaan data tanpa bottleneck memori|
+|Ramah memori                               |Tidak perlu onehot encoding eksplisit, mendukung fitur kategorikal langsung|
 |Handle missing value                       |Secara otomatis, tanpa imputasi manual           |
-|Support banyak objective                   |Bisa regresi, klasifikasi, ranking, dsb          |
-|Feature Importances                        |Dapat menunjukkan fitur paling berpengaruh       |
+|Presisi tinggi                             |Leaf-wise membuat model fokus dibagian yang paling sulit diprediksi|
+|Mendukung paralelisme dan GPU              |Dapat mempercepat pelatihan secara signifikan |
 
 Berikut adalah kelemahan XGBoost:
 |Kelemahan                                 |Keterangan                                    |

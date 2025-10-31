@@ -35,13 +35,10 @@ Berikut adalah kelemahan LightGBM:
 |Kurang stabil di dataset kecil   |Untuk data kecil atau tidak seimbang, hasilnya tidak konsisten|
 |Sulit diinterpretasi                       |Karena banyak pohon kompleks, interpretasi fitur tidak sederhana regresi linear|
 
-Kapan XGBoost digunakan? Gunakan XGBoost jika:
+Kapan LightGBM digunakan? Gunakan LightGBM jika:
 1. Data tabular (CSV, excel, sensor, log, dsb)
-2. Data kecil-menengah (<1 juta baris), bisa juga menggunakan data besar namun akan berat di RAM
-3. Ingin prediksi cepat & akurat
-
-Kapan XGBoost tidak cocok untuk digunakan?
-1. Data image / teks mentah (mending menggunakan CNN)
+2. Dataset besar (>1 juta baris)
+3. Ingin waktu yang lebih cepat dan presisi tinggi
 
 Kesimpulannya adalah XGBoost adalah algoritma machine learning berbasis ensemble yang sangat kuat, efisien, akurat dengan prinsip membangun banyak pohon keputusan secara bertahap untuk memperbaiki kesalahan dari model sebelumnya.
 

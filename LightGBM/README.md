@@ -83,9 +83,9 @@ Dilakukan dengan **GridSearchCV** pada parameter utama LightGBM:
 **Interpretasi Angka dari Hyperparameter**
 - n_estimators = 500, ini berarti LightGBM akan mencoba membangun 500 pohon berturut-turut (500 boosting rounds). Memberi model kapasitas belajar yang besar dapat menangkap pola kompleks.
 - learning_rate = 0.2, kontribusi tiap pohon akan dikalikan 0.2 sebelum dijumlahkan ke model keseluruhan. Nilai 0.2 termasuk cukup agresif/relatif tinggi (umumnya 0.01-0.1 sering dipakai untuk model stabil). Model akan konvergen lebih cepat (mungkin cukup dengan <500 pohon), tetapi ada risiko overfitting dan generalisasi menurun jika tidak diimbangi regulasi/early stopping.
-- max_depth = 20, .
+- max_depth = 20, Artinya tiap pohon boleh hingga 20 level kedalaman-cukup dalam.Tiap pohon bisa menangkap interaksi fitur yang kompleks. Meningkatkan kemampuan model untuk menangkap pola non-linear kuat.
 
-Dengan kombinasi ini, model berada di titik keseimbangan bagus, belajar secara perlahan (learning_rate rendah), cukup banyak pohon untuk menangkap pola (n_estimators tinggi) dan pohon cukup dalam untuk mengenali hubungan kompleks antar fitur (max_depth). Ini tipikal konfigurasi yang kuat dan stabil untuk dataset tabular seperti prediksi harga, waktu, atau penjualan dan sangat mungkin menjelaskan mengapa performanya bisa sangat tinggi.
+Dengan kombinasi ini, model berkapasitas sangat besar dan belajar cepat. Jika tidak ada early stopping dan regularisasi, model kemungkinan besar overfit ke data training (meski di beberapa kasus- jika data sangat banyak & bersih kombinasi ini masih bisa baik). Dalam kasus saya ini, memiliki banyak data dan sangat bersih dengan melakukan banyak preprocessing yang walaupun semuanya sudah bisa ditangani oleh LightGBM secara native seperti fitur kategorikal (onehot encoding).
 
 **Parameter Penting pada XGBoostRegressor()**
 |Parameter                |  Fungsi                               | Dampak                              |

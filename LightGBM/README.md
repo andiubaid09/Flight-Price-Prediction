@@ -190,8 +190,8 @@ Interpretasi hasil:
  - Kalau sebaran makin melebar di kanan (harga tinggi) -> model kesulitan memprediksi harga 
  
 ### 5. Fitur Penting (Gini Importance)
-![Gini Importance](Assets/Top%2015%20Feature%20XGBoost.png)<br>
-Visualisasi ini adalah Feature Importance Plot dari XGBoost, menunjukkan fitur yang paling berpengaruh terhadap prediksi harga tiket dan membantu memahami faktor utama yang mempengaruhi model, misalnya rute, maskapai, durasi, atau waktu keberangkatan
+![Gini Importance](Assets/Top%2015%20Feature.png)<br>
+Visualisasi ini adalah Feature Importance Plot dari LightGBM, menunjukkan fitur yang paling berpengaruh terhadap prediksi harga tiket dan membantu memahami faktor utama yang mempengaruhi model, misalnya rute, maskapai, durasi, atau waktu keberangkatan
 
 ## 🛠️ Cara Menggunakan
 
@@ -207,7 +207,7 @@ import pandas as pd
 import joblib
 
 # Muat model
-best_model = joblib.load("XGBoost_prediction_flight_ticket.pkl")
+best_model = joblib.load("LGBM_Prediction_Ticket_Price.pkl")
 
 # Data baru
 data_baru = pd.DataFrame({

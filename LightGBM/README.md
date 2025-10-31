@@ -227,7 +227,7 @@ print(f"Prediksi Harga Tiket:  {prediksi:,.2f}")
 ```
 
 ## 🔮 Potensi Pengembangan
-- Hyperparameter tuning lebih jauh, eksplor parameter lain dengan **GridSearchCV** yang lebih luas, temukan konfigurasi yang paling optimal
-- Buat fitur baru yang relevan (feature engineering). XGBoost memang kuat, tapi performanya sangat bergantung pada kualitas fitur.
+- Hyperparameter tuning lebih jauh, eksplore parameter lain dengan **GridSearchCV** yang lebih luas, temukan konfigurasi yang paling optimal dan tambkah early_stopping_rounds
+- Buat fitur baru yang relevan (feature engineering).
 - Ensembling dengan model lain (XGBoost + RandomForest atau Voting Regressor)
-- Regularisasi dan overfitting control, XGBoost punya 2 parameter L1 dan L2
+- Regularisasi dan overfitting control, LightGBM punya 2 parameter L1 dan L2

@@ -18,6 +18,13 @@ Bagaimana cara kerja dari LightGBM? sama seperti XGBoost, LightGBM membangun sek
 1. XGBoost -> Level-wise growth, pohon dibangun lebar dulu, tiap level dikembangkan serentak. Lebih stabil, tapi bisa lambat dan boros memori.
 2. LightGBM -> Leaf-wise growth (Best-first search), pohon tumbuh ke arah daun dengan penurunan error terbesar (loss reduction), lebih efisien dan akurat, tapi jika tidak dikontrol bisa overfitting.
 
+Berikut contoh bagaimana analogi LightGBM bekerja dengan memprediksi harga tiket:
+1. Pohon pertama menebak berdasarkan kota asal & tujuan
+2. Pohon kedua menyesuaikan berdasarkan waktu keberangkatan
+3. Pohon ketiga memperbaiki lagi berdasarkan jumlah hari tersisa dan seterusnya
+
+Setiap pohon belajar memperbaiki kesalahan pohon sebelumnya. Hasil akhirnya: model yang sangat presisi dan cepat.
+
 Berikut adalah kelebihan LightGBM:
 |Kelebihan                                 |Keterangan                                    |
 |------------------------------------------|----------------------------------------------|

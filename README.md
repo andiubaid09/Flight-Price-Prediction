@@ -106,7 +106,8 @@ pip install pandas numpy scikit-learn joblib
     - MAE : 2761.84
     - RMSE : 4803.60
 
-8. LightBGM (coming soon)
+8. 🌿 LightBGM Regressor (Light Gradient Boosting Machine)
+  - LightBGM adalah kerangka kerja *Gradient Bossting* yang dikembangkan oleh Microsoft yang dikenal karena efisiensi tinggi, kecepatan pelatihan yang luar biasa dan penggunaan memori yang rendah. Tujuan utama desainnya adalah untuk secara efektif menangani dataset besar dan dimensi tinggi di mana implementasi boosting tradisional mungkin melambat atau membutuhkan sumber daya komputasi yang besar. Inti dari kecepatan LightBGM adalah mekanisme pertumbuhan pohonnya yang berbeda yang disebut strategi Leaf-wise (berbasis daun). LightBGM mengandalkan dua teknik inovatif untuk mengoptimalkan efisiensi komputasi dan memori yaitu **Gradient-based One-side Sampling (GOSS)**, teknik bertujuan mengurangi jumlah sampel data pelatihan secara cerdas dan **Exclusive Feature Bundilng (EFB)** teknik yang bertujuan untuk mengurangi dimensi fitur pada dataset yang sparse (jarang, banyak nol). Secara keseluruhan, LightGBM adalah implementasi *Gradient Boosting* yang sangat canggih yang dioptimalkan untuk skalabilitas dan kecepatan menjadikannya alat pilihan bagi data scientiest yang bekerja dengan volume data yang besar.
 
 ## 🛠️ Cara Menggunakan Model
 Contoh untuk Random Forest:

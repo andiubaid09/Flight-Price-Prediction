@@ -47,7 +47,7 @@ Kapan LightGBM digunakan? Gunakan LightGBM jika:
 2. Dataset besar (>1 juta baris)
 3. Ingin waktu yang lebih cepat dan presisi tinggi
 
-Kesimpulannya adalah XGBoost adalah algoritma machine learning berbasis ensemble yang sangat kuat, efisien, akurat dengan prinsip membangun banyak pohon keputusan secara bertahap untuk memperbaiki kesalahan dari model sebelumnya.
+Kesimpulannya adalah LightGBM algoritma yang dikembangkan microsoft research, dirancang untuk kecepatan tinggi, efisiensi memori, dan performa prediksi yang sangat baik.
 
 ---
 

@@ -111,13 +111,13 @@ Dengan kombinasi ini, model berkapasitas sangat besar dan belajar cepat. Jika ti
 
 | Metrik | Nilai | Interpretasi |
 |--------|-------|--------------|
-| **R-squared (R²)** | 0.9552 | Model menjelaskan >85% variasi harga tiket |
-| **MAE** | 2761.84| Rata-rata selisih absolut antara prediksi dan nilai sebenarnnya|
-| **RMSE** | 4803.60 | Akar dari rata-rata kuadrat error, berapa kesalahan prediksi model |
+| **R-squared (R²)** | 0.9552 | Model menjelaskan >95% variasi harga tiket |
+| **MAE** | 2809.01| Rata-rata selisih absolut antara prediksi dan nilai sebenarnnya|
+| **RMSE** | 4861.22 | Akar dari rata-rata kuadrat error, berapa kesalahan prediksi model |
 
 **Interpretasi Angka**
-- RMSE = 4803.60, merupakan nilai untuk mengukur besar kesalahan prediksi, tapi lebih menekankan pada error besar (karena dikuadratkan). Mengukur akar dari rata-rata error kuartas, sehingga memberikan penalt lebih besar pada error yang besar dan mencerminkan "variabilitas" error prediksi. Nilai 4803.60 menunjukkan rata-rata penyimpangan prediksi sekitar 4.8 ribu unit dari nilai sebenarnya. Karena RMSE > MAE, ini berarti ada beberapa prediksi yang meleset cukup jauh (outlier error). Namun, dengan R2 setinggi 95%, outlier ini tidak signifikan terhadap kinerja keseluruhan model. RMSE ini tetap tergolong rendah dan konsisten, menandakan prediksi model sangat stabil.
-- MAE = 2761.84 menunjukkan rata-rata rata-rata jarak absolut antara nilai prediksi dan nilai aktual. rata-rata model salah sekitar 2.761 satuan dari nilai aslinya. MAE lebih mudah dimaknai secara "nyata" karena satuannya sama dengan target aslinya. Nilai yang relatif kecil terhadap skala data berarti model memliki presisi tinggi dan stabil terhadap outlier. Namun, karena tidak mengkuadratkan error, MAE tidak terlalu sensitif terhadap error besar.
+- RMSE = 4861.22, merupakan nilai untuk mengukur rata-rata kesalahan prediksi model terhadap nilai aktual sekitar +4861 satuan harga. RMSE sensitif terhadap error besar karena RMSE sensitif terhadap error besar (karena dikuadratkan), jadi semakin kecil nilainya, semain baik model dalam menghindari kesalahan ekstrem.
+- MAE = 2809.01 menunjukkan rata-rata selisih jarak absolut antara nilai prediksi dan nilai aktual adalah 2809. Artinya secara umum, prediksi harga model menyimpang sekitar 2800 satuan harga dari nilai sebenarnya. Menunjukkan akurasi cukup tinggi untuk kasus regresi harga.
 - R2 = 0.9552, artinya 95.52% model XGBoost mampu menjelaskan variasi nilai target (y) pada data uji. Dengan kata lain, hanya 4.48% variasi yang tidak dapat dijelaskan model. Nilai ini sangat tinggi, menandakan model sudah sangat akurat dalam memprediksi target. XGBoost berhasil menangkap hubungan non-linear dan interaksi antar fitur dengan baik (sesuai sifat boosting-nya). Hasil ini jauh lebih baik dibandingkan regresi linear biasa. yang umumnya memiliki R2 jauh di bawah 0.9 pada data komples.
 
 Berdasarkan hasil evaluasi, model XGBoost yang telah dioptimasi melalui hyperparameter tuning menunjukkan performa prediksi yang sangat baik. Nilai koefisien determinasi (R2) sebesar 0.9552 mengindikasikan bahwa model mampu menjelaskan sekitar 95.52% variasi data target. Nilai MAE sebesar 2761.84 dan RMSE sebesar 4803.60 menunjukkan bahwa rata-rata kesalahan prediksi masih berada pada tingkat yang relatif rendah terhadap skala data. Perbedaan antara MAE dan RMSE yang tidak terlalu besar menandakan bahwa model stabil dan tidak terlalu sensitif terhadap outlier. Secara keseluruhan, model XGBoost ini memiliki kemampuan generalisasi yang kuat, efisien dalam menangani kompleksitas data, serta memberikan prediksi dengan tingkat kesalahan yang rendah.

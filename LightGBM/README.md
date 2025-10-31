@@ -101,7 +101,9 @@ Dengan kombinasi ini, model berkapasitas sangat besar dan belajar cepat. Jika ti
 |reg_alpha (L1 regularization)|Menambahkan penalti terhadap nilai absolut bobot|Membuat model lebih sparse (fitur yang tidak penting diabaikan)|
 |reg_lambda (L2 regularization)|Penalti terhadap kuadrat bobot|Membuat model lebih stabil dan mengurangi overfitting|
 |boosting_type|Jenis booting|Umum : `gbdt` (default), `dart` (dropout boosting -> mengurangi overfit), `gross` (faster for large data)|
-|early_stopping_rounds|Berhenti otomatis jika tidak ada peningkatan dalam beberapa iterasi|Berguna untuk menghindari overfitting dan menghemat waktu|
+|early_stopping_rounds|Berhenti otomatis jika tidak ada peningkatan dalam beberapa iterasi|Penting untuk efisiensi dan mencegah overfit|
+|objective|Jenis tugas: `regression`,`binary`,`multiclass`|       |
+|metric|Metrik evaluasi:`rmse`,`mae`,`r2`,`logloss`,dll|          |
 
 ---
 

@@ -10,6 +10,8 @@ Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*ske
 ## 📖 Penjelasan Tentang LightGBM
 LightGBM adalah algoritma *gradient boosting* yang dikembangkan oleh Microsoft Research. Dirancang untuk lebih cepat daripada XGBoost, terutama untuk dataset besar, lebih efisien dalam penggunaan memori, mampu menagani fitur numerik dan kategorikal secara langsung tanpa perlu *one-hot encoding*. Tujuan utama LGBM adalah menyediakan algoritma boosting yang sangat efisien, cepat dan menggunakan memori lebih sedikit dibandingkan algoritma boosting tradisional (seperti XGBoost versi awal) terutama ketika berhadapan dengan dataset yang sangat besar.
 
+Perbedaan fundamental antara XGBoost dan LightGBM terletak pada startegi mereka dalam menun
+
 Bagaimana cara kerja dari XGBoost? Jika memiliki model sederhana (misalnya Decision Tree kecil). Model itu tidak sempurna, masih banyak error. XGBoost akan melakukan:
 1. Mulai prediksi awal, biasanya dari rata-rata nilai target(untuk regresi) atau probabilitas awal (untuk klasifikasi).
 2. Hitung error (Residual), Error = selisih antara prediksi dan nilai sebenarnya.

@@ -20,3 +20,4 @@ random_cbm = RandomizedSearchCV(
 )
 
 random_cbm.fit(X_train,y_train)
+best_cbm = random_cbm.best_estimator_

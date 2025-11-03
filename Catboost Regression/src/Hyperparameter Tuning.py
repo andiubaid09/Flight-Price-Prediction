@@ -19,3 +19,4 @@ random_cbm = RandomizedSearchCV(
     verbose=1
 )
 
+random_cbm.fit(X_train,y_train)

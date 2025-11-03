@@ -47,8 +47,6 @@ preprocessor = ColumnTransformer([
     ('cat', cat_transform, cat_feat)
 ], remainder = 'drop')
 
-!pip install catboost
-
 cbm = CatBoostRegressor(
     loss_function = 'RMSE',
     eval_metric = 'R2',

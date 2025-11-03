@@ -86,3 +86,12 @@ feature_importance_df = pd.DataFrame({
     'Feature': all_features,
     'Importance': importances
 }).sort_values(by='Importance', ascending=False).reset_index(drop=True)
+
+# Visualisasi Top Feature
+plt.figure(figsize=(10,6))
+sns.barplot(data=feature_importance_df.head(15), x='Importance', y='Feature')
+plt.title('Top 15 Feature Importances - CatBoost')
+plt.xlabel('Importance Score')
+plt.ylabel('Features Name')
+plt.tight_layout()
+plt.show()

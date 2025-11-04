@@ -94,16 +94,19 @@ Dengan kombinasi ini menghasilkan model seimbang antara akurasi tinggi dan gener
 |max_depth|Kedalaman maksimum setiap pohon|Nilai tinggi, membuat model bisa tangkap pola kompleks tapi resiko overfit, kecil bisa underfit|
 |learning_rate|Mengontrol laju pembelajaran model|Nilai kecil (0.01-0.1) membuat model belajar lebih lambat tapi stabil, nilai besar (0.15-0.3) mempercepat konvergensi namun bisa tidak stabil. Biasanya diimbangi dengan jumlah iterations|
 |l2_leaf_reg|Regularisasi L2 pada nilai daun (leaf value)|Mengontrol kompleksitas model, nilai besar (10-30) mencegah overfitting, nilai kecil (1-5) meningkatkan fleksibilitas model|                       
-|bagging_temperature|Mengatur|
-|num_leaves|Jumlah daun dalam pohon (kompleksitas cabang)|Disarankan lebih kecil untuk menghindari overfitting|
-|random_state|Seed untuk membuat hasil split tetap konsisten|Penting agar hasil reproducible|
-|colsample_bytree|Fraksi fitur yang digunakan tiap pohon|Biasanya 0.6 - 0.9|
-|reg_alpha (L1 regularization)|Menambahkan penalti terhadap nilai absolut bobot|Membuat model lebih sparse (fitur yang tidak penting diabaikan)|
-|reg_lambda (L2 regularization)|Penalti terhadap kuadrat bobot|Membuat model lebih stabil dan mengurangi overfitting|
-|boosting_type|Jenis booting|Umum : `gbdt` (default), `dart` (dropout boosting -> mengurangi overfit), `gross` (faster for large data)|
+|bagging_temperature|Mengatur kekuatan randomness pada bootstrap sampling| Nilai 0 - deterministik, nilai tinggi (>1) = lebih acak, mencegah overfitting. Biasanya 0-1 untuk regresi|
+|border_count|Jumlah borders (batas binning) untuk fitur numerik|Mengatur seberapa halus fitur numerik di-split. Default 254, nilai kecil mempercepat training tapi mengurangi akurasi|
+|random_strength|Kontrol tingkat keacakan dalam pemilihan split|Nilai besar menambah regularization, mencegah overfitting. Biasanya 1-20|
+|grow_policy|Strategi pertumbuhan pohon|`SymnetricTree` (default, cepat dan stabil) atau `Depthwise`/`Lossguide` (lebih fleksibel tapi lambat)|
+|min_data_in_leaf|Minimum jumlah sampel di setiap daun|Nilai besar membuat model lebih konservatif. Cocok untuk dataset besar|
+|subsample|Fraksi data yang digunakan per iterasi (mirip bagging)|Nilai 0.7 - 0.9, umum digunakan untuk mempercepat training dan menambah regularisasi|
+|colsample_bylevel|Persentase fitur yang digunakan di tiap level pohon|Membantu mencegah overfitting pada dataset dengan fitur banyak|
 |early_stopping_rounds|Berhenti otomatis jika tidak ada peningkatan dalam beberapa iterasi|Penting untuk efisiensi dan mencegah overfit|
-|objective|Jenis tugas: `regression`,`binary`,`multiclass`|       |
-|metric|Metrik evaluasi:`rmse`,`mae`,`r2`,`logloss`,dll|          |
+|rsm|Random subspace method - proporsi fitur yang digunakan per split|Mirip  `colsample_bylevel`, umumnya antara 0.8 - 1.0|
+|loss_function|Menentukan fungsi kehilangan yang dioptimalkan|Untuk regresi : `RMSE`,`MAE`,`r2`, dll dan untuk Classification: `accuracy_score`,`precision`,`recall`|
+|eval_metric|Metrik evaluasi untuk pemantauan training| Misalnya:`RMSE`,`R2`. Tidak mempengaruhi training tapi membantu memilih model terbaik|
+|random_seed|Nilai acak untuk reproduksibilitas|Pastikan konsisten agar hasil model bisa diulang. Biasanya 42 sama seperti random_state|
+|verbose| Mengatur tingkat log output selama training|Nili integer (misal 100) untuk menamppilkan progress setiap 100 iterasi|
 
 ---
 

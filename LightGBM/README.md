@@ -1,4 +1,4 @@
-# 🌿 Prediksi Harga Tiket Pesawat dengan LightGBM (Light Gradient Boosting Machine)
+# ⚡🌳 Prediksi Harga Tiket Pesawat dengan LightGBM (Light Gradient Boosting Machine)
 
 ## 📝 Deskripsi Proyek
 Proyek ini membangun model **Machine Learning** untuk memprediksi harga tiket pesawat berdasarkan berbagai fitur penerbangan. Model dikembangkan menggunakan **Scikit-learn Pipeline** dengan **LightGBM Regressor** sebagai model utama.  

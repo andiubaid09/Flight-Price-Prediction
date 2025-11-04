@@ -18,26 +18,15 @@ CatBoost singkatan dari "Categorical Boosting" adalah salah satu algoritma **gra
 Catboost banyak digunakan dalam kasus regresi, klasifikasi dan ranking karena kemampuannya yang luar biasa dalam menemukan pola non-linear yang kompleks dari data mentah tanpa preprocessing yang rumit.
 Algoritma ini punya keunggulan besar untuk data categorical features (fitur non-numerik seperti gender, kota, produk, dsb). Di algoritma lain seperti XGBoost dan LightGBM, fitur kategorikal harus di-encode manual menggunakan onehotencoder atau label encoding. Sementara di CatBoost bisa langsung memproses kategori tanpa encoding manual menggunakan konsep statistik internal bernama **target statistics** yang menjaga supaya tidak terjadi data leakage.
 
-Bagaimana cara kerja dari LightGBM? sama seperti XGBoost, LightGBM membangun sekumpulan pohon keputusan (decision tree) secara bertahap (boosting). Namum perbedaan utamanya ada di bagaimana pohon dibangun:
-1. XGBoost -> Level-wise growth, pohon dibangun lebar dulu, tiap level dikembangkan serentak. Lebih stabil, tapi bisa lambat dan boros memori.
-2. LightGBM -> Leaf-wise growth (Best-first search), pohon tumbuh ke arah daun dengan penurunan error terbesar (loss reduction), lebih efisien dan akurat, tapi jika tidak dikontrol bisa overfitting.
-
-Berikut contoh bagaimana analogi LightGBM bekerja dengan memprediksi harga tiket:
-1. Pohon pertama menebak berdasarkan kota asal & tujuan
-2. Pohon kedua menyesuaikan berdasarkan waktu keberangkatan
-3. Pohon ketiga memperbaiki lagi berdasarkan jumlah hari tersisa dan seterusnya
-
-Setiap pohon belajar memperbaiki kesalahan pohon sebelumnya. Hasil akhirnya: model yang sangat presisi dan cepat.
-
 Berikut adalah kelebihan LightGBM:
 |Kelebihan                                 |Keterangan                                    |
 |------------------------------------------|----------------------------------------------|
-|Cepat & Efisien                            |Menggunakan histogram-based learning dan leaf-wise growth, training jauh lebih cepat daripada XGBoost|
-|Dapat menangani data besar                 |Bisa memproses jutaan data tanpa bottleneck memori|
-|Ramah memori                               |Tidak perlu onehot encoding eksplisit, mendukung fitur kategorikal langsung|
-|Handle missing value                       |Secara otomatis, tanpa imputasi manual           |
-|Presisi tinggi                             |Leaf-wise membuat model fokus dibagian yang paling sulit diprediksi|
-|Mendukung paralelisme dan GPU              |Dapat mempercepat pelatihan secara signifikan |
+|Ordered Boosting                          |Mencegah target leakage dan overfitting dengan melatih model secara berurutan menggunakan subset data yang berbeda|
+|Handling Categorical Features             |Dapat menangani fitur kategorikal secara otomatis tanpa perlu onehotencoder atau label encoding|
+|Cepat dan Efisien                          |Optimized untuk CPU dan GPU bahkan pada dataset besar|
+|Performa Stabil                            |Tidak mudah overfit dan lebih konsisten dibanding XGBoost atau LightBGM pada dataset kecil-menengah|
+|Interoperability dengan Scikit-Learn   |Bisa langsung dipakai dalam Pipeline dan GridSearch/RandomizedSearchCV|
+
 
 Berikut adalah kelemahan LightGBM:
 |Kelemahan                                 |Keterangan                                    |

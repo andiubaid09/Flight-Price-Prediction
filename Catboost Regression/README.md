@@ -18,6 +18,8 @@ CatBoost singkatan dari "Categorical Boosting" adalah salah satu algoritma **gra
 Catboost banyak digunakan dalam kasus regresi, klasifikasi dan ranking karena kemampuannya yang luar biasa dalam menemukan pola non-linear yang kompleks dari data mentah tanpa preprocessing yang rumit.
 Algoritma ini punya keunggulan besar untuk data categorical features (fitur non-numerik seperti gender, kota, produk, dsb). Di algoritma lain seperti XGBoost dan LightGBM, fitur kategorikal harus di-encode manual menggunakan onehotencoder atau label encoding. Sementara di CatBoost bisa langsung memproses kategori tanpa encoding manual menggunakan konsep statistik internal bernama **target statistics** yang menjaga supaya tidak terjadi data leakage.
 
+Alih-alih melakukan one-hot encoding, CatBoost menggunakan metode Target Encoding yang aman yaitu mengubah kategori menjadi nilai statistik berdasarkan target. Namun, CatBoost menghitung nilai encoded_value secara bertahap sehingga tidak terjadi kebocoran informasi dari target keseluruhan. Dengan metode ini, catboost lebih efisien daripada one-hot encoding, dapat menangani fitur dengan ratusan kategori unik dan menghindari overfitting akibat target leakage.
+
 Berikut adalah kelebihan CatBoost:
 |Kelebihan                                 |Keterangan                                    |
 |------------------------------------------|----------------------------------------------|
@@ -34,6 +36,7 @@ Berikut adalah kelemahan CatBoost:
 |Training Time Lebih Lama |Meskipun cepat dibanding boosting klasik, CatBoost cenderung lebih lambat dari model linear atau random forest, terutama saat tuning hyperparameter seperti GridSearchCV dan RandomizedSearchCV|
 |Ukuran Model Cukup Besar    |Karena model terdiri dari banyak decision trees, hasil akhir bisa memakan memori yang signifikan (ratusan MB untuk dataset besar)|
 |Kurang Fleksibel pada Produksi Ringan (Embedded/IoT)|CatBoost tidak cocok dijalankan langsung pada perangkat seperti Raspberry Pi kecil karena memerlukan memori besar dan dependensi Python|
+|Tidak Selalu Unggul di Semua Kasus     | Untuk datased dengan relasi linear sederhana, regresi linear atau ridge regression bisa lebih cepat dan hampir sama akuratnya|
 
 Kapan LightGBM digunakan? Gunakan LightGBM jika:
 1. Data tabular (CSV, excel, sensor, log, dsb)

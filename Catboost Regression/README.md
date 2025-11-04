@@ -44,12 +44,7 @@ Berikut adalah kelemahan CatBoost:
 |Kurang Fleksibel pada Produksi Ringan (Embedded/IoT)|CatBoost tidak cocok dijalankan langsung pada perangkat seperti Raspberry Pi kecil karena memerlukan memori besar dan dependensi Python|
 |Tidak Selalu Unggul di Semua Kasus     | Untuk datased dengan relasi linear sederhana, regresi linear atau ridge regression bisa lebih cepat dan hampir sama akuratnya|
 
-Kapan LightGBM digunakan? Gunakan LightGBM jika:
-1. Data tabular (CSV, excel, sensor, log, dsb)
-2. Dataset besar (>1 juta baris)
-3. Ingin waktu yang lebih cepat dan presisi tinggi
-
-Kesimpulannya adalah LightGBM algoritma yang dikembangkan microsoft research, dirancang untuk kecepatan tinggi, efisiensi memori, dan performa prediksi yang sangat baik.
+Kesimpulannya adalah CatBoost algoritma yang dikembangkan Yandex, dirancang untuk menangani data tabular secara efisien terutama yang mengandung banyak fitur kategorikal tanpa perlu preprocessing kompleks seperti one-hot encoding. Catboost termasuk dalam keluarga ensemble learning, di mana banyak model decision tree baru berfokus memperbaiki kesalahan yang dibuat oleh tree sebelumnya.
 
 ---
 

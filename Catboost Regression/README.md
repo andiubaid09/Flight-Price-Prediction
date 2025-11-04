@@ -114,16 +114,16 @@ Dengan kombinasi ini menghasilkan model seimbang antara akurasi tinggi dan gener
 
 | Metrik | Nilai | Interpretasi |
 |--------|-------|--------------|
-| **R-squared (R²)** | 0.9552 | Model menjelaskan >95% variasi harga tiket |
-| **MAE** | 2809.01| Rata-rata selisih absolut antara prediksi dan nilai sebenarnnya|
-| **RMSE** | 4861.22 | Akar dari rata-rata kuadrat error, berapa kesalahan prediksi model |
+| **R-squared (R²)** | 0.9553 | Model menjelaskan >95% variasi harga tiket |
+| **MAE** | 2737.66| Rata-rata selisih absolut antara prediksi dan nilai sebenarnnya|
+| **RMSE** | 4801.70 | Akar dari rata-rata kuadrat error, berapa kesalahan prediksi model |
 
 **Interpretasi Angka**
-- RMSE = 4861.22, merupakan nilai untuk mengukur rata-rata kesalahan prediksi model terhadap nilai aktual sekitar +4861 satuan harga. RMSE sensitif terhadap error besar karena RMSE sensitif terhadap error besar (karena dikuadratkan), jadi semakin kecil nilainya, semain baik model dalam menghindari kesalahan ekstrem.
-- MAE = 2809.01 menunjukkan rata-rata selisih jarak absolut antara nilai prediksi dan nilai aktual adalah 2809. Artinya secara umum, prediksi harga model menyimpang sekitar 2800 satuan harga dari nilai sebenarnya. Menunjukkan akurasi cukup tinggi untuk kasus regresi harga.
-- R2 = 0.9552, artinya 95.52% model LightGBM mampu menjelaskan variasi nilai target (y) pada data uji. Dengan kata lain, hampir seluruh perubahan pada harga dapat dijelaskan oleh fitur yang digunakan. Hanya sekitar 4.5% variasi yang tidak bisa dijelaskan model.
+- RMSE = 4801.70, mengindikasin bahwa rata-rata kesalahan prediksi model berada pada kisaran +4801.70  satuan terhadap nilai aktual. Karena RMSE menghitung akar dari rata-rata kuadrat kesalahan, metrik ini memberikan penalti yang lebih besar terhadap kesalahan dengan nilai ekstrem. Oleh karena itu, nilai RMSE yang masih relatif rendah menunjukkan bahwa model tidak hanya akurat secara umum, tetapi juga mampu menjaga stabilitas performa terhadap error besar (large deviations).
+- MAE = 2737.66 menggambarkan bahwa rata-rata deviasi absolut antara hasil prediksi dan nilai sebenarnya berada di sekitar 2737 stauan. Berbeda dengan RMSE, MAE menghitung rata-rata kesalahan tanpa mengkuadratkan selisih, sehingga memberikan pandangan yang lebih realistis terhadap kesalahan rata-rata tanpa mengkuadratkan selisih, sehingga memberikan pandangan yang lebih realistis terhadap kesalahan rata-rata secara umum. Perbedaan antara RMSE dan MAE yang tidak terlalu jauh (rasio 1.75) menandakan bahwa distribusi error model bersifat relatif stabil tanpa adanya penyimpangan besar (outlier errors) yang mendominasi. Hal ini menunjukkan bahwa model menghasilkan prediksi yang konsisten di seluruh rentang data.
+- R2 = 0.9553, r2 mengukur seberapa besar proporsi variasi pada data target yang dapat dijelaskan oleh model, di mana nilai 0 menunjukkan bahwa model tidak mampu menjelaskan data sama sekali, sedangkan nilai 1 menunjukkan kemampuan penjelasan sempurna. Dengan nilai 0.9553 dapat diinterpretasikan bahwa sekitar 95.53% variasi pada variabel target berhasil dijelaskan model dan hanya sekitar 4.47% sisanya yang tidak dapat dijelaskan. Kemungkinan disebabkan oleh fakor acak atau variabel lain yang tidak disertakan dalam proses training.
 
-Berdasarkan hasil evaluasi, model LightGBM yang telah dioptimasi melalui hyperparameter tuning menunjukkan performa prediksi yang sangat baik. Model ini bisa dikatakan stabil, akurat dan generalisasi baik dan sangat cocok digunakan sebagai model utama (baseline terbaik) untuk dataset harga tiket penerbangan ini.
+Secara keseluruhan, hasil evaluasi ini menunjukkan bahwa model CatBoost regressor mampu mempelajari hubungan kompleks antar fitur dengan sangat baik. Dengan parameter yang sudah dijelaskan sebelumnya, model ini mampu menangkap pola non-linear dalam data tanpa kehilangan stabilitas. Oleh karena itu, dapat disimpulkan bahwa model yang dikembangkan efisien, akurat dan robust, serta layak diterapkan untuk keutuhan prediksi berbasis regresi pada dataset berukuran besar dengan karakteristik serupa.
 
 ---
 

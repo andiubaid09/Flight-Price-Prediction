@@ -194,7 +194,7 @@ Interpretasi hasil:
  
 ### 5. Fitur Penting (Gini Importance)
 ![Gini Importance](Assets/Top%2015%20Feature.png)<br>
-Visualisasi ini adalah Feature Importance Plot dari LightGBM, menunjukkan fitur yang paling berpengaruh terhadap prediksi harga tiket dan membantu memahami faktor utama yang mempengaruhi model, misalnya rute, maskapai, durasi, atau waktu keberangkatan
+Visualisasi ini adalah Feature Importance Plot dari Catboost, menunjukkan fitur yang paling berpengaruh terhadap prediksi harga tiket dan membantu memahami faktor utama yang mempengaruhi model, misalnya rute, maskapai, durasi, atau waktu keberangkatan
 
 ## 🛠️ Cara Menggunakan
 
@@ -210,7 +210,7 @@ import pandas as pd
 import joblib
 
 # Muat model
-best_model = joblib.load("LGBM_Prediction_Ticket_Price.pkl")
+best_model = joblib.load("CatBoost_Prediction_Flight_Ticket.pkl")
 
 # Data baru
 data_baru = pd.DataFrame({
@@ -230,7 +230,5 @@ print(f"Prediksi Harga Tiket:  {prediksi:,.2f}")
 ```
 
 ## 🔮 Potensi Pengembangan
-- Hyperparameter tuning lebih jauh, eksplore parameter lain dengan **GridSearchCV** yang lebih luas, temukan konfigurasi yang paling optimal dan tambkah early_stopping_rounds
-- Buat fitur baru yang relevan (feature engineering).
-- Ensembling dengan model lain (XGBoost + RandomForest atau Voting Regressor)
-- Regularisasi dan overfitting control, LightGBM punya 2 parameter L1 dan L2
+- Optimasi Hyperparameter yang lebih luas meskipun model telah melalui proses tuning dengan parameter. Ruang pencarian hyperparameter dapat diperluas untuk mencakup parameter lain
+- Buat fitur baru yang relevan (feature engineering), Eksperimen dengan fitur dan seleksi atribut.

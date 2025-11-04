@@ -68,14 +68,16 @@ Kesimpulannya adalah CatBoost algoritma yang dikembangkan Yandex, dirancang untu
 | **Numerik**              | `days_left` | `StandardScaler` |
 
 ### 4. Optimasi Hyperparameter
-Dilakukan dengan **GridSearchCV** pada parameter utama LightGBM:
-- `n_estimators` → Jumlah pohon
+Dilakukan dengan **RandomizedSearchCV** pada parameter utama LightGBM:
+- `iterations` → Jumlah pohon (round boosting)
 - `learning_rate` → Kecepatan belajar
 - `max_depth` → Kedalaman pohon
-- Hyperparameter menggunakan **GridSearchCV** ditemukan:
-  1. n_estimators = 500
-  2. learning_rate = 0.2
-  3. max_depth = 20
+- `l2_leaf_reg` →  Regularisasi L2
+- Hyperparameter menggunakan **RandomizedSearchCV** ditemukan:
+  1. iterations = 1500
+  2. learning_rate = 0.15
+  3. max_depth = 10
+  4. l2_leaf_reg = 15
 
 **Interpretasi Angka dari Hyperparameter**
 - n_estimators = 500, ini berarti LightGBM akan mencoba membangun 500 pohon berturut-turut (500 boosting rounds). Memberi model kapasitas belajar yang besar dapat menangkap pola kompleks.

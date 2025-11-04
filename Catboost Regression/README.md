@@ -20,6 +20,12 @@ Algoritma ini punya keunggulan besar untuk data categorical features (fitur non-
 
 Alih-alih melakukan one-hot encoding, CatBoost menggunakan metode Target Encoding yang aman yaitu mengubah kategori menjadi nilai statistik berdasarkan target. Namun, CatBoost menghitung nilai encoded_value secara bertahap sehingga tidak terjadi kebocoran informasi dari target keseluruhan. Dengan metode ini, catboost lebih efisien daripada one-hot encoding, dapat menangani fitur dengan ratusan kategori unik dan menghindari overfitting akibat target leakage.
 
+CatBoost membangun model sebagai kombinasi dari banyak Decision Tress yang dangkal di mana setiap pohon memperbaiki kesalahan dari pohon sebelumnya.Proses training-nya meliputi:
+1. Membagi dataset menjadi beberapa subset acak
+2. Melatih pohon keputusan pada residual (selisih antara target aktual dan prediksi sebelumnya)
+3. Menggabungkan hasil semua pohon untuk memperbarui prediksi
+4. Mengulang hingga mencapai jumlah iterations yang ditentukan atau early stopping
+
 Berikut adalah kelebihan CatBoost:
 |Kelebihan                                 |Keterangan                                    |
 |------------------------------------------|----------------------------------------------|

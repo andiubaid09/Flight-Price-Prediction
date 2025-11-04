@@ -121,12 +121,18 @@ pip install pandas numpy scikit-learn joblib
 
 9. 🐱 CatBoost Regressor (coming soon)
 
-  - Pipeline disamakan dengan algoritma machine learning yang lain yaitu menggunakan TransformedTargetRegressor (log_transform target).
+  - CatBoost (Categorical Boosting) adalah algoritma **gradient boosting** berbasis pohon keputusan yang dikembangkan oleh Yandex. CatBoost dirancang untuk menangani data tabular secara efisien terutama yang mengandung banyak fitur kategorikal tanpa perlu preprocessing kompleks seperti one-hot encoding. Cara kerja singkat CatBoost:
+    1. CatBoost membangun model berbasis gradient boosting seperti XGBoost dan LightGBM
+    2. Algoritma ini menambahkan tree baru secara iteratif untuk memperbaiki error dari prediksi sebelumnya
+    3. CatBoost memiliki algoritma *Ordered Boosting* untuk mencegah overfitting dan target leakage
+    4. Model mengoptimalkan *loss function* (misalnya RMSE pada regresi) sampai mencapai jumlah iterasi maksimum atau early stopping
+  -  Pipeline disamakan dengan algoritma machine learning yang lain yaitu menggunakan TransformedTargetRegressor (log_transform target).
   - Menerapkan logaritma natural dari nilai +1 lalu distandarisasi oleh StandardScaler()
-  - Best Params LightGBM yang ditemukan adalah :
-    1. n_estimators      : 500,
-    2. max_depth         : 20,
-    3. learning_rate     : 0.2
+  - Best Params CatBoost yang ditemukan adalah :
+    1. iterations        : 1500,
+    2. max_depth         : 10,
+    3. learning_rate     : 0.15
+    4. l2_leaf_reg       : 15
   - Kinerja :
     - R²  : 0.9552
     - MAE : 2809.01

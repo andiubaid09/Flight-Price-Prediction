@@ -68,7 +68,7 @@ Kesimpulannya adalah CatBoost algoritma yang dikembangkan Yandex, dirancang untu
 | **Numerik**              | `days_left` | `StandardScaler` |
 
 ### 4. Optimasi Hyperparameter
-Dilakukan dengan **RandomizedSearchCV** pada parameter utama LightGBM:
+Dilakukan dengan **RandomizedSearchCV** pada parameter utama CatBoost:
 - `iterations` → Jumlah pohon (round boosting)
 - `learning_rate` → Kecepatan belajar
 - `max_depth` → Kedalaman pohon
@@ -80,11 +80,12 @@ Dilakukan dengan **RandomizedSearchCV** pada parameter utama LightGBM:
   4. l2_leaf_reg = 15
 
 **Interpretasi Angka dari Hyperparameter**
-- n_estimators = 500, ini berarti LightGBM akan mencoba membangun 500 pohon berturut-turut (500 boosting rounds). Memberi model kapasitas belajar yang besar dapat menangkap pola kompleks.
-- learning_rate = 0.2, kontribusi tiap pohon akan dikalikan 0.2 sebelum dijumlahkan ke model keseluruhan. Nilai 0.2 termasuk cukup agresif/relatif tinggi (umumnya 0.01-0.1 sering dipakai untuk model stabil). Model akan konvergen lebih cepat (mungkin cukup dengan <500 pohon), tetapi ada risiko overfitting dan generalisasi menurun jika tidak diimbangi regulasi/early stopping.
-- max_depth = 20, Artinya tiap pohon boleh hingga 20 level kedalaman-cukup dalam.Tiap pohon bisa menangkap interaksi fitur yang kompleks. Meningkatkan kemampuan model untuk menangkap pola non-linear kuat.
+- iterations = 1500, ini berarti jumlah total boosting rounds atau decision trees yang dibangun secara bertahap oleh model. Model membangun 1500 pohon keputusan secara berurutan. Semakin banyak iterasi, semakin kompleks modelnya tapi juga berisiko overfitting jika terlalu tinggi.
+- learning_rate = 0.15, menentukan seberapa besar kontribusi setiap tree baru dalam memperbaiki kesalahan model sebelumnya. Nilai kecil membuat model belajar perlahan tapi lebih stabil; nilai besar mempercepat konvergensi tapi bisa menyebabkn overshooting (overfitting atau tidak stabil). Nilai 0.15 sedikit lebih tinggi dari default (0.1) artinya model belajar dengan laju agak cepat. Karena jumlah iterasi juga cukup tinggi (1500), kombinasi ini masih seimbang dan cepat belajar tapi tidak terlalu agresif.
+- max_depth = 10, Kedalaman maksimum setiap decision tree. Semakin besar max_depth, semakin kompleks pola yang bisa ditangkap tapi risiko overfitting juga meningkat. Nilai 10 termasuk dalam kategori menengah - tinggi. Artinya setiap pohon mampu membentuk aturan yang cukup kompleks untuk menangkap interaksi antar fitur. Karena dataset bisa dibilang cukup besar (240 ribu rows) dan mungkin memiliki hubungan non-linear antar variabel, kedalaman 10 adalah pilihan yang masuk akal. Model bisa memahami pola kompleks tanpa terlalu berlebihan.
+- l2_leaf_reg = 15, parameter regularisasi L2 (mirip dengan ridge regression) yang menambahkan penalti terhadap bobot besar pada leaf value dari tree. Tujuannya adalah mengontrol kompleksitas model agar tidak overfitting. Nilai ini lebih tinggi dari default (3), artinya model diberi penalti lebih kuat agar tidak terlalu mengikuti noise pada data training. Ini membuat model lebih konservatif dalam mempelajari pola yang terlalu spesifik.
 
-Dengan kombinasi ini, model berkapasitas sangat besar dan belajar cepat. Jika tidak ada early stopping dan regularisasi, model kemungkinan besar overfit ke data training (meski di beberapa kasus- jika data sangat banyak & bersih kombinasi ini masih bisa baik). Dalam kasus saya ini, memiliki banyak data dan sangat bersih dengan melakukan banyak preprocessing yang walaupun semuanya sudah bisa ditangani oleh LightGBM secara native seperti fitur kategorikal (onehot encoding).
+Dengan kombinasi ini menghasilkan model seimbang antara akurasi tinggi dan generalisasi baik, ideal untuk dataset besar dan kompleks.
 
 **Parameter Penting pada LightGBMRegressor()**
 |Parameter                |  Fungsi                               | Dampak                              |

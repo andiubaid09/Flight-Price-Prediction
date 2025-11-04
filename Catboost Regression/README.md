@@ -87,14 +87,14 @@ Dilakukan dengan **RandomizedSearchCV** pada parameter utama CatBoost:
 
 Dengan kombinasi ini menghasilkan model seimbang antara akurasi tinggi dan generalisasi baik, ideal untuk dataset besar dan kompleks.
 
-**Parameter Penting pada LightGBMRegressor()**
+**Parameter Penting pada CatBoostRegressor()**
 |Parameter                |  Fungsi                               | Dampak                              |
 |-------------------------|---------------------------------------|-------------------------------------|
-|n_estimators|Jumlah total pohon(round boosting)|Banyak pohon maka lebih akurat tapi lama; berpotensi overfit tanpa early stopping|
+|iterations|Menentukan jumlah total boosting iterations(jumlah pohon)|Semakin besar nilainya, semakin kompleks model|
 |max_depth|Kedalaman maksimum setiap pohon|Nilai tinggi, membuat model bisa tangkap pola kompleks tapi resiko overfit, kecil bisa underfit|
-|learning_rate|Mengontrol seberapa besar pembaruan bobot tiap pohon berkontribusi ke model akhir|Kecil (0.01 - 0.1) -> stabil tapi lambat; besar (0.2-0.3) cepat tapi rentan overfit|
-|min_child_weight|Total bobot minimum untuk satu daun (alternatif kontrol overfit)|Mirip fungsinya dengan *min_child_samples*|                       
-|min_child_samples|Jumlah minimum data dalam satu daun|Besar: model lebih halus(mencegah overfit), <kecil:lebih detail tapi berisiko overfit|
+|learning_rate|Mengontrol laju pembelajaran model|Nilai kecil (0.01-0.1) membuat model belajar lebih lambat tapi stabil, nilai besar (0.15-0.3) mempercepat konvergensi namun bisa tidak stabil. Biasanya diimbangi dengan jumlah iterations|
+|l2_leaf_reg|Regularisasi L2 pada nilai daun (leaf value)|Mengontrol kompleksitas model, nilai besar (10-30) mencegah overfitting, nilai kecil (1-5) meningkatkan fleksibilitas model|                       
+|bagging_temperature|Mengatur|
 |num_leaves|Jumlah daun dalam pohon (kompleksitas cabang)|Disarankan lebih kecil untuk menghindari overfitting|
 |random_state|Seed untuk membuat hasil split tetap konsisten|Penting agar hasil reproducible|
 |colsample_bytree|Fraksi fitur yang digunakan tiap pohon|Biasanya 0.6 - 0.9|

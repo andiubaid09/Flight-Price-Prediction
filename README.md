@@ -134,9 +134,9 @@ pip install pandas numpy scikit-learn joblib
     3. learning_rate     : 0.15
     4. l2_leaf_reg       : 15
   - Kinerja :
-    - R²  : 0.9552
-    - MAE : 2809.01
-    - RMSE : 4861.22
+    - R²  : 0.9553
+    - MAE : 2737.66
+    - RMSE : 4801.70
 
 ## 🛠️ Cara Menggunakan Model
 Contoh untuk Random Forest:

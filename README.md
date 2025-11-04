@@ -119,7 +119,7 @@ pip install pandas numpy scikit-learn joblib
     - MAE : 2809.01
     - RMSE : 4861.22
 
-9. 🐱 CatBoost Regressor (coming soon)
+9. 🐱 CatBoost Regressor
 
   - CatBoost (Categorical Boosting) adalah algoritma **gradient boosting** berbasis pohon keputusan yang dikembangkan oleh Yandex. CatBoost dirancang untuk menangani data tabular secara efisien terutama yang mengandung banyak fitur kategorikal tanpa perlu preprocessing kompleks seperti one-hot encoding. Cara kerja singkat CatBoost:
     1. CatBoost membangun model berbasis gradient boosting seperti XGBoost dan LightGBM
@@ -137,6 +137,8 @@ pip install pandas numpy scikit-learn joblib
     - R²  : 0.9553
     - MAE : 2737.66
     - RMSE : 4801.70
+
+10. ⚔️ Support Vector Machine Regressor (coming soon)
 
 ## 🛠️ Cara Menggunakan Model
 Contoh untuk Random Forest:

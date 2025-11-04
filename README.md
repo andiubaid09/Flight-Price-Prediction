@@ -121,6 +121,17 @@ pip install pandas numpy scikit-learn joblib
 
 9. 🐱 CatBoost Regressor (coming soon)
 
+  - Pipeline disamakan dengan algoritma machine learning yang lain yaitu menggunakan TransformedTargetRegressor (log_transform target).
+  - Menerapkan logaritma natural dari nilai +1 lalu distandarisasi oleh StandardScaler()
+  - Best Params LightGBM yang ditemukan adalah :
+    1. n_estimators      : 500,
+    2. max_depth         : 20,
+    3. learning_rate     : 0.2
+  - Kinerja :
+    - R²  : 0.9552
+    - MAE : 2809.01
+    - RMSE : 4861.22
+
 ## 🛠️ Cara Menggunakan Model
 Contoh untuk Random Forest:
 ```bash

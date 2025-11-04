@@ -8,13 +8,14 @@ Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*ske
 ---
 
 ## 📖 Penjelasan Tentang CatBoost
-CatBoost singkatan dari "Categorical Boosting" adalah salah satu algoritma **gradient boosting** modern buatan Yandex (mesin pencari Rusia) yang dirancang untuk menangani fitur kategorikal secara otomatis, mencegah overfitting lewat teknik matematis canggih (ordered boosting), lebih cepat dan efisien dibanding XGBoost dan LightGBM di banyak kasus. Catboost dibangun di atas konsep gradient boosting yaitu membuat banyak pohon keputusan kecil (weak learners) secara berurutan, di mana tiap pohon memperbaiki kesalahan dari pohon sebelumnya. Secara intuitif:
+CatBoost singkatan dari "Categorical Boosting" adalah salah satu algoritma **gradient boosting** modern buatan Yandex (mesin pencari Rusia) yang dirancang untuk menangani fitur kategorikal secara otomatis, mencegah overfitting lewat teknik matematis canggih (ordered boosting), lebih cepat dan efisien dibanding XGBoost dan LightGBM di banyak kasus. Catboost dibangun di atas konsep gradient boosting yaitu membuat banyak pohon keputusan kecil (weak learners) secara berurutan, di mana tiap pohon memperbaiki kesalahan dari pohon sebelumnya. Catboost dibangun di atas prinsip Gradient Boosting Decision Tree (GBDT). Secara intuitif:
 1. Buat pohon pertama -> prediksi awal masih jelek.
 2. Hitung error (residual)
 3. Buat pohon kedua yang fokus belajar dari error tadi
 4. Ulangi ratusan-ribuan kali hingga error makin kecil.
 5. Gabungkan semua pohon jadi satu model kuat (boosted ensemble)
 
+Catboost banyak digunakan dalam kasus regresi, klasifikasi dan ranking karena kemampuannya yang luar biasa dalam menemukan pola non-linear yang kompleks dari data mentah tanpa preprocessing yang rumit.
 Algoritma ini punya keunggulan besar untuk data categorical features (fitur non-numerik seperti gender, kota, produk, dsb). Di algoritma lain seperti XGBoost dan LightGBM, fitur kategorikal harus di-encode manual menggunakan onehotencoder atau label encoding. Sementara di CatBoost bisa langsung memproses kategori tanpa encoding manual menggunakan konsep statistik internal bernama **target statistics** yang menjaga supaya tidak terjadi data leakage.
 
 Bagaimana cara kerja dari LightGBM? sama seperti XGBoost, LightGBM membangun sekumpulan pohon keputusan (decision tree) secara bertahap (boosting). Namum perbedaan utamanya ada di bagaimana pohon dibangun:

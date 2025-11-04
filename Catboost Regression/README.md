@@ -8,9 +8,14 @@ Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*ske
 ---
 
 ## 📖 Penjelasan Tentang CatBoost
-CatBoost singkatan dari "Categorical Boosting" adalah salah satu algoritma **gradient boosting** modern buatan Yandex (mesin pencari Rusia) yang dirancang untuk menangani fitur kategorikal secara otomatis, mencegah overfitting lewat teknik matematis canggih (ordered boosting), lebih cepat dan efisien dibanding XGBoost dan LightGBM di banyak kasus.
+CatBoost singkatan dari "Categorical Boosting" adalah salah satu algoritma **gradient boosting** modern buatan Yandex (mesin pencari Rusia) yang dirancang untuk menangani fitur kategorikal secara otomatis, mencegah overfitting lewat teknik matematis canggih (ordered boosting), lebih cepat dan efisien dibanding XGBoost dan LightGBM di banyak kasus. Catboost dibangun di atas konsep gradient boosting yaitu membuat banyak pohon keputusan kecil (weak learners) secara berurutan, di mana tiap pohon memperbaiki kesalahan dari pohon sebelumnya. Secara intuitif:
+1. Buat pohon pertama -> prediksi awal masih jelek.
+2. Hitung error (residual)
+3. Buat pohon kedua yang fokus belajar dari error tadi
+4. Ulangi ratusan-ribuan kali hingga error makin kecil.
+5. Gabungkan semua pohon jadi satu model kuat (boosted ensemble)
 
-Selain itu, LightGBM memperkenalkan dua inovasi utama untuk meningkatkan kecepatan secara drastis pada dataset besar: **Gradien-based One-Side Sampling (GOSS)** dan **Exclusive Feature Bundling (EFB)**. GOSS secara cerdas mengurangi jumlah data pelatihan dengan hanya menggunakan semua sampel dengan gradien besar (kesalahan besar) dan mengambil sampel secara acak dari data dengan gradien kecil, sehingga menjaga akurasi sambil mengurangi waktu komputasi. Sementara itu, EFB mengelompokkan fitur-fitur yang saling eksklusif (jarang terjadi bersamaan) menjadi satu fitur gabungan yang secara efektif mengurangi dimensi fitur (jumlah kolom) dan mempercepat proses pencarian split. Meskipun XGBoost juga sangat teroptimasi dan mendukung paralelisasi, optimalnya berfokus pada proses split (pembelahan) pada setiap node untuk efisiensi, sedangkan LightBGM berfokus pada mengurangi data yang perlu diproses dan jumlah fitur, membuatnya secara umum lebih cepat dan menggunakan memori yang lebih sedikit ketika dihadapkan pada dataset yang berukuran sangat besar.
+Algoritma ini punya keunggulan besar untuk data categorical features (fitur non-numerik seperti gender, kota, produk, dsb). Di algoritma lain seperti XGBoost dan LightGBM, fitur kategorikal harus di-encode manual menggunakan onehotencoder atau label encoding. Sementara di CatBoost bisa langsung memproses kategori tanpa encoding manual menggunakan konsep statistik internal bernama **target statistics** yang menjaga supaya tidak terjadi data leakage.
 
 Bagaimana cara kerja dari LightGBM? sama seperti XGBoost, LightGBM membangun sekumpulan pohon keputusan (decision tree) secara bertahap (boosting). Namum perbedaan utamanya ada di bagaimana pohon dibangun:
 1. XGBoost -> Level-wise growth, pohon dibangun lebar dulu, tiap level dikembangkan serentak. Lebih stabil, tapi bisa lambat dan boros memori.

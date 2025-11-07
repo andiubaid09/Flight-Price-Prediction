@@ -115,3 +115,11 @@ Selama proses pelatihan model Support Vector Machine (SVM) dengan kernel RBF (Ra
 - Durasi berjalan       : 11 jam 29 menit (belum selesai/ tidak konvergen)
 
 ### ⚙️ Analisis Teknis
+- Kompleksitas Komputasi, SVM dengan kernel RBF memiliki kompleksitas waktu 0(n2), di mana `n` adalah jumlah sampel. Dataset proyek ini memiliki ratusan ribu baris data, menyebabkan waktu training membengkak secara eksponesial.
+- Kernel non-linear, dimana kernel RBF melakukan transformasi non-linear untuk memisahkan data yang tidak dapat dipisahkan secara linear. Proses ini membutuhkan banyak perhitungan jarak antar titik dalam ruang berdimensi tinggi.
+- Tidak ada batas iterasi, parameter default `max_iter=-1` menyebabkan model terus mencoba mencapai konvergensi tanpa batas waktu tertentu. Karena itu, training tidak pernah berhenti meskipun sudah berjalan lebih dari 11 jam.
+- Penggunaan RandomizedSearchCV walaupun menggunakan `n_iter` hanya 3 dan `cv` hanya 2. Setiap kombinasi parameter tetap harus melakukan fitting berulang kali. Ini memperbanyak total proses training dan evaluasi.
+
+### 🧠 Insight dan Pembelajaran
+- SVM (RBF) sangat kuat untuk data non-linear, namun tidak efisien untuk dataset beasr
+-

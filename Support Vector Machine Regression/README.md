@@ -129,6 +129,6 @@ Berikut tangkapan layar dari proses training yang tidak kunjung selesai di Googl
 - 8 jam setelah difitting 
 ![8 Jam](Assets/Lama%201.jpg)
 - 11 jam setelah difitting
-![11 jam](Assets/Lama%202.jpg)
+<br>![11 jam](Assets/Lama%202.jpg)<br>
 
 Hasil ini tetap menjadi doumentasi penting untuk saya dalam memahami batas efisiensi algoritma SVM dalam praktik nyata

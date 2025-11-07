@@ -75,45 +75,26 @@ Berikut adalah kelemahan Support Vector Machine:
 | **Numerik**              | `days_left` | `StandardScaler` |
 
 ### 4. Optimasi Hyperparameter
-Dilakukan dengan **RandomizedSearchCV** pada parameter utama CatBoost:
-- `iterations` → Jumlah pohon (round boosting)
-- `learning_rate` → Kecepatan belajar
-- `max_depth` → Kedalaman pohon
-- `l2_leaf_reg` →  Regularisasi L2
-- Hyperparameter menggunakan **RandomizedSearchCV** ditemukan:
-  1. iterations = 1500
-  2. learning_rate = 0.15
-  3. max_depth = 10
-  4. l2_leaf_reg = 15
+Dilakukan dengan **RandomizedSearchCV** pada parameter utama Support Vector Machine:
+- `C` → Regularization
+- `epsilona` → Insensitive Zone (khusus SVR)
+- `gamma` → Kernel coefficient
+- Hyperparameter menggunakan **RandomizedSearchCV** tidak dapat berhasil dengan waktu training yang sangat lama yaitu 11 jam.
 
-**Interpretasi Angka dari Hyperparameter**
-- iterations = 1500, ini berarti jumlah total boosting rounds atau decision trees yang dibangun secara bertahap oleh model. Model membangun 1500 pohon keputusan secara berurutan. Semakin banyak iterasi, semakin kompleks modelnya tapi juga berisiko overfitting jika terlalu tinggi.
-- learning_rate = 0.15, menentukan seberapa besar kontribusi setiap tree baru dalam memperbaiki kesalahan model sebelumnya. Nilai kecil membuat model belajar perlahan tapi lebih stabil; nilai besar mempercepat konvergensi tapi bisa menyebabkn overshooting (overfitting atau tidak stabil). Nilai 0.15 sedikit lebih tinggi dari default (0.1) artinya model belajar dengan laju agak cepat. Karena jumlah iterasi juga cukup tinggi (1500), kombinasi ini masih seimbang dan cepat belajar tapi tidak terlalu agresif.
-- max_depth = 10, Kedalaman maksimum setiap decision tree. Semakin besar max_depth, semakin kompleks pola yang bisa ditangkap tapi risiko overfitting juga meningkat. Nilai 10 termasuk dalam kategori menengah - tinggi. Artinya setiap pohon mampu membentuk aturan yang cukup kompleks untuk menangkap interaksi antar fitur. Karena dataset bisa dibilang cukup besar (240 ribu rows) dan mungkin memiliki hubungan non-linear antar variabel, kedalaman 10 adalah pilihan yang masuk akal. Model bisa memahami pola kompleks tanpa terlalu berlebihan.
-- l2_leaf_reg = 15, parameter regularisasi L2 (mirip dengan ridge regression) yang menambahkan penalti terhadap bobot besar pada leaf value dari tree. Tujuannya adalah mengontrol kompleksitas model agar tidak overfitting. Nilai ini lebih tinggi dari default (3), artinya model diberi penalti lebih kuat agar tidak terlalu mengikuti noise pada data training. Ini membuat model lebih konservatif dalam mempelajari pola yang terlalu spesifik.
-
-Dengan kombinasi ini menghasilkan model seimbang antara akurasi tinggi dan generalisasi baik, ideal untuk dataset besar dan kompleks.
-
-**Parameter Penting pada CatBoostRegressor()**
-|Parameter                |  Fungsi                               | Dampak                              |
+**Parameter Penting pada Support Vector Machine()**
+|Parameter                |  Fungsi                               | Penjelasan                          |
 |-------------------------|---------------------------------------|-------------------------------------|
-|iterations|Menentukan jumlah total boosting iterations(jumlah pohon)|Semakin besar nilainya, semakin kompleks model|
-|max_depth|Kedalaman maksimum setiap pohon|Nilai tinggi, membuat model bisa tangkap pola kompleks tapi resiko overfit, kecil bisa underfit|
-|learning_rate|Mengontrol laju pembelajaran model|Nilai kecil (0.01-0.1) membuat model belajar lebih lambat tapi stabil, nilai besar (0.15-0.3) mempercepat konvergensi namun bisa tidak stabil. Biasanya diimbangi dengan jumlah iterations|
-|l2_leaf_reg|Regularisasi L2 pada nilai daun (leaf value)|Mengontrol kompleksitas model, nilai besar (10-30) mencegah overfitting, nilai kecil (1-5) meningkatkan fleksibilitas model|                       
-|bagging_temperature|Mengatur kekuatan randomness pada bootstrap sampling| Nilai 0 - deterministik, nilai tinggi (>1) = lebih acak, mencegah overfitting. Biasanya 0-1 untuk regresi|
-|border_count|Jumlah borders (batas binning) untuk fitur numerik|Mengatur seberapa halus fitur numerik di-split. Default 254, nilai kecil mempercepat training tapi mengurangi akurasi|
-|random_strength|Kontrol tingkat keacakan dalam pemilihan split|Nilai besar menambah regularization, mencegah overfitting. Biasanya 1-20|
-|grow_policy|Strategi pertumbuhan pohon|`SymnetricTree` (default, cepat dan stabil) atau `Depthwise`/`Lossguide` (lebih fleksibel tapi lambat)|
-|min_data_in_leaf|Minimum jumlah sampel di setiap daun|Nilai besar membuat model lebih konservatif. Cocok untuk dataset besar|
-|subsample|Fraksi data yang digunakan per iterasi (mirip bagging)|Nilai 0.7 - 0.9, umum digunakan untuk mempercepat training dan menambah regularisasi|
-|colsample_bylevel|Persentase fitur yang digunakan di tiap level pohon|Membantu mencegah overfitting pada dataset dengan fitur banyak|
-|early_stopping_rounds|Berhenti otomatis jika tidak ada peningkatan dalam beberapa iterasi|Penting untuk efisiensi dan mencegah overfit|
-|rsm|Random subspace method - proporsi fitur yang digunakan per split|Mirip  `colsample_bylevel`, umumnya antara 0.8 - 1.0|
-|loss_function|Menentukan fungsi kehilangan yang dioptimalkan|Untuk regresi : `RMSE`,`MAE`,`r2`, dll dan untuk Classification: `accuracy_score`,`precision`,`recall`|
-|eval_metric|Metrik evaluasi untuk pemantauan training| Misalnya:`RMSE`,`R2`. Tidak mempengaruhi training tapi membantu memilih model terbaik|
-|random_seed|Nilai acak untuk reproduksibilitas|Pastikan konsisten agar hasil model bisa diulang. Biasanya 42 sama seperti random_state|
-|verbose| Mengatur tingkat log output selama training|Nili integer (misal 100) untuk menamppilkan progress setiap 100 iterasi|
+|C|Regularization parameter|Mengontrol trade-off antara margin besar dan kesalahan klasifikasi. Nilai kecil membuat margin lebar tapi toleran terhadap kesalahan (underfitting), sedangkan nilai besar memaksa model memisahkan data dengan benar tapi bisa overfitting|
+|kernel|Jenis fungsi kernel|Menentukan fungsi pemetaan ke ruang fitur berdimensi lebih tinggi|
+|degree|Derajat kernel polinomial|Hanya digunakan jika `kernel=poly`, menentukan derajat polinomial. Derajat yang lebih tinggi dapat menangkap hubungan lebih kompleks tapi juga meningkatkan overfitting|
+|gamma|Parameter kernel RBF, poly, sigmoid|Mengontrol seberapa jauh pengaruh satu sampel pelatihan. Nilai besar = model fokus ke data terdekat (overfitting), nilai kecil = margin lebih halus (underfitting)|                       
+|coef0|Koefisien kernel poly/sigmoid|Mengatur pengaruh antara komponen linear dan non-linear dalam kernel polinomial dan sigmoid. Biasanya hanya disetel saat pakai kernel tersebut|
+|shrinking|Strategi optimasi|Boolean (True/False). Jika True, algoritma menggunakan heuristik `shrinking` untuk mempercepat pelatihan tanpa anyak kehilangan akurasi. Default:True|
+|probability|Estimasi probabilitas output|Jika True, SVM menghitung probabilitas prediksi dengan metode Platt scaling(predict_proba). Ini menambah waktu pelatihan. Default :False|
+|class_weight|Bobot tiap kelas|Berguna untuk data tidak seimbang. Misal `class_weight=balanced` otomatis memberi bobot proporsional terhadap frekuensi kelas|
+|max_iter|Batas iterasi pelatihan|Menentukan jumlah maksimum iterasi saat proses fitting. Jika -1, tidak ada batas (default). Berguna untuk menghindari pelatihan yang terlalu lama|
+|decision_function_shape|Bentuk output keputusan|Mengontrol bentuk hasil fungsi keputusan: `ovr` (one-vs-rest, default) untuk multi-class. `ovo` (one-vs-one) digunakan dalam kasus|
+|tol|Toleransi konvergensi|Batas toleransi untuk menghentikan iterasi optimisasi. Nilai kecil membuat hasil lebih akurat tapi memperlambat pelatihan. Default:1e-3|
 
 ---
 

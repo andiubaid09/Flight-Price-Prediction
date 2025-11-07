@@ -43,15 +43,15 @@ Berikut adalah kelebihan Support Vector Machine:
 |Dapat digunakan untuk klasifikasi dan regressi| Varian SVM (yaitu Support Vector Regression/SVR) memungkinkan algoritma ini digunakan juga untuk tugas regresi kontinu|
 
 
-Berikut adalah kelemahan CatBoost:
+Berikut adalah kelemahan Support Vector Machine:
 |Kelemahan                                 |Keterangan                                    |
 |------------------------------------------|----------------------------------------------|
-|Training Time Lebih Lama |Meskipun cepat dibanding boosting klasik, CatBoost cenderung lebih lambat dari model linear atau random forest, terutama saat tuning hyperparameter seperti GridSearchCV dan RandomizedSearchCV|
-|Ukuran Model Cukup Besar    |Karena model terdiri dari banyak decision trees, hasil akhir bisa memakan memori yang signifikan (ratusan MB untuk dataset besar)|
-|Kurang Fleksibel pada Produksi Ringan (Embedded/IoT)|CatBoost tidak cocok dijalankan langsung pada perangkat seperti Raspberry Pi kecil karena memerlukan memori besar dan dependensi Python|
-|Tidak Selalu Unggul di Semua Kasus     | Untuk datased dengan relasi linear sederhana, regresi linear atau ridge regression bisa lebih cepat dan hampir sama akuratnya|
-
-Kesimpulannya adalah CatBoost algoritma yang dikembangkan Yandex, dirancang untuk menangani data tabular secara efisien terutama yang mengandung banyak fitur kategorikal tanpa perlu preprocessing kompleks seperti one-hot encoding. Catboost termasuk dalam keluarga ensemble learning, di mana banyak model decision tree baru berfokus memperbaiki kesalahan yang dibuat oleh tree sebelumnya.
+|Waktu komputasi tinggi pada dataset besar |Kompleksitas komputasi SVM meningkat drastis dengan jumlah sampel, sehingga tidak efisien untuk data besar (ratusan ribu hingga jutaan baris)|
+|Sulit dalam pemilihan kernel yang tepat|Pemilihan kernel yang tidak sesuai (linear, polynomial, RBF, sigmoid) dapat menyebabkan performa model menurun signifikan|
+|Memerlukan tuning parameter yang sensitif|Parameter seperti C, gamma, dan epsilon sangat mempengaruhi hasil akhir, sehingga perlu proses pencarian paramter (GridSearch/RandomSearch) yang mahal waktu|
+|Kurang interpretatif| Hasil model berupa vektor bobot dan support vector yang sulit dijelaskan secara intuitif, tidak seperti Decision Tree yang mudah divisualisasikan|
+|Sensitif terhadap skala fitur|SVM mengandalkan jarak antar titik (inner product), sehingga memerlukan normalisasi atau standarisasi fitur terlebih dahulu|
+|Sulit dioptimalkan pada data dengan noise tinggi|Jika data memiliki banyak outlier atau noise, margin optimal sulit dicapai dan model dapat mengalami overfitting|
 
 ---
 

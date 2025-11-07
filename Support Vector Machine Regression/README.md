@@ -103,3 +103,15 @@ Dilakukan dengan **RandomizedSearchCV** pada parameter utama Support Vector Mach
 Selama proses pelatihan model Support Vector Machine (SVM) dengan kernel RBF (Radial Basis Function) ini pelatihan tidak berhasil diselesaikan dalam waktu yang wajar. Eksperimen ini dijalankan menggunakan Google Colab dengan spesifikasi runtime standar.
 
 ### 🔍 Rincian Eksperimen
+- Model yang digunakan : SVR (kernel='rbf')
+- Metode Tuning : RandomizedSearchCV
+- Parameter yang dicari:
+  1. C : 0.1 - 300 (logspace)
+  2. epsilon : 0.05 - 5.0 (linspace)
+  3. gamma : ['scale','auto']
+- Jumlah iterasi (n_iter) : 3
+- Cross-validation (CV) : 2 folds
+- Jumlah kandidat total : 6 kombinasi parameter
+- Durasi berjalan       : 11 jam 29 menit (belum selesai/ tidak konvergen)
+
+### ⚙️ Analisis Teknis

@@ -23,6 +23,7 @@ SVM memiliki dua pendekatan utama yaitu Linear SVM, digunakan jika data dapat di
 
 Kernel merupakan fungsi yang memetakan data ke ruang fitur berdimensi lebih tinggi tanpa harus menghitung koordinatnya secara eksplisit. Pendekatan ini memungkinkan SVM menangani hubungan non-linear dengan efisien. Beberapa kernel yang umum digunakan antara lain:
 |Jenis Kernel             | Fungsi                  | Kegunaan              |
+|-------------------------|-------------------------|-----------------------|
 |Linear                   |K(xi​,xj​)=xi​⋅xj​           | Untuk data yang dapat dipisahkan secara linear|
 |Polynomial               |K(xi​,xj​)=(xi​⋅xj​+1)d      | Menangani hubungan polinomial antar fitur|
 |RBF (Radial Basis Function)| K(xi​,xj​)=exp(−γ∥xi​−xj​∥2)| Digunakan untuk data non-linear|

@@ -138,7 +138,7 @@ pip install pandas numpy scikit-learn joblib
     - MAE : 2737.66
     - RMSE : 4801.70
 
-10. ⚔️ Support Vector Machine Regressor (coming soon)
+10. ⚔️ Support Vector Machine Regressor (Training no completed 🚫)
 
 ## 🛠️ Cara Menggunakan Model
 Contoh untuk Random Forest:

@@ -2,10 +2,11 @@ import kagglehub
 import os
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split, RandomizedSearchCV
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder,OrdinalEncoder,StandardScaler, FunctionTransformer
-from sklearn.compose import ColumnTransformer
+from sklearn.compose import ColumnTransformer, TransformedTargetRegressor
 from sklearn.pipeline import Pipeline
+from sklearn.svm import SVR
 
 path = kagglehub.dataset_download('rohitgrewal/airlines-flights-data')
 print('Lokasi path berada di', path)
@@ -35,3 +36,24 @@ class_categ = ['Economy','Business']
 ordinal_transform = OrdinalEncoder(categories=[class_categ])
 
 log_transform = FunctionTransformer(np.log1p, inverse_func=np.expm1)
+preprocessor = ColumnTransformer([
+    ('num', Pipeline([
+        ('log', log_transform),
+        ('scaler', num_transform)
+    ]),num_feat),
+    ('ord', ordinal_transform, ordinal_feat),
+    ('encoder', cat_transform, cat_feat)
+], remainder ='drop')
+
+SVR_Regre = SVR(kernel = 'rbf')
+
+model_SVR = TransformedTargetRegressor(
+    regressor = SVR_Regre,
+    func = np.log1p,
+    inverse_func= np.expm1
+)
+
+svr_pipeline = Pipeline(steps=[
+    ('preprocessor', preprocessor),
+    ('regressor', model_SVR)
+])

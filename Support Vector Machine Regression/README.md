@@ -1,30 +1,24 @@
 # ⚔️ Prediksi Harga Tiket Pesawat dengan Support Vector Machine (Training no completed 🚫)
 
 ## 📝 Deskripsi Proyek
-Proyek ini membangun model **Machine Learning** untuk memprediksi harga tiket pesawat berdasarkan berbagai fitur penerbangan. Model dikembangkan menggunakan **Scikit-learn Pipeline** dengan **Support Vector Regression (SVR)** sebagai model utama.  
+Proyek ini membangun model **Machine Learning** untuk memprediksi harga tiket pesawat berdasarkan berbagai fitur penerbangan. Model dikembangkan menggunakan **Scikit-learn Pipeline** dengan **Support Vector Regression (SVR)** sebagai model utama. Namun, eksperimen ini dengan kernel RBF untuk memprediksi harga tiket pesawat berjalan selama lebih dari 11 jam tanpa menyelesaikan proses pelatihan karena kompleksitas kernel non-linear pada dataset berskala besar.  
 
 Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*skewed*), target variabel (`price`) ditransformasi secara logaritmik menggunakan **TransformedTargetRegressor (TTR)**.
 
 ---
 
 ## 📖 Penjelasan Tentang Support Vector Machine
-CatBoost singkatan dari "Categorical Boosting" adalah salah satu algoritma **gradient boosting** modern buatan Yandex (mesin pencari Rusia) yang dirancang untuk menangani fitur kategorikal secara otomatis, mencegah overfitting lewat teknik matematis canggih (ordered boosting), lebih cepat dan efisien dibanding XGBoost dan LightGBM di banyak kasus. Catboost dibangun di atas konsep gradient boosting yaitu membuat banyak pohon keputusan kecil (weak learners) secara berurutan, di mana tiap pohon memperbaiki kesalahan dari pohon sebelumnya. Catboost dibangun di atas prinsip Gradient Boosting Decision Tree (GBDT). Secara intuitif:
-1. Buat pohon pertama -> prediksi awal masih jelek.
-2. Hitung error (residual)
-3. Buat pohon kedua yang fokus belajar dari error tadi
-4. Ulangi ratusan-ribuan kali hingga error makin kecil.
-5. Gabungkan semua pohon jadi satu model kuat (boosted ensemble)
+Support Vector Machine (SVM) adalah algoritma supervised learning yang digunakan untuk klasifikasi dan regressi, tapi lebih terkenal untuk klasifikasi. Tujuan SVM adalah mencari garis atau bidang yang memisahkan data dari dua kelas sebaik mungkin. Garis ini disebut sebagai **Hyperplane**. SVM akan mencari hyperplane yang memisahkan dua kelompok tersebut dengan margin terlebar. Margin adalah jarak antara hyperplane dengan titik data terdekat dari masing-masing kelas. Titik yang paling dekat dengan hyperplane disebut **support vectors**. Mereka yang menentukan batas pemisah kelas.
 
-Catboost banyak digunakan dalam kasus regresi, klasifikasi dan ranking karena kemampuannya yang luar biasa dalam menemukan pola non-linear yang kompleks dari data mentah tanpa preprocessing yang rumit.
-Algoritma ini punya keunggulan besar untuk data categorical features (fitur non-numerik seperti gender, kota, produk, dsb). Di algoritma lain seperti XGBoost dan LightGBM, fitur kategorikal harus di-encode manual menggunakan onehotencoder atau label encoding. Sementara di CatBoost bisa langsung memproses kategori tanpa encoding manual menggunakan konsep statistik internal bernama **target statistics** yang menjaga supaya tidak terjadi data leakage.
+```bash
+🔴🔴🔴      |      🔵🔵🔵
+🔴🔴🔴   <--|-->   🔵🔵🔵
+🔴🔴🔴      |      🔵🔵🔵
 
-Alih-alih melakukan one-hot encoding, CatBoost menggunakan metode Target Encoding yang aman yaitu mengubah kategori menjadi nilai statistik berdasarkan target. Namun, CatBoost menghitung nilai encoded_value secara bertahap sehingga tidak terjadi kebocoran informasi dari target keseluruhan. Dengan metode ini, catboost lebih efisien daripada one-hot encoding, dapat menangani fitur dengan ratusan kategori unik dan menghindari overfitting akibat target leakage.
+```
 
-CatBoost membangun model sebagai kombinasi dari banyak Decision Tress yang dangkal di mana setiap pohon memperbaiki kesalahan dari pohon sebelumnya.Proses training-nya meliputi:
-1. Membagi dataset menjadi beberapa subset acak
-2. Melatih pohon keputusan pada residual (selisih antara target aktual dan prediksi sebelumnya)
-3. Menggabungkan hasil semua pohon untuk memperbarui prediksi
-4. Mengulang hingga mencapai jumlah iterations yang ditentukan atau early stopping
+Tanda **|** adalah hyperplane. Support vector = titik paling dekat di sisi masing-masing kelas
+
 
 Berikut adalah kelebihan CatBoost:
 |Kelebihan                                 |Keterangan                                    |

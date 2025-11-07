@@ -122,4 +122,13 @@ Selama proses pelatihan model Support Vector Machine (SVM) dengan kernel RBF (Ra
 
 ### 🧠 Insight dan Pembelajaran
 - SVM (RBF) sangat kuat untuk data non-linear, namun tidak efisien untuk dataset beasr
--
+- Untuk dataset dengan ratusan ribuan sampel, algoritma seperti RandomForest, XGBoost atau LightGBM lebih efisien dan dapat memberikan performa serupa.
+
+###  📸 Bukti Eksperimen
+Berikut tangkapan layar dari proses training yang tidak kunjung selesai di Google Colab:
+- 8 jam setelah difitting 
+![8 Jam](Assets/Lama%201.jpg)
+- 11 jam setelah difitting
+![11 jam](Assets/Lama%202.jpg)
+
+Hasil ini tetap menjadi doumentasi penting untuk saya dalam memahami batas efisiensi algoritma SVM dalam praktik nyata

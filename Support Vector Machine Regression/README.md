@@ -8,7 +8,7 @@ Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*ske
 ---
 
 ## 📖 Penjelasan Tentang Support Vector Machine
-Support Vector Machine (SVM) adalah algoritma supervised learning yang digunakan untuk klasifikasi dan regressi, tapi lebih terkenal untuk klasifikasi. Tujuan SVM adalah mencari garis atau bidang yang memisahkan data dari dua kelas sebaik mungkin. Garis ini disebut sebagai **Hyperplane**. SVM akan mencari hyperplane yang memisahkan dua kelompok tersebut dengan margin terlebar. Margin adalah jarak antara hyperplane dengan titik data terdekat dari masing-masing kelas. Titik yang paling dekat dengan hyperplane disebut **support vectors**. Mereka yang menentukan batas pemisah kelas.
+Support Vector Machine (SVM) adalah algoritma supervised learning yang digunakan untuk klasifikasi dan regressi, tapi lebih terkenal untuk klasifikasi. Tujuan SVM adalah mencari garis atau bidang yang memisahkan data dari dua kelas sebaik mungkin. Garis ini disebut sebagai **Hyperplane**. SVM bekerja dengan mencari sebuah hyperplane yang memisahkan data menjadi dua kelas berbeda. Hyperplane ini dapat diangap sebagai "garis batas keputusan (decision boundary)" yang dapat diupayakan agar memiliki jarak maksimum terhadap titik-titik data terdekat dari masing-masing kelas. Titik-titik yang berada paling dekat dengan hyperplane disebut support vectors dan mereka berperan penting dalam menentukan posisi serta orientasi hyperplane.
 
 ```bash
 🔴🔴🔴      |      🔵🔵🔵
@@ -17,7 +17,18 @@ Support Vector Machine (SVM) adalah algoritma supervised learning yang digunakan
 
 ```
 
-Tanda **|** adalah hyperplane. Support vector = titik paling dekat di sisi masing-masing kelas
+Tanda **|** adalah hyperplane. Support vector = titik paling dekat di sisi masing-masing kelas. SVM berusaha meminmalkan dua hal yaitu kesalahan klasifikasi dan ukuran margin yang kecil. Dalam konteks regressi (Support Vector Regression/SVR), SVM berusaha menemukan fungsi regresi optimal yang memiliki penyimpangan minimum (error) dari nilai aktual, sambil tetap mempertahankan margin toleransi (ε-insensitive zone) agar model tidak terlalu sensitif terhadap noise.
+
+SVM memiliki dua pendekatan utama yaitu Linear SVM, digunakan jika data dapat dipisahkan secara linear, artinya terdapat garis lurus atau bidang datar yang bisa memisahkan kelas-kelas data dengan jelas dan Non-linear SVM digunakan jika data tidak bisa dipisahkan secara linear. Untuk menangani hal ini, SVM menggunakan pendekatan yang disebut *kernel trick*, yaitu mentransformasikan data dari ruang berdimensi rendah ke ruang berdimensi tinggi agar dapat dipisahkan secara linear di ruang tersebut.
+
+Kernel merupakan fungsi yang memetakan data ke ruang fitur berdimensi lebih tinggi tanpa harus menghitung koordinatnya secara eksplisit. Pendekatan ini memungkinkan SVM menangani hubungan non-linear dengan efisien. Beberapa kernel yang umum digunakan antara lain:
+|Jenis Kernel             | Fungsi                  | Kegunaan              |
+|Linear                   |K(xi​,xj​)=xi​⋅xj​           | Untuk data yang dapat dipisahkan secara linear|
+|Polynomial               |K(xi​,xj​)=(xi​⋅xj​+1)d      | Menangani hubungan polinomial antar fitur|
+|RBF (Radial Basis Function)| K(xi​,xj​)=exp(−γ∥xi​−xj​∥2)| Digunakan untuk data non-linear|
+|Sigmoid                  |K(xi​,xj​)=tanh(αxi​⋅xj​+c)  | Mirip fungsi aktivasi pada jaringan saraf tiruan|
+
+Kernel RBF merupakan paling populer karena kemampuannya dalam menangani berbagai bentuk distribusi data yang kompleks dan non-linear
 
 
 Berikut adalah kelebihan CatBoost:

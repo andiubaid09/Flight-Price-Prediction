@@ -32,14 +32,15 @@ Kernel merupakan fungsi yang memetakan data ke ruang fitur berdimensi lebih ting
 Kernel RBF merupakan paling populer karena kemampuannya dalam menangani berbagai bentuk distribusi data yang kompleks dan non-linear
 
 
-Berikut adalah kelebihan CatBoost:
+Berikut adalah kelebihan Support Vector Machine:
 |Kelebihan                                 |Keterangan                                    |
 |------------------------------------------|----------------------------------------------|
-|Ordered Boosting                          |Mencegah target leakage dan overfitting dengan melatih model secara berurutan menggunakan subset data yang berbeda|
-|Handling Categorical Features             |Dapat menangani fitur kategorikal secara otomatis tanpa perlu onehotencoder atau label encoding|
-|Cepat dan Efisien                          |Optimized untuk CPU dan GPU bahkan pada dataset besar|
-|Performa Stabil                            |Tidak mudah overfit dan lebih konsisten dibanding XGBoost atau LightBGM pada dataset kecil-menengah|
-|Interoperability dengan Scikit-Learn   |Bisa langsung dipakai dalam Pipeline dan GridSearch/RandomizedSearchCV|
+|Akurat pada data berdimensi tinggi        |SVM tetap stabil dan akurat walaupun jumlah fitur sangat banyak (high-dimensional space), seperti pada teks, gambar atau genomik.|
+|Efektif pada data non-linear              |Dengan penggunaan *kernel trick* (misalnya RBF), SVM mampu menangani pola hubungan antar fitur yang kompleks dan tidak linear|
+|Bekerja baik pada dataset kecil hingga menengah|Karena berfokus pada titik-titik support vector, SVM tidak memerlukan seluruh data untuk membangun model, sehingga performanya lebih tetap baik pada data terbatas|
+|Robust terhadap outlier ringan |Titik data ekstrem yang sedikit tidak terlalu memengaruhi posisi hyperplane, asalkan jumlahnya tidak berlebihan|
+|Memiliki dasar teoretis kuat|SVM didasarkan pada teori optimisasi konveks, sehingga solusi yang diperoleh bersifat global optinum, bukan local minimum|
+|Dapat digunakan untuk klasifikasi dan regressi| Varian SVM (yaitu Support Vector Regression/SVR) memungkinkan algoritma ini digunakan juga untuk tugas regresi kontinu|
 
 
 Berikut adalah kelemahan CatBoost:

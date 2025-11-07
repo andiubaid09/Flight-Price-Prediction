@@ -144,6 +144,10 @@ pip install pandas numpy scikit-learn joblib
     2. Margin, jarak antara hyperplane dan titik data terdekat dari setiap kelas.
     3. Support Vector, Titik-titik data (vektor) yang terletak paling dekat dengan hyperplane dan secara langsung mempengaruhi posisi orientasi hyperplane. Titik-titik ini adalah yang mendukung hyperplane maka dari itu nama algoritma ini.
   - Tujuan utama SVM adalah mencari hyperplane dengan margin terbesar (maximum margin), karena margin yang lebih besar cenderung menghasilkan kemampuan generalisasi yang lebih baik dan mengurangi risiko overfitting.
+  -  Pipeline disamakan dengan algoritma machine learning yang lain yaitu menggunakan TransformedTargetRegressor (log_transform target).
+  - Menerapkan logaritma natural dari nilai +1 lalu distandarisasi oleh StandardScaler().
+  - Eksperimen ini menggunakan SVM dengan kernel RBF untuk memprediksi harga tiket pesawat. Model ini berjalan selama lebih dari 11 jam tanpa menyelesaikan proses pelatihan karena kompleksitas kernel non-linear pada dataset berskala besar.
+  - Hasil ini memberikan wawasan penting bahwa untuk dataset besar, model berbasis **gradient bossting** lebih efisien dan praktiks.
 
 ## 🛠️ Cara Menggunakan Model
 Contoh untuk Random Forest:

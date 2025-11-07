@@ -139,6 +139,11 @@ pip install pandas numpy scikit-learn joblib
     - RMSE : 4801.70
 
 10. ⚔️ Support Vector Machine Regressor (Training no completed 🚫)
+  - Support Vector Machine (SVM) adalah algoritma supervised learning yang inti dari SVM adalah menemukan batas keputusan *(Decision Boundary)* terbaik, yang disebut **Hyperplane** yang secara optimal memisahkan kelas-kelas data dalam ruang fitur. Konsep utama adalah sebagai berikut:
+    1. Hyperplane, sebuah batas keputusan yang memisahkan kelas-kelas data. Dalam ruang dua dimensi, hyperplane adalah sebuah garis. Dalam ruang tiga dimensi, hyperplane adalah sebuah bidang datar. Dalam dimensi yang lebih tinggi (N-dimensi), hyperplane adalah objek geometris (N-1) dimensi.
+    2. Margin, jarak antara hyperplane dan titik data terdekat dari setiap kelas.
+    3. Support Vector, Titik-titik data (vektor) yang terletak paling dekat dengan hyperplane dan secara langsung mempengaruhi posisi orientasi hyperplane. Titik-titik ini adalah yang mendukung hyperplane maka dari itu nama algoritma ini.
+  - Tujuan utama SVM adalah mencari hyperplane dengan margin terbesar (maximum margin), karena margin yang lebih besar cenderung menghasilkan kemampuan generalisasi yang lebih baik dan mengurangi risiko overfitting.
 
 ## 🛠️ Cara Menggunakan Model
 Contoh untuk Random Forest:
